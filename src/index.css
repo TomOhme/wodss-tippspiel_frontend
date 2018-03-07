@@ -1,2 +1,17 @@
-body {
+/* custom css for tippspiel */
+
+/* custom navbar colors
+.navbar,
+.navbar-default {
+    background-image: linear-gradient(to bottom,#A01B20 0,#A01B20 100%) !important;
+}
+*/
+
+/* Sticky footer style
+-------------------------------------------------- */
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    line-height: 60px;
 }
