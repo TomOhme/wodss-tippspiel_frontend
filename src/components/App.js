@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import Bets from './Bets';
 
 export default class App extends React.Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <Header></Header>
-        <div>Content</div>
+        <Bets></Bets>
         <Footer></Footer>
       </div>
     );

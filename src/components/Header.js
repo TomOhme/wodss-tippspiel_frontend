@@ -18,11 +18,6 @@ export default class Header extends React.Component {
           wodss Tippspiel WM 2018
         </PageHeader>
         <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="#home">Tippspiel</a>
-            </Navbar.Brand>
-          </Navbar.Header>
           <Nav>
             <NavItem eventKey={1} href="#">
               Tipps
@@ -45,7 +40,7 @@ export default class Header extends React.Component {
             <NavItem eventKey={1} href="#">
               Profil
             </NavItem>
-            <NavItem eventKey={2} href="#">
+            <NavItem eventKey={2} href="#" style={{marginRight: 50}}>
               Ausloggen
             </NavItem>
           </Nav>
