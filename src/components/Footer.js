@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
         return <footer class="footer">
             <div class="container">
                 <span class="text-muted">
-                    &copy; Ohme, Schraner, Zumbrunn
+                    &copy; Schraner, Ohme, Zumbrunn
                 </span>
             </div>
         </footer>
