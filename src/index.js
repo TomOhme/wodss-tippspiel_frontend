@@ -1,6 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import App from './components/App'
+import betApp from './reducers';
 import './index.css';
-import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(
+  betApp,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+{/* make store available in all container components through Provider */ }
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
