@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { add } from '../actions';
-import { counter } from '../reducers';
-import CounterLabel from './CounterLabel';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
+import CounterLabel from './CounterLabel';
 
 import {
     Nav,
@@ -19,13 +18,13 @@ let Bets = ({ dispatch, translate, currentLanguage }) => {
             <Nav bsStyle="tabs" activeKey={1} onSelect={this.handleSelect}>
                 <NavItem eventKey={1}>
                     {translate('groupday1')}
-                    </NavItem>
+                </NavItem>
                 <NavItem eventKey={2}>
                     {translate('groupday2')}
-                    </NavItem>
+                </NavItem>
                 <NavItem eventKey={3}>
                     {translate('groupday3')}
-                    </NavItem>
+                </NavItem>
             </Nav>
             <div>
                 <form onSubmit={e => {
@@ -35,6 +34,7 @@ let Bets = ({ dispatch, translate, currentLanguage }) => {
                     <button type="submit">
                         Add
                     </button>
+                    <CounterLabel />
                 </form>
             </div>
         </div>
@@ -44,7 +44,7 @@ let Bets = ({ dispatch, translate, currentLanguage }) => {
 const mapStateToProps = state => ({
     translate: getTranslate(state.locale),
     currentLanguage: getActiveLanguage(state.locale).code
-  });
+});
 
 Bets = connect(mapStateToProps)(Bets)
 

@@ -1,10 +1,9 @@
-
-const counter = (state = {i: 0}, action) => {
+const counter = (state = 1, action) => {
     switch (action.type) {
         case 'ADD':
-            return state.i + 1;
+            return state + 1;
         default:
-            return state
+            return state;
     }
 }
 
