@@ -8,7 +8,16 @@
     "admin": ["Admin"],
     "profile": ["Profil"],
     "logout": ["Ausloggen"],
-    "groupday1": ["Gruppenphase Spieltag 1"],
-    "groupday2": ["Gruppenphase Spieltag 2"],
-    "groupday3": ["Gruppenphase Spieltag 3"]
+    "groupa": ["Gruppe A"],
+    "groupb": ["Gruppe B"],
+    "groupc": ["Gruppe C"],
+    "groupd": ["Gruppe D"],
+    "groupe": ["Gruppe E"],
+    "groupf": ["Gruppe F"],
+    "groupg": ["Gruppe G"],
+    "grouph": ["Gruppe H"],
+    "ro16": ["Achtelfinale"],
+    "quarterfinals": ["Viertelfinale"],
+    "semifinals": ["Halbfinale"],
+    "finals": ["Finale"]
 }
