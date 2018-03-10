@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { add } from '../actions';
 import { counter } from '../reducers';
 import CounterLabel from './CounterLabel';
+import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 
 import {
     Nav,
@@ -10,20 +11,20 @@ import {
     Button
 } from 'react-bootstrap';
 
-let Bets = ({ dispatch }) => {
+let Bets = ({ dispatch, translate, currentLanguage }) => {
     let input
 
     return (
         <div>
             <Nav bsStyle="tabs" activeKey={1} onSelect={this.handleSelect}>
                 <NavItem eventKey={1}>
-                    Gruppenphase Spieltag 1
+                    {translate('groupday1')}
                     </NavItem>
                 <NavItem eventKey={2}>
-                    Gruppenphase Spieltag 2
+                    {translate('groupday2')}
                     </NavItem>
                 <NavItem eventKey={3}>
-                    Gruppenphase Spieltag 3
+                    {translate('groupday3')}
                     </NavItem>
             </Nav>
             <div>
@@ -40,6 +41,11 @@ let Bets = ({ dispatch }) => {
     )
 }
 
-Bets = connect()(Bets)
+const mapStateToProps = state => ({
+    translate: getTranslate(state.locale),
+    currentLanguage: getActiveLanguage(state.locale).code
+  });
+
+Bets = connect(mapStateToProps)(Bets)
 
 export default Bets

@@ -1,0 +1,14 @@
+{
+    "title": ["Tippspiel WM 2018"],
+    "bets": ["Tipps"],
+    "betgroups": ["Tippgruppen"],
+    "players": ["Spieler"],
+    "groups": ["Gruppen"],
+    "rules": ["Regeln"],
+    "admin": ["Admin"],
+    "profile": ["Profil"],
+    "logout": ["Ausloggen"],
+    "groupday1": ["Gruppenphase Spieltag 1"],
+    "groupday2": ["Gruppenphase Spieltag 2"],
+    "groupday3": ["Gruppenphase Spieltag 3"]
+}

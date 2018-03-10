@@ -6,6 +6,7 @@ import App from './components/App'
 import betApp from './reducers';
 import './index.css';
 import { initialize } from 'react-localize-redux';
+import { addTranslation } from 'react-localize-redux';
 
 {/* REDUX */}
 const store = createStore(
@@ -19,6 +20,8 @@ const languages = [
 ]
 store.dispatch(initialize(languages, { defaultLanguage: 'de' }));
 
+const localejson = require('./data/locale.json');
+store.dispatch(addTranslation(localejson));
 
 {/* make store available in all container components through Provider */ }
 render(

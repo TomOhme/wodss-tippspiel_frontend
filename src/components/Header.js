@@ -1,5 +1,4 @@
 import React from 'react';
-import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { localize } from 'react-localize-redux';
 
 import {
@@ -22,25 +21,25 @@ const Header = ({ translate }) => (
           { translate('bets') }
             </NavItem>
         <NavItem eventKey={2} href="#">
-          Tippgruppen
+          { translate('betgroups') }
             </NavItem>
         <NavDropdown eventKey={3} title="Rangliste" id="basic-nav-dropdown">
-          <MenuItem eventKey={3.1}>Spieler</MenuItem>
-          <MenuItem eventKey={3.2}>Gruppen</MenuItem>
+          <MenuItem eventKey={3.1}>{translate('players')}</MenuItem>
+          <MenuItem eventKey={3.2}>{translate('groups')}</MenuItem>
         </NavDropdown>
         <NavItem eventKey={4} href="#">
-          Regeln
+          { translate('rules') }
             </NavItem>
         <NavItem eventKey={5} href="#" hidden={false}>
-          Admin
+          { translate('admin') }
             </NavItem>
       </Nav>
       <Nav pullRight>
         <NavItem eventKey={1} href="#">
-          Profil
+          { translate('profile') }
             </NavItem>
         <NavItem eventKey={2} href="#" style={{ marginRight: 50 }}>
-          Ausloggen
+          { translate('logout') }
             </NavItem>
       </Nav>
     </Navbar>
