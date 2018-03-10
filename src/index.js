@@ -11,13 +11,14 @@ import { initialize } from 'react-localize-redux';
 const store = createStore(
   betApp,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+);
 
 {/* LANGUAGE SUPPORT */}
 const languages = [
   { name: 'German', code: 'de' }
 ]
-store.dispatch(initialize(languages));
+store.dispatch(initialize(languages, { defaultLanguage: 'de' }));
+
 
 {/* make store available in all container components through Provider */ }
 render(

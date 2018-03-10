@@ -1,4 +1,6 @@
 import React from 'react';
+import { getTranslate, getActiveLanguage } from 'react-localize-redux';
+import { localize } from 'react-localize-redux';
 
 import {
   Navbar,
@@ -9,15 +11,15 @@ import {
   PageHeader
 } from 'react-bootstrap';
 
-const Header = () => (
+const Header = ({ translate }) => (
   <div>
     <PageHeader>
-      Tippspiel WM 2018
-        </PageHeader>
+      {translate('title')}
+    </PageHeader>
     <Navbar>
       <Nav>
         <NavItem eventKey={1} href="#">
-          Tipps
+          { translate('bets') }
             </NavItem>
         <NavItem eventKey={2} href="#">
           Tippgruppen
@@ -45,4 +47,4 @@ const Header = () => (
   </div>
 )
 
-export default Header;
+export default localize(Header, 'locale');
