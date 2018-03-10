@@ -16,7 +16,7 @@ let Bets = ({ dispatch, translate, currentLanguage }) => {
     return (
         <div>
             <Nav bsStyle="tabs" activeKey={1} onSelect={this.handleSelect}>
-                <NavItem eventKey={1}>
+                <NavItem eventKey={1} onClick={() => {console.log("test")}}>
                     {translate('groupa')}
                 </NavItem>
                 <NavItem eventKey={2}>

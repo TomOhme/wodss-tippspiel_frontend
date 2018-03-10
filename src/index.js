@@ -7,14 +7,15 @@ import betApp from './reducers';
 import './index.css';
 import { initialize } from 'react-localize-redux';
 import { addTranslation } from 'react-localize-redux';
+import { BrowserRouter } from 'react-router-dom'
 
-{/* REDUX */}
+{/* REDUX */ }
 const store = createStore(
   betApp,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-{/* LANGUAGE SUPPORT */}
+{/* LANGUAGE SUPPORT */ }
 const languages = [
   { name: 'German', code: 'de' }
 ]
@@ -26,7 +27,9 @@ store.dispatch(addTranslation(localejson));
 {/* make store available in all container components through Provider */ }
 render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 )

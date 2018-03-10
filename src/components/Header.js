@@ -17,7 +17,7 @@ const Header = ({ translate }) => (
     </PageHeader>
     <Navbar>
       <Nav>
-        <NavItem eventKey={1} href="#">
+        <NavItem eventKey={1} href="/">
           { translate('bets') }
             </NavItem>
         <NavItem eventKey={2} href="#">
@@ -27,7 +27,7 @@ const Header = ({ translate }) => (
           <MenuItem eventKey={3.1}>{translate('players')}</MenuItem>
           <MenuItem eventKey={3.2}>{translate('groups')}</MenuItem>
         </NavDropdown>
-        <NavItem eventKey={4} href="#">
+        <NavItem eventKey={4} href="/rules">
           { translate('rules') }
             </NavItem>
         <NavItem eventKey={5} href="#" hidden={false}>
