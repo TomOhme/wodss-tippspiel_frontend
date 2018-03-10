@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { localeReducer } from 'react-localize-redux';
-import counter from './counter';
+import groupReducer from './groupReducer';
 
 const betApp = combineReducers({
-    counter: counter,
+    group: groupReducer,
     locale: localeReducer
 })
 

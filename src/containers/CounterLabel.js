@@ -3,13 +3,9 @@ import { connect } from 'react-redux';
 
 let CounterLabel = ({ counter }) => (
     <label>
-        {counter}
+        {counter.i}
     </label>
 );
-
-const getCounter = (counter) => {
-    return counter;
-}
 
 const mapStateToProps = (state) => ({
     counter: state.counter
