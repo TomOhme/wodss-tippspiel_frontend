@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 
-import { Button, Glyphicon, Modal, Form, FormGroup, Col, FormControl, ControlLabel } from 'react-bootstrap';
+import {
+    Button,
+    Modal
+} from 'react-bootstrap';
 
 class BetResultsDialog extends React.Component {
 
