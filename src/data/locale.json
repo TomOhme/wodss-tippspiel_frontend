@@ -8,9 +8,21 @@
     "admin": ["Admin"],
     "profile": ["Profil"],
     "logout": ["Ausloggen"],
+
     "group": ["Gruppe"],
     "ro16": ["Achtelfinale"],
     "quarterfinals": ["Viertelfinale"],
     "semifinals": ["Halbfinale"],
-    "finals": ["Finale"]
+    "finals": ["Finale"],
+
+    "betresults": ["Tippresultate"],
+    "winner": ["Sieger"],
+    "goalshome": ["Tore Heim"],
+    "goalsguest": ["Tore Gast"],
+    "goaldifference": ["Tordifferenz"],
+    "total": ["Gesamt"],
+
+    "points": ["Punkte"],
+
+    "moscow": ["Moskau"]
 }

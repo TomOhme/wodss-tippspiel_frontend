@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { getGroup } from '../actions';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
+
+import Game from './Game';
 
 let Bets = ({currentGroup}) => (
     <div>
         {currentGroup} TODO
+        <Game props={{id: "1"}} />
+        <Game props={{id: "2"}} />
     </div>
 );
 
