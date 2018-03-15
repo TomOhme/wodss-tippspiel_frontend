@@ -23,6 +23,11 @@
     "total": ["Gesamt"],
 
     "points": ["Punkte"],
+    "saved": ["Gespeichert"],
+    "notsaved": ["Nicht gespeichert"],
 
-    "moscow": ["Moskau"]
+    "moscow": ["Moskau"],
+
+    "sui": ["Schweiz"],
+    "de": ["Deutschland"]
 }

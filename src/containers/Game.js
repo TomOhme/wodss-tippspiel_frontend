@@ -6,20 +6,36 @@ import {
     Label,
     ListGroup,
     ListGroupItem,
-    Panel
+    Panel,
+    Grid,
+    Row,
+    Col,
+    Image
 } from 'react-bootstrap';
 import BetResultsDialog from '../containers/BetResultsDialog';
 
 let Game = ({ props, translate, currentLanguage }) => (
+
     <div>
         <ListGroup>
             <ListGroupItem>
                 <Panel>
                     <Panel.Heading>
                         <BetResultsDialog />
+                        <Label>
+                            {translate('notsaved')}
+                        </Label>
                     </Panel.Heading>
                     <Panel.Body>
                         id: {props.id}
+                        <Label>
+                            {translate('sui')}
+                        </Label>
+                        <Image src={require('../img/sui.png')} />
+                        <Image src={require('../img/de.png')} />
+                        <Label>
+                            {translate('de')}
+                        </Label>
                     </Panel.Body>
                     <Panel.Footer>
                         <Label>
