@@ -7,8 +7,8 @@ import Game from './Game';
 let Bets = ({currentGroup}) => (
     <div>
         {currentGroup} TODO
-        <Game props={{id: "1"}} />
-        <Game props={{id: "2"}} />
+        <Game props={{home: "swi", guest: "ger"}} />
+        <Game props={{home: "kor", guest: "ser"}} />
     </div>
 );
 

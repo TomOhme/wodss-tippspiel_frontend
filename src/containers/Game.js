@@ -30,8 +30,8 @@ let Game = ({ props, translate, currentLanguage }) => (
                         <Label>
                             {translate('swi')}
                         </Label>
-                        <Image src={require('../img/swi.png')} />
-                        <Image src={require('../img/ger.png')} />
+                        <Image src={require('../img/' + props.home + '.png')} />
+                        <Image src={require('../img/' + props.guest + '.png')} />
                         <Label>
                             {translate('ger')}
                         </Label>
