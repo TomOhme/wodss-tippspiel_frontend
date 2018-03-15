@@ -28,12 +28,12 @@ let Game = ({ props, translate, currentLanguage }) => (
                     </Panel.Heading>
                     <Panel.Body>
                         <Label>
-                            {translate('swi')}
+                            {translate(props.home)}
                         </Label>
                         <Image src={require('../img/' + props.home + '.png')} />
                         <Image src={require('../img/' + props.guest + '.png')} />
                         <Label>
-                            {translate('ger')}
+                            {translate(props.guest)}
                         </Label>
                     </Panel.Body>
                     <Panel.Footer>
