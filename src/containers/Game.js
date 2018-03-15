@@ -27,14 +27,13 @@ let Game = ({ props, translate, currentLanguage }) => (
                         </Label>
                     </Panel.Heading>
                     <Panel.Body>
-                        id: {props.id}
                         <Label>
-                            {translate('sui')}
+                            {translate('swi')}
                         </Label>
-                        <Image src={require('../img/sui.png')} />
-                        <Image src={require('../img/de.png')} />
+                        <Image src={require('../img/swi.png')} />
+                        <Image src={require('../img/ger.png')} />
                         <Label>
-                            {translate('de')}
+                            {translate('ger')}
                         </Label>
                     </Panel.Body>
                     <Panel.Footer>
@@ -45,7 +44,7 @@ let Game = ({ props, translate, currentLanguage }) => (
                             21:00
                         </Label>
                         <Label>
-                            {translate('moscow')}
+                            {translate('jek')}
                         </Label>
                     </Panel.Footer>
                 </Panel>
