@@ -19,7 +19,7 @@ class BetResultsDialog extends React.Component {
 
     render() {
         return (
-            <div>
+            <span>
                 <Button bsStyle="primary" onClick={this.open}>
                     {this.translate('betresults')}
                 </Button>
@@ -31,7 +31,7 @@ class BetResultsDialog extends React.Component {
                         TODO
                     </Modal.Body>
                 </Modal>
-            </div>
+            </span>
         )
     }
 

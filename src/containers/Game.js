@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 
@@ -10,31 +10,52 @@ import {
     Grid,
     Row,
     Col,
-    Image
+    Image,
+    Form,
+    FormControl
 } from 'react-bootstrap';
 import BetResultsDialog from '../containers/BetResultsDialog';
 
 let Game = ({ props, translate, currentLanguage }) => (
 
-    <div>
+    <div className="container.fluid">
         <ListGroup>
             <ListGroupItem>
                 <Panel>
                     <Panel.Heading>
                         <BetResultsDialog />
-                        <Label>
+                        <Label className="pull-right">
                             {translate('notsaved')}
                         </Label>
                     </Panel.Heading>
                     <Panel.Body>
-                        <Label>
-                            {translate(props.home)}
-                        </Label>
-                        <Image src={require('../img/' + props.home + '.png')} />
-                        <Image src={require('../img/' + props.guest + '.png')} />
-                        <Label>
-                            {translate(props.guest)}
-                        </Label>
+                        <Grid>
+                            <Row>
+                                <Col xs="5" className="text-right">
+                                    <Label>
+                                        {translate(props.home)}
+                                    </Label>
+                                    <Image src={require('../img/' + props.home + '.png')} />
+                                </Col>
+
+                                <Col xs="2" style={{ width: 160}} verticalAlign>
+                                    <Form inline>
+                                        <FormControl type="number" style={{ width: 60 }} inline>
+                                        </FormControl>
+                                        :
+                                        <FormControl type="number" style={{ width: 60 }} inline>
+                                        </FormControl>
+                                    </Form>
+                                </Col>
+
+                                <Col xs="5" className="text-left">
+                                    <Image src={require('../img/' + props.guest + '.png')} />
+                                    <Label>
+                                        {translate(props.guest)}
+                                    </Label>
+                                </Col>
+                            </Row>
+                        </Grid>
                     </Panel.Body>
                     <Panel.Footer>
                         <Label>
@@ -43,7 +64,7 @@ let Game = ({ props, translate, currentLanguage }) => (
                         <Label>
                             21:00
                         </Label>
-                        <Label>
+                        <Label className="pull-right">
                             {translate('jek')}
                         </Label>
                     </Panel.Footer>

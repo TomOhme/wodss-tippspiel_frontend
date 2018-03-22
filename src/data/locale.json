@@ -25,6 +25,9 @@
     "points": ["Punkte"],
     "saved": ["Gespeichert"],
     "notsaved": ["Nicht gespeichert"],
+    "search": ["Suchen"],
+    "name": ["Name"],
+    "player": ["Spieler"],
 
     "jek": ["Jekaterinburg"],
     "kal": ["Kaliningrad"],
