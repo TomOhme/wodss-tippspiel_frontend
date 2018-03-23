@@ -28,6 +28,10 @@
     "search": ["Suchen"],
     "name": ["Name"],
     "player": ["Spieler"],
+    "joingroup": ["Gruppe beitreten"],
+    "creategroup": ["Gruppe gründen"],
+    "leavegroup": ["Gruppe verlassen"],
+    "showbets": ["Tipps ansehen"],
 
     "jek": ["Jekaterinburg"],
     "kal": ["Kaliningrad"],
