@@ -77,5 +77,15 @@
     "ira": ["Iran"],
     "jap": ["Japan"],
     "sau": ["Saudi-Arabien"],
-    "kor": ["Südkorea"]
+    "kor": ["Südkorea"],
+
+    "rule1": ["* Tippen nur bis vor Spielbeginn"],
+    "rule2": ["* Tipps von anderen erst sichtbar wenn Spiel begonnen hat"],
+    "rule3": ["* 5 Punkte bei korrektem Sieger Tipp"],
+    "rule4": ["* 1 Punkt bei korrekter Anzahl Heim Tore"],
+    "rule5": ["* 1 Punkt bei korrekter Anzahl Gast Tore"],
+    "rule6": ["* 3 Punkte bei korrekter Tordifferenz (Sieger muss richtig sein)"],
+    "rule7": ["* Als Spielstand für die Punktzahl Berechnung wird der Spielstand nach 90, resp. 120 Minuten verwendet. Elfmeterschiessen wird nicht berücksichtigt. Ein Unentschieden ist somit immer möglich."],
+    "rule8": ["* Gruppenrangliste (Pro Spieltag wird ein Mittelwert gebildet (gerundet) und die Spieltageswerte anschließend zur Gesamtwertung der Gruppe addiert.)"],
+    "rule9": ["Jeder Mitspieler kann eine Tippgruppe gründen. Einer Tippgruppe kann ein Passwort vergeben werden, dann kann dieser nur mit dem Passwort beigetreten werden. Möchte man die Tippgruppe öffentlich zugänglich machen, lässt man das Passwort weg. Für eine Tippgruppe braucht es mindestens drei Mitspieler, damit die Tippgruppe in der Rangliste erscheint. Die Tippgruppe ermöglicht eine Rangliste aller Mitspieler auf einen Blick. Es werden nur die Punkte der Mitglieder berücksichtigt, welche am jeweiligen Spieltag (nicht Kalendertag) auch schon Mitglied waren."]
 }

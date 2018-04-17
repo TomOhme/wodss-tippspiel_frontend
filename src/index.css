@@ -12,3 +12,11 @@
     height: 60px;
     line-height: 60px;
 }
+
+.navbar-custom {
+    background-color: #A01B20;
+}
+
+.navitem-custom {
+    color: white;
+}
