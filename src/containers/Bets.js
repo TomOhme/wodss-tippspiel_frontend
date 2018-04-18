@@ -18,7 +18,7 @@ let Bets = ({ currentGroup, bets }) => (
 
 const mapStateToProps = state => ({
     currentGroup: state.group.currentGroup,
-    bets: state.group.bets,
+    bets: state.bets,
     translate: getTranslate(state.locale),
     currentLanguage: getActiveLanguage(state.locale).code
 });

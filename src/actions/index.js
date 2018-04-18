@@ -6,13 +6,18 @@ export function setGroup(group) {
 };
 
 export function setScore(event, team, id) {
-    console.log(event);
-    console.log(team);
-    console.log(id);
     return {
         type: "SETSCORE",
-        team: team,
+        team: team, // e.g. 'home' or 'guest'
         id: id,
         event: event
+    }
+};
+
+export function save(event, id) {
+    return {
+        type: "SAVE",
+        event: event,
+        id: id
     }
 };

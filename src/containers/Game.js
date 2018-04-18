@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-import { setScore } from '../actions';
+import { setScore, save } from '../actions';
 
 import {
     Label,
@@ -26,8 +26,10 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                 <Panel>
                     <Panel.Heading>
                         <BetResultsDialog />
-                        <Button className="pull-right">
-                            {translate(bets[id].saved ? 'saved' : 'notsaved')}
+                        <Button 
+                            className="pull-right"
+                            onClick={(event) => dispatch(save(event, id))}>
+                                {translate(bets[id].saved ? 'saved' : 'notsaved')}
                         </Button>
                     </Panel.Heading>
                     <Panel.Body>
@@ -106,7 +108,7 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
 const mapStateToProps = state => ({
     translate: getTranslate(state.locale),
     currentLanguage: getActiveLanguage(state.locale).code,
-    bets: state.group.bets,
+    bets: state.bets,
 });
 
 Game = connect(mapStateToProps)(Game)
