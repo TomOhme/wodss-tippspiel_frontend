@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import BetNavigation from '../containers/BetNavigation';
-import BetGroups from './BetGroups';
+import BetGroups from '../containers/BetGroups';
 import PlayerScoreBoard from '../containers/PlayerScoreBoard';
 import GroupScoreBoard from './GroupScoreBoard';
 import Rules from './Rules';

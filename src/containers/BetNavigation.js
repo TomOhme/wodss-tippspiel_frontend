@@ -49,7 +49,7 @@ let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentGroup
                 {translate('finals')}
             </NavItem>
         </Nav>
-        <Bets props={group} />
+        <Bets />
     </div>
 );
 
