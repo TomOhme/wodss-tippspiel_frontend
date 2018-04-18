@@ -60,9 +60,9 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
 
                                 <Col xs={5} className="text-left">
                                     <Image src={require('../img/' + bets[id].guest.name + '.png')} />
-                                    <Label>
+                                    <span className="country">
                                         {translate(bets[id].guest.name)}
-                                    </Label>
+                                    </span>
                                 </Col>
                             </Row>
                         </Grid>
