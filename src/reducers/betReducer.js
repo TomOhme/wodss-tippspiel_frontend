@@ -50,7 +50,6 @@ const betReducer = (state = initialState, action) => {
             var newState = Object.assign({}, state);
 
             var newVal = action.event.target.value;
-            var bet = newState[action.id];
 
             // check that value >= 0
             if (newVal < 0) {

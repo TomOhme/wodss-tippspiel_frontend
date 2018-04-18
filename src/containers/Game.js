@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-import { setScore, save } from '../actions';
+import { setScore } from '../actions';
 
 import {
     Label,
-    Button,
     ListGroup,
     ListGroupItem,
     Panel,
@@ -33,9 +32,9 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                         <Grid>
                             <Row>
                                 <Col xs={5} className="text-right">
-                                    <Label>
+                                    <span className="country">
                                         {translate(bets[id].home.name)}
-                                    </Label>
+                                    </span>
                                     <Image src={require('../img/' + bets[id].home.name + '.png')} />
                                 </Col>
 

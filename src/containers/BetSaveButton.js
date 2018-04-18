@@ -11,7 +11,8 @@ let BetSaveButton = ({ id, bets, dispatch, translate }) => (
     <Button
         className="pull-right"
         onClick={(event) => dispatch(save(event, id))}
-        disabled={bets[id].saved}>
+        disabled={bets[id].saved}
+        bsStyle={bets[id].saved ? 'success' : 'warning'}>
         {translate(bets[id].saved ? 'saved' : 'notsaved')}
     </Button>
 );
