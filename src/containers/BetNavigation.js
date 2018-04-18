@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setGroup } from '../actions';
+import { setRound } from '../actions';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import Bets from './Bets';
 
@@ -12,40 +12,40 @@ import {
 let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentGroup }) => (
     <div>
         <Nav bsStyle="tabs" activeKey={currentGroup} onSelect={this.handleSelect}>
-            <NavItem eventKey={"A"} onSelect={() => { dispatch(setGroup("A")) }} >
+            <NavItem eventKey={"A"} onSelect={() => { dispatch(setRound("A")) }} >
                 {translate('group')} A
                 </NavItem>
-            <NavItem eventKey={"B"} onSelect={() => { dispatch(setGroup("B")) }}>
+            <NavItem eventKey={"B"} onSelect={() => { dispatch(setRound("B")) }}>
                 {translate('group')} B
                 </NavItem>
-            <NavItem eventKey={"C"} onSelect={() => { dispatch(setGroup("C")) }}>
+            <NavItem eventKey={"C"} onSelect={() => { dispatch(setRound("C")) }}>
                 {translate('group')} C
                 </NavItem>
-            <NavItem eventKey={"D"} onSelect={() => { dispatch(setGroup("D")) }}>
+            <NavItem eventKey={"D"} onSelect={() => { dispatch(setRound("D")) }}>
                 {translate('group')} D
                 </NavItem>
-            <NavItem eventKey={"E"} onSelect={() => { dispatch(setGroup("E")) }}>
+            <NavItem eventKey={"E"} onSelect={() => { dispatch(setRound("E")) }}>
                 {translate('group')} E
                 </NavItem>
-            <NavItem eventKey={"F"} onSelect={() => { dispatch(setGroup("F")) }}>
+            <NavItem eventKey={"F"} onSelect={() => { dispatch(setRound("F")) }}>
                 {translate('group')} F
                 </NavItem>
-            <NavItem eventKey={"G"} onSelect={() => { dispatch(setGroup("G")) }}>
+            <NavItem eventKey={"G"} onSelect={() => { dispatch(setRound("G")) }}>
                 {translate('group')} G
                 </NavItem>
-            <NavItem eventKey={"H"} onSelect={() => { dispatch(setGroup("H")) }}>
+            <NavItem eventKey={"H"} onSelect={() => { dispatch(setRound("H")) }}>
                 {translate('group')} H
                 </NavItem>
-            <NavItem eventKey={"ro16"} onSelect={() => { dispatch(setGroup("ro16")) }}>
+            <NavItem eventKey={"ro16"} onSelect={() => { dispatch(setRound("ro16")) }}>
                 {translate('ro16')}
             </NavItem>
-            <NavItem eventKey={"quarter"} onSelect={() => { dispatch(setGroup("quarter")) }}>
+            <NavItem eventKey={"quarter"} onSelect={() => { dispatch(setRound("quarter")) }}>
                 {translate('quarterfinals')}
             </NavItem>
-            <NavItem eventKey={"semi"} onSelect={() => { dispatch(setGroup("semi")) }}>
+            <NavItem eventKey={"semi"} onSelect={() => { dispatch(setRound("semi")) }}>
                 {translate('semifinals')}
             </NavItem>
-            <NavItem eventKey={"finals"} onSelect={() => { dispatch(setGroup("finals")) }}>
+            <NavItem eventKey={"finals"} onSelect={() => { dispatch(setRound("finals")) }}>
                 {translate('finals')}
             </NavItem>
         </Nav>
@@ -54,8 +54,8 @@ let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentGroup
 );
 
 const mapStateToProps = state => ({
-    group: state.group,
-    currentGroup: state.group.currentGroup,
+    round: state.round,
+    currentRound: state.round.currentRound,
     translate: getTranslate(state.locale),
     currentLanguage: getActiveLanguage(state.locale).code
 });

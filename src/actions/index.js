@@ -1,7 +1,7 @@
-export function setGroup(group) {
+export function setRound(round) {
     return {
-        type: "SETCURRENTGROUP",
-        group: group
+        type: "SETCURRENTROUND",
+        round: round
     }
 };
 
