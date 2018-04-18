@@ -1,5 +1,6 @@
 import React from 'react'
-import { localize } from 'react-localize-redux';
+import { connect } from 'react-redux';
+import { getTranslate } from 'react-localize-redux';
 
 import {
     Form,
@@ -16,11 +17,11 @@ let active = 1;
 let items = [];
 for (let number = 1; number <= 10; number++) {
     items.push(
-        <Pagination.Item active={number === active}>{number}</Pagination.Item>
+        <Pagination.Item active={number === active} key={number}>{number}</Pagination.Item>
     );
 }
 
-const PlayerScoreBoard = ({ translate }) => (
+let PlayerScoreBoard = ({ playerScores, translate }) => (
     <div>
         <Grid>
             <Row className="text-center">
@@ -41,21 +42,17 @@ const PlayerScoreBoard = ({ translate }) => (
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>hase</td>
-                        <td>666</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>maulwurf</td>
-                        <td>555</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>zebra</td>
-                        <td>444</td>
-                    </tr>
+                    {
+                        playerScores.map(score => {
+                            return (
+                                <tr key={score.number}>
+                                    <td>{score.number}</td>
+                                    <td>{score.name}</td>
+                                    <td>{score.points}</td>
+                                </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </Table>
 
@@ -66,4 +63,11 @@ const PlayerScoreBoard = ({ translate }) => (
     </div>
 );
 
-export default localize(PlayerScoreBoard, 'locale');
+const mapStateToProps = state => ({
+    translate: getTranslate(state.locale),
+    playerScores: state.playerScores
+});
+
+PlayerScoreBoard = connect(mapStateToProps)(PlayerScoreBoard)
+
+export default PlayerScoreBoard;
