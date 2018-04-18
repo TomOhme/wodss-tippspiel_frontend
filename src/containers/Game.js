@@ -38,23 +38,23 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                                     <Image src={require('../img/' + bets[id].home.name + '.png')} />
                                 </Col>
 
-                                <Col xs={2} style={{ width: 160}} verticalalign="true">
+                                <Col xs={2} style={{ width: 160 }} verticalalign="true">
                                     <Form inline>
-                                        <FormControl 
-                                            value={bets[id].home.bet} 
+                                        <FormControl
+                                            value={bets[id].home.bet}
                                             disabled={bets[id].finished}
-                                            onChange={(event) => dispatch(setScore(event, "home", id))} 
-                                            type="number" 
-                                            style={{ width: 60 }} 
+                                            onChange={(event) => dispatch(setScore(event, "home", id))}
+                                            type="number"
+                                            style={{ width: 60 }}
                                             inline="true">
                                         </FormControl>
                                         :
-                                        <FormControl 
-                                            value={bets[id].guest.bet} 
+                                        <FormControl
+                                            value={bets[id].guest.bet}
                                             disabled={bets[id].finished}
-                                            onChange={(event) => dispatch(setScore(event, "guest", id))} 
-                                            type="number" 
-                                            style={{ width: 60 }} 
+                                            onChange={(event) => dispatch(setScore(event, "guest", id))}
+                                            type="number"
+                                            style={{ width: 60 }}
                                             inline="true">
                                         </FormControl>
                                     </Form>
@@ -82,23 +82,30 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                     </Panel.Footer>
                 </Panel>
             </ListGroupItem>
-            <ListGroupItem>
-                <Label>
-                    {translate('winner')}: {translate(bets[id].winner)}
-                </Label>
-                <Label>
-                    {translate('goalshome')}: {bets[id].homegoals}
-                </Label>
-                <Label>
-                    {translate('goalsguest')}: {bets[id].guestgoals}
-                </Label>
-                <Label>
-                    {translate('goaldifference')}: {bets[id].difference}
-                </Label>
-                <Label>
-                    {translate('total')}: {bets[id].total}
-                </Label>
-            </ListGroupItem>
+            {
+                // only display results when game is finished
+                (bets[id].finished === true) ?
+                    (
+                        <ListGroupItem>
+                            <Label>
+                                {translate('winner')}: {translate(bets[id].winner)}
+                            </Label>
+                            <Label>
+                                {translate('goalshome')}: {bets[id].homegoals}
+                            </Label>
+                            <Label>
+                                {translate('goalsguest')}: {bets[id].guestgoals}
+                            </Label>
+                            <Label>
+                                {translate('goaldifference')}: {bets[id].difference}
+                            </Label>
+                            <Label>
+                                {translate('total')}: {bets[id].total}
+                            </Label>
+                        </ListGroupItem>
+                    )
+                    : null
+            }
         </ListGroup>
     </div>
 );

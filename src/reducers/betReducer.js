@@ -33,7 +33,7 @@ const initialState = {
         date: "22.6.",
         time: "21:00",
         place: "sot",
-        winner: "TBD",
+        winner: "tbd",
         homegoals: "0",
         guestgoals: "0",
         difference: "0",
