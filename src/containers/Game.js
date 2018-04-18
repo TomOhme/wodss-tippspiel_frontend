@@ -17,6 +17,7 @@ import {
     FormControl
 } from 'react-bootstrap';
 import BetResultsDialog from '../containers/BetResultsDialog';
+import BetSaveButton from '../containers/BetSaveButton';
 
 let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
 
@@ -26,11 +27,7 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                 <Panel>
                     <Panel.Heading>
                         <BetResultsDialog />
-                        <Button 
-                            className="pull-right"
-                            onClick={(event) => dispatch(save(event, id))}>
-                                {translate(bets[id].saved ? 'saved' : 'notsaved')}
-                        </Button>
+                        <BetSaveButton id={id} />
                     </Panel.Heading>
                     <Panel.Body>
                         <Grid>
