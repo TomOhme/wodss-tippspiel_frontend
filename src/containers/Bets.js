@@ -4,16 +4,21 @@ import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 
 import Game from './Game';
 
-let Bets = ({currentGroup}) => (
+let Bets = ({ currentGroup, bets }) => (
     <div>
         {currentGroup} TODO
-        <Game props={{home: "swi", guest: "ger"}} />
-        <Game props={{home: "kor", guest: "ser"}} />
+
+        {
+            Object.keys(bets).map(key => {
+                return <Game id={key} key={key} />
+            })
+        }
     </div>
 );
 
 const mapStateToProps = state => ({
     currentGroup: state.group.currentGroup,
+    bets: state.group.bets,
     translate: getTranslate(state.locale),
     currentLanguage: getActiveLanguage(state.locale).code
 });

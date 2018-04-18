@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
+import { setScore } from '../actions';
 
 import {
     Label,
+    Button,
     ListGroup,
     ListGroupItem,
     Panel,
@@ -16,7 +18,7 @@ import {
 } from 'react-bootstrap';
 import BetResultsDialog from '../containers/BetResultsDialog';
 
-let Game = ({ props, translate, currentLanguage }) => (
+let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
 
     <div className="container.fluid">
         <ListGroup>
@@ -24,34 +26,44 @@ let Game = ({ props, translate, currentLanguage }) => (
                 <Panel>
                     <Panel.Heading>
                         <BetResultsDialog />
-                        <Label className="pull-right">
-                            {translate('notsaved')}
-                        </Label>
+                        <Button className="pull-right">
+                            {translate(bets[id].saved ? 'saved' : 'notsaved')}
+                        </Button>
                     </Panel.Heading>
                     <Panel.Body>
                         <Grid>
                             <Row>
-                                <Col xs="5" className="text-right">
+                                <Col xs={5} className="text-right">
                                     <Label>
-                                        {translate(props.home)}
+                                        {translate(bets[id].home.name)}
                                     </Label>
-                                    <Image src={require('../img/' + props.home + '.png')} />
+                                    <Image src={require('../img/' + bets[id].home.name + '.png')} />
                                 </Col>
 
-                                <Col xs="2" style={{ width: 160}} verticalAlign>
+                                <Col xs={2} style={{ width: 160}} verticalalign="true">
                                     <Form inline>
-                                        <FormControl type="number" style={{ width: 60 }} inline>
+                                        <FormControl 
+                                            value={bets[id].home.bet} 
+                                            onChange={(event) => dispatch(setScore(event, "home", id))} 
+                                            type="number" 
+                                            style={{ width: 60 }} 
+                                            inline="true">
                                         </FormControl>
                                         :
-                                        <FormControl type="number" style={{ width: 60 }} inline>
+                                        <FormControl 
+                                            value={bets[id].guest.bet} 
+                                            onChange={(event) => dispatch(setScore(event, "guest", id))} 
+                                            type="number" 
+                                            style={{ width: 60 }} 
+                                            inline="true">
                                         </FormControl>
                                     </Form>
                                 </Col>
 
-                                <Col xs="5" className="text-left">
-                                    <Image src={require('../img/' + props.guest + '.png')} />
+                                <Col xs={5} className="text-left">
+                                    <Image src={require('../img/' + bets[id].guest.name + '.png')} />
                                     <Label>
-                                        {translate(props.guest)}
+                                        {translate(bets[id].guest.name)}
                                     </Label>
                                 </Col>
                             </Row>
@@ -59,32 +71,32 @@ let Game = ({ props, translate, currentLanguage }) => (
                     </Panel.Body>
                     <Panel.Footer>
                         <Label>
-                            20.6.
+                            {bets[id].date}
                         </Label>
                         <Label>
-                            21:00
+                            {bets[id].time}
                         </Label>
                         <Label className="pull-right">
-                            {translate('jek')}
+                            {translate(bets[id].place)}
                         </Label>
                     </Panel.Footer>
                 </Panel>
             </ListGroupItem>
             <ListGroupItem>
                 <Label>
-                    {translate('winner')}: winner
+                    {translate('winner')}: {bets[id].winner}
                 </Label>
                 <Label>
-                    {translate('goalshome')}: home
+                    {translate('goalshome')}: {bets[id].homegoals}
                 </Label>
                 <Label>
-                    {translate('goalsguest')}: guest
+                    {translate('goalsguest')}: {bets[id].guestgoals}
                 </Label>
                 <Label>
-                    {translate('goaldifference')}: diff
+                    {translate('goaldifference')}: {bets[id].difference}
                 </Label>
                 <Label>
-                    {translate('total')}: total
+                    {translate('total')}: {bets[id].total}
                 </Label>
             </ListGroupItem>
         </ListGroup>
@@ -93,7 +105,8 @@ let Game = ({ props, translate, currentLanguage }) => (
 
 const mapStateToProps = state => ({
     translate: getTranslate(state.locale),
-    currentLanguage: getActiveLanguage(state.locale).code
+    currentLanguage: getActiveLanguage(state.locale).code,
+    bets: state.group.bets,
 });
 
 Game = connect(mapStateToProps)(Game)

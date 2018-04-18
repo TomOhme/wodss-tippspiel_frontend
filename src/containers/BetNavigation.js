@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getGroup } from '../actions';
+import { setGroup } from '../actions';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import Bets from './Bets';
 
@@ -12,40 +12,40 @@ import {
 let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentGroup }) => (
     <div>
         <Nav bsStyle="tabs" activeKey={currentGroup} onSelect={this.handleSelect}>
-            <NavItem eventKey={"A"} onSelect={() => { dispatch(getGroup("A")) }} >
+            <NavItem eventKey={"A"} onSelect={() => { dispatch(setGroup("A")) }} >
                 {translate('group')} A
                 </NavItem>
-            <NavItem eventKey={"B"} onSelect={() => { dispatch(getGroup("B")) }}>
+            <NavItem eventKey={"B"} onSelect={() => { dispatch(setGroup("B")) }}>
                 {translate('group')} B
                 </NavItem>
-            <NavItem eventKey={"C"} onSelect={() => { dispatch(getGroup("C")) }}>
+            <NavItem eventKey={"C"} onSelect={() => { dispatch(setGroup("C")) }}>
                 {translate('group')} C
                 </NavItem>
-            <NavItem eventKey={"D"} onSelect={() => { dispatch(getGroup("D")) }}>
+            <NavItem eventKey={"D"} onSelect={() => { dispatch(setGroup("D")) }}>
                 {translate('group')} D
                 </NavItem>
-            <NavItem eventKey={"E"} onSelect={() => { dispatch(getGroup("E")) }}>
+            <NavItem eventKey={"E"} onSelect={() => { dispatch(setGroup("E")) }}>
                 {translate('group')} E
                 </NavItem>
-            <NavItem eventKey={"F"} onSelect={() => { dispatch(getGroup("F")) }}>
+            <NavItem eventKey={"F"} onSelect={() => { dispatch(setGroup("F")) }}>
                 {translate('group')} F
                 </NavItem>
-            <NavItem eventKey={"G"} onSelect={() => { dispatch(getGroup("G")) }}>
+            <NavItem eventKey={"G"} onSelect={() => { dispatch(setGroup("G")) }}>
                 {translate('group')} G
                 </NavItem>
-            <NavItem eventKey={"H"} onSelect={() => { dispatch(getGroup("H")) }}>
+            <NavItem eventKey={"H"} onSelect={() => { dispatch(setGroup("H")) }}>
                 {translate('group')} H
                 </NavItem>
-            <NavItem eventKey={"ro16"} onSelect={() => { dispatch(getGroup("ro16")) }}>
+            <NavItem eventKey={"ro16"} onSelect={() => { dispatch(setGroup("ro16")) }}>
                 {translate('ro16')}
             </NavItem>
-            <NavItem eventKey={"quarter"} onSelect={() => { dispatch(getGroup("quarter")) }}>
+            <NavItem eventKey={"quarter"} onSelect={() => { dispatch(setGroup("quarter")) }}>
                 {translate('quarterfinals')}
             </NavItem>
-            <NavItem eventKey={"semi"} onSelect={() => { dispatch(getGroup("semi")) }}>
+            <NavItem eventKey={"semi"} onSelect={() => { dispatch(setGroup("semi")) }}>
                 {translate('semifinals')}
             </NavItem>
-            <NavItem eventKey={"finals"} onSelect={() => { dispatch(getGroup("finals")) }}>
+            <NavItem eventKey={"finals"} onSelect={() => { dispatch(setGroup("finals")) }}>
                 {translate('finals')}
             </NavItem>
         </Nav>
