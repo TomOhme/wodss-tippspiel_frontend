@@ -2,7 +2,7 @@ const initialState = {
     currentGroup: "A",
 };
 
-const groupReducer = (state = initialState, action) => {
+const betGroupReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SETCURRENTGROUP':
             state.currentGroup = action.group;
@@ -12,4 +12,4 @@ const groupReducer = (state = initialState, action) => {
     }
 };
 
-export default groupReducer;
+export default betGroupReducer;
