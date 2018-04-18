@@ -42,6 +42,7 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                                     <Form inline>
                                         <FormControl 
                                             value={bets[id].home.bet} 
+                                            disabled={bets[id].finished}
                                             onChange={(event) => dispatch(setScore(event, "home", id))} 
                                             type="number" 
                                             style={{ width: 60 }} 
@@ -50,6 +51,7 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                                         :
                                         <FormControl 
                                             value={bets[id].guest.bet} 
+                                            disabled={bets[id].finished}
                                             onChange={(event) => dispatch(setScore(event, "guest", id))} 
                                             type="number" 
                                             style={{ width: 60 }} 
@@ -82,7 +84,7 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
             </ListGroupItem>
             <ListGroupItem>
                 <Label>
-                    {translate('winner')}: {bets[id].winner}
+                    {translate('winner')}: {translate(bets[id].winner)}
                 </Label>
                 <Label>
                     {translate('goalshome')}: {bets[id].homegoals}

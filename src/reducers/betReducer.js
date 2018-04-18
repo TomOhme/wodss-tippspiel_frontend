@@ -1,6 +1,7 @@
 const initialState = {
     "0": {
         saved: true,
+        finished: true,
         home: {
             name: "swi",
             bet: 3
@@ -12,7 +13,7 @@ const initialState = {
         date: "21.6.",
         time: "20:00",
         place: "kal",
-        winner: "TBD",
+        winner: "swi",
         homegoals: "3",
         guestgoals: "1",
         difference: "2",
@@ -20,6 +21,7 @@ const initialState = {
     },
     "1": {
         saved: true,
+        finished: false,
         home: {
             name: "kor",
             bet: 0

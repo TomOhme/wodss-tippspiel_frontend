@@ -38,6 +38,8 @@ let BetGroups = ({ betGroups, translate }) => (
 
         <br />
 
+        <h3>{betGroups.currentGroup.name}</h3>
+
         <Table>
             <thead>
                 <tr>
