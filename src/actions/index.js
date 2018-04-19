@@ -21,3 +21,30 @@ export function save(event, id) {
         id: id
     }
 };
+
+export function switchGroup(newGroup) {
+    return {
+        type: "SWITCHGROUP",
+        newGroup
+    }
+};
+
+export function joinGroup(groupName) {
+    return {
+        type: "JOINGROUP",
+        groupName: groupName
+    }
+};
+
+export function leaveGroup(groupName) {
+    return {
+        type: "LEAVEGROUP",
+        groupName: groupName
+    }
+};
+
+export function createGroup() {
+    return {
+        type: "CREATEGROUP"
+    }
+};

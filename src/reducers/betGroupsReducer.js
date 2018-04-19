@@ -6,6 +6,7 @@ const initialState = {
     ],
     currentGroup: {
         name: "Team T",
+        userIsMember: true,
         members: [{
                 number: 1,
                 name: "hase",
@@ -27,7 +28,20 @@ const initialState = {
 
 const betGroupsReducer = (state = initialState, action) => {
     switch (action.type) {
-        default: return state;
+        case 'SWITCHGROUP':
+            // TODO
+            return state;
+        case 'JOINGROUP':
+            // TODO
+            return state;
+        case 'LEAVEGROUP':
+            // TODO
+            return state;
+        case 'CREATEGROUP':
+            // TODO
+            return state;
+        default: 
+            return state;
     }
 };
 

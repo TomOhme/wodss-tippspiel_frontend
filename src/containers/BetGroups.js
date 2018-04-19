@@ -15,7 +15,7 @@ let BetGroups = ({ betGroups, translate }) => (
         <DropdownButton id={"groups"} title={translate('groups')}>
             {
                 betGroups.groupNames.map((groupName) => {
-                    {/* TODO eventkeys */ }
+                    // TODO eventkeys
                     return (
                         <MenuItem
                             key={groupName}
@@ -28,9 +28,14 @@ let BetGroups = ({ betGroups, translate }) => (
             }
         </DropdownButton>
 
-        <Button bsStyle="primary">
-            {translate('joingroup')}
-        </Button>
+        {
+            // only display join button when user is not member
+            (!betGroups.currentGroup.userIsMember) ? (
+                <Button bsStyle="primary">
+                    {translate('joingroup')}
+                </Button>
+            ) : null
+        }
 
         <Button bsStyle="success">
             {translate('creategroup')}
@@ -65,9 +70,14 @@ let BetGroups = ({ betGroups, translate }) => (
             </tbody>
         </Table>
 
-        <Button bsStyle="danger">
-            {translate('leavegroup')}
-        </Button>
+        {
+            // only display leave button when user is member
+            (betGroups.currentGroup.userIsMember) ? (
+                <Button bsStyle="danger">
+                    {translate('leavegroup')}
+                </Button>
+            ) : null
+        }
     </div>
 );
 
