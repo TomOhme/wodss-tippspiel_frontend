@@ -23,7 +23,7 @@ const initialState = {
                 points: 222
             },
         ]
-    }
+    },
 };
 
 const betGroupsReducer = (state = initialState, action) => {
@@ -37,7 +37,17 @@ const betGroupsReducer = (state = initialState, action) => {
         case 'LEAVEGROUP':
             // TODO
             return state;
-        case 'CREATEGROUP':
+        case 'CREATEGROUPONSERVER':
+            // TODO
+            console.log(action.name);
+            return state;
+        case 'OPENCREATEGROUPDIALOG':
+            // TODO
+            return state;
+        case 'CLOSECREATEGROUPDIALOG':
+            // TODO
+            return state;
+        case 'HANDLECHANGECREATEGROUPDIALOG':
             // TODO
             return state;
         default: 

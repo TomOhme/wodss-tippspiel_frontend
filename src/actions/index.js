@@ -43,8 +43,9 @@ export function leaveGroup(groupName) {
     }
 };
 
-export function createGroup() {
+export function createGroupOnServer(name) {
     return {
-        type: "CREATEGROUP"
+        type: "CREATEGROUPONSERVER",
+        name: name
     }
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
+import { createGroupOnServer } from '../actions';
 
 import {
     DropdownButton,
@@ -9,10 +10,11 @@ import {
     Table,
     Glyphicon,
 } from 'react-bootstrap';
+import CreateGroupDialog from './CreateGroupDialog';
 
-let BetGroups = ({ betGroups, translate }) => (
+let BetGroups = ({ betGroups, translate, createGroupOnServer }) => (
     <div>
-        <DropdownButton id={"groups"} title={translate('groups')}>
+        <DropdownButton id={'groups'} title={translate('groups')}>
             {
                 betGroups.groupNames.map((groupName) => {
                     // TODO eventkeys
@@ -37,9 +39,7 @@ let BetGroups = ({ betGroups, translate }) => (
             ) : null
         }
 
-        <Button bsStyle="success">
-            {translate('creategroup')}
-        </Button>
+        <CreateGroupDialog translate={translate} createGroupOnServer={createGroupOnServer} />
 
         <br />
 
@@ -86,6 +86,12 @@ const mapStateToProps = state => ({
     betGroups: state.betGroups
 });
 
-BetGroups = connect(mapStateToProps)(BetGroups)
+const mapDispatchToProps = dispatch => {
+    return {
+        createGroupOnServer: (name) => dispatch(createGroupOnServer(name))
+    }
+}
+
+BetGroups = connect(mapStateToProps, mapDispatchToProps)(BetGroups)
 
 export default BetGroups;
