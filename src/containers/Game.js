@@ -25,7 +25,7 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
             <ListGroupItem>
                 <Panel>
                     <Panel.Heading>
-                        <BetResultsDialog />
+                        <BetResultsDialog translate={translate} />
                         <BetSaveButton id={id} />
                     </Panel.Heading>
                     <Panel.Body>

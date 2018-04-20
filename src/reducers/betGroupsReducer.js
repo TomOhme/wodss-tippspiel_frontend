@@ -28,27 +28,22 @@ const initialState = {
 
 const betGroupsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SWITCHGROUP':
+        case "SWITCHGROUP":
+            console.log("SWITCHGROUP");
             // TODO
             return state;
-        case 'JOINGROUP':
+        case "JOINGROUP":
+            console.log("JOINGROUP");
             // TODO
             return state;
-        case 'LEAVEGROUP':
+        case "LEAVEGROUP":
+            console.log("LEAVEGROUP");
             // TODO
             return state;
-        case 'CREATEGROUPONSERVER':
+        case "CREATEGROUPONSERVER":
+            console.log("CREATEGROUPONSERVER");
             // TODO
             console.log(action.name);
-            return state;
-        case 'OPENCREATEGROUPDIALOG':
-            // TODO
-            return state;
-        case 'CLOSECREATEGROUPDIALOG':
-            // TODO
-            return state;
-        case 'HANDLECHANGECREATEGROUPDIALOG':
-            // TODO
             return state;
         default: 
             return state;

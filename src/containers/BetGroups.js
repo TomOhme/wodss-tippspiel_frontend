@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { createGroupOnServer } from '../actions';
+import { createGroupOnServer, joinGroup, leaveGroup } from '../actions';
 
 import {
     DropdownButton,
@@ -12,7 +12,7 @@ import {
 } from 'react-bootstrap';
 import CreateGroupDialog from './CreateGroupDialog';
 
-let BetGroups = ({ betGroups, translate, createGroupOnServer }) => (
+let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
@@ -73,7 +73,7 @@ let BetGroups = ({ betGroups, translate, createGroupOnServer }) => (
         {
             // only display leave button when user is member
             (betGroups.currentGroup.userIsMember) ? (
-                <Button bsStyle="danger">
+                <Button bsStyle="danger" onClick={leaveGroup}>
                     {translate('leavegroup')}
                 </Button>
             ) : null
@@ -88,7 +88,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        createGroupOnServer: (name) => dispatch(createGroupOnServer(name))
+        createGroupOnServer: (name) => dispatch(createGroupOnServer(name)),
+        joinGroup: () => dispatch(joinGroup()),
+        leaveGroup: () => dispatch(leaveGroup())
     }
 }
 

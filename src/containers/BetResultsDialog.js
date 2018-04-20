@@ -11,6 +11,7 @@ class BetResultsDialog extends React.Component {
 
     constructor({ props, translate, currentLanguage }) {
         super(props);
+
         this.translate = translate;
         this.state = {
             showModal: false,
@@ -43,12 +44,5 @@ class BetResultsDialog extends React.Component {
         this.setState({ showModal: false });
     }
 };
-
-const mapStateToProps = state => ({
-    translate: getTranslate(state.locale),
-    currentLanguage: getActiveLanguage(state.locale).code
-});
-
-BetResultsDialog = connect(mapStateToProps)(BetResultsDialog)
 
 export default BetResultsDialog;
