@@ -74,9 +74,11 @@ const betReducer = (state = initialState, action) => {
 
             return newState;
         case 'SAVE':
+            var newState = Object.assign({}, state);
             // TODO
             // set saved to true when UPDATE was successful
-            return state;
+            newState[action.id].saved = true;
+            return newState;
         default:
             return state;
     }

@@ -48,7 +48,9 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                                             style={{ width: 60 }}
                                             inline="true">
                                         </FormControl>
+                                        <span>
                                         :
+                                        </span>
                                         <FormControl
                                             value={bets[id].guest.bet}
                                             disabled={bets[id].finished}
