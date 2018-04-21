@@ -42,6 +42,8 @@ const initialState = {
 };
 
 const betReducer = (state = initialState, action) => {
+    var newState = Object.assign({}, state);
+
     switch (action.type) {
         case 'SETSCORE':
             /*
@@ -49,8 +51,6 @@ const betReducer = (state = initialState, action) => {
             console.log(action.team);
             console.log(action.id);
             */
-            var newState = Object.assign({}, state);
-
             var newVal = action.event.target.value;
 
             // check that value >= 0
@@ -74,7 +74,6 @@ const betReducer = (state = initialState, action) => {
 
             return newState;
         case 'SAVE':
-            var newState = Object.assign({}, state);
             // TODO
             // set saved to true when UPDATE was successful
             newState[action.id].saved = true;

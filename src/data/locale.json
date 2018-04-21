@@ -23,6 +23,7 @@
     "total": ["Gesamt"],
 
     "points": ["Punkte"],
+    "averagepoints": ["Punktedurchschnitt"],
     "saved": ["Gespeichert"],
     "notsaved": ["Nicht gespeichert"],
     "search": ["Suchen"],

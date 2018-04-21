@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import BetNavigation from '../containers/BetNavigation';
 import BetGroups from '../containers/BetGroups';
 import PlayerScoreBoard from '../containers/PlayerScoreBoard';
-import GroupScoreBoard from './GroupScoreBoard';
+import GroupScoreBoard from '../containers/GroupScoreBoard';
 import Rules from './Rules';
 import Admin from './Admin';
 import Profile from './Profile';
