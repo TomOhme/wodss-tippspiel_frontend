@@ -29,21 +29,20 @@ const initialState = {
 const betGroupsReducer = (state = initialState, action) => {
     switch (action.type) {
         case "SWITCHGROUP":
-            console.log("SWITCHGROUP");
+            console.log(action.type);
             // TODO
             return state;
         case "JOINGROUP":
-            console.log("JOINGROUP");
+            console.log(action.type);
             // TODO
             return state;
         case "LEAVEGROUP":
-            console.log("LEAVEGROUP");
+            console.log(action.type);
             // TODO
             return state;
         case "CREATEGROUPONSERVER":
-            console.log("CREATEGROUPONSERVER");
+            console.log(action.type);
             // TODO
-            console.log(action.name);
             return state;
         default: 
             return state;

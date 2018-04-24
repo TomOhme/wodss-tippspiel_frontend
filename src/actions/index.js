@@ -49,3 +49,24 @@ export function createGroupOnServer(name) {
         name: name
     }
 };
+
+export function changeMailOnServer(name) {
+    return {
+        type: "CHANGEMAILONSERVER",
+        name: name
+    }
+};
+
+export function changePasswordOnServer(name) {
+    return {
+        type: "CHANGEPASSWORDONSERVER",
+        name: name
+    }
+};
+
+export function deleteProfileOnServer(name) {
+    return {
+        type: "DELETEPROFILEONSERVER",
+        name: name
+    }
+};

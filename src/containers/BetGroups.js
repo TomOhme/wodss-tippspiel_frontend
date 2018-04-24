@@ -10,6 +10,7 @@ import {
     Table,
     Glyphicon,
 } from 'react-bootstrap';
+
 import CreateGroupDialog from './CreateGroupDialog';
 
 let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGroup }) => (

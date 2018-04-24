@@ -7,7 +7,7 @@ import PlayerScoreBoard from '../containers/PlayerScoreBoard';
 import GroupScoreBoard from '../containers/GroupScoreBoard';
 import Rules from './Rules';
 import Admin from './Admin';
-import Profile from './Profile';
+import Profile from '../containers/Profile';
 
 const Main = () => (
     <main>

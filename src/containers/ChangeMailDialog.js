@@ -10,46 +10,46 @@ import {
     FormGroup
 } from 'react-bootstrap';
 
-class CreateGroupDialog extends React.Component {
+class ChangeMailDialog extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             showModal: false,
-            name: '',
+            mail: '',
         }
     }
 
     render() {
         return (
             <span>
-                <Button bsStyle="success" onClick={this.open}>
-                    {this.props.translate('creategroup')}
+                <Button bsStyle="default" onClick={this.open}>
+                    {this.props.translate('changemail')}
                 </Button>
 
                 <Modal show={this.state.showModal} onHide={this.close}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{this.props.translate('creategroup')}</Modal.Title>
+                        <Modal.Title>{this.props.translate('changemail')}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form horizontal>
-                            <FormGroup controlId="formName">
+                            <FormGroup controlId="formMail">
                                 <Col componentClass={ControlLabel} md={2}>
-                                    {this.props.translate('name')}
+                                    {this.props.translate('mail')}
                                 </Col>
                                 <Col md={10}>
                                     <FormControl type="text" 
-                                        placeholder={this.props.translate('name')} 
+                                        placeholder={this.props.translate('mail')} 
                                         autoFocus
-                                        value={this.state.name} 
+                                        value={this.state.mail} 
                                         onChange={this.handleChange} />
                                 </Col>
                             </FormGroup>
 
                             <FormGroup>
                                 <Col mdPush={10} md={2} className="text-right">
-                                    <Button bsStyle="primary" onClick={this.submit}>{this.props.translate("create")}</Button>
+                                    <Button bsStyle="primary" onClick={this.submit}>{this.props.translate("change")}</Button>
                                 </Col>
                             </FormGroup>
                         </Form>
@@ -60,17 +60,18 @@ class CreateGroupDialog extends React.Component {
     }
 
     handleChange = (e) => {
-        if (e.target.id === 'formName') {
-            this.setState({ name: e.target.value });
+        if (e.target.id === 'formMail') {
+            this.setState({ mail: e.target.value });
         }
     }
+
     close = () => {
-        this.setState({ showModal: false, name: '' });
+        this.setState({ showModal: false, mail: '' });
     }
 
     submit = () => {
-        this.props.createGroupOnServer(this.state.name);
-        this.setState({ showModal: false, name: '' });
+        this.props.changeMailOnServer(this.state.mail);
+        this.setState({ showModal: false, mail: '' });
     }
 
     open = () => {
@@ -78,4 +79,4 @@ class CreateGroupDialog extends React.Component {
     }
 };
 
-export default CreateGroupDialog;
+export default ChangeMailDialog;

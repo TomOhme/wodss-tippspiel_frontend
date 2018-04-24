@@ -8,6 +8,11 @@
     "admin": ["Admin"],
     "profile": ["Profil"],
     "logout": ["Ausloggen"],
+    "changemail": ["Email Adresse ändern"],
+    "changepassword": ["Passwort ändern"],
+    "deleteprofile": ["Profil löschen"],
+    "change": ["Ändern"],
+    "mail": ["Mail-Adresse"],
 
     "group": ["Gruppe"],
     "ro16": ["Achtelfinale"],

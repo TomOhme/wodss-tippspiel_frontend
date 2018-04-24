@@ -5,6 +5,7 @@ import betGroupsReducer from './betGroupsReducer';
 import betReducer from './betReducer';
 import playerScoreBoardReducer from './playerScoreBoardReducer';
 import groupScoreBoardReducer from './groupScoreBoardReducer';
+import userReducer from './userReducer';
 
 const betApp = combineReducers({
     round: betRoundReducer,
@@ -12,6 +13,7 @@ const betApp = combineReducers({
     bets: betReducer,
     playerScores:  playerScoreBoardReducer,
     groupScores:  groupScoreBoardReducer,
+    user:  userReducer,
     locale: localeReducer
 })
 
