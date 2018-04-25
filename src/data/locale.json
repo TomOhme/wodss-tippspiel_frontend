@@ -9,11 +9,13 @@
     "profile": ["Profil"],
     "logout": ["Logout"],
     "login": ["Login"],
+    "register": ["Registrieren"],
     "changemail": ["Email Adresse ändern"],
     "changepassword": ["Passwort ändern"],
     "deleteprofile": ["Profil löschen"],
     "change": ["Ändern"],
     "mail": ["Mail-Adresse"],
+    "password": ["Passwort"],
 
     "group": ["Gruppe"],
     "ro16": ["Achtelfinale"],

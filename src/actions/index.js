@@ -78,8 +78,21 @@ export function onMailChange(event) {
     }
 };
 
+export function onPasswordChange(event) {
+    return {
+        type: "ONPASSWORDCHANGE",
+        password: event.target.value
+    }
+};
+
 export function requestLogin() {
     return {
         type: "REQUESTLOGIN"
+    }
+};
+
+export function requestRegister() {
+    return {
+        type: "REQUESTREGISTER"
     }
 };

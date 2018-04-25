@@ -3,6 +3,8 @@ const initialState = {
     name: "hans",
     email: "hans@mail.com",
     tempmail: "",
+    temppassword: "",
+    loginPossible: false
 };
 
 const userReducer = (state = initialState, action) => {
@@ -23,15 +25,33 @@ const userReducer = (state = initialState, action) => {
             return state;
         case "ONMAILCHANGE":
             newState.tempmail = action.mail;
-            console.log(newState.tempmail);
+            newState.loginPossible = isLoginPossible(newState);
+            return newState;
+        case "ONPASSWORDCHANGE":
+            newState.temppassword = action.password;
+            newState.loginPossible = isLoginPossible(newState);
             return newState;
         case "REQUESTLOGIN":
             console.log(action.type);
             // TODO
             return state;
-        default: 
+        case "REQUESTREGISTER":
+            // do this differently? e.g. with a modal
+            console.log(action.type);
+            // TODO
+            return state;
+        default:
             return state;
     }
 };
+
+function isLoginPossible(newState) {
+    if (newState.tempmail.length > 0 && newState.temppassword.length > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 export default userReducer;
