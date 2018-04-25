@@ -1,5 +1,6 @@
 import React from 'react';
-import { localize } from 'react-localize-redux';
+import { connect } from 'react-redux';
+import { getTranslate } from 'react-localize-redux';
 
 import {
   Navbar,
@@ -10,7 +11,7 @@ import {
   PageHeader
 } from 'react-bootstrap';
 
-const Header = ({ translate }) => (
+let Header = ({ user, translate }) => (
   <div>
     <PageHeader>
       {translate('title')}
@@ -36,15 +37,38 @@ const Header = ({ translate }) => (
         </NavItem>
       </Nav>
       <Nav pullRight>
-        <NavItem eventKey={1} href="/profile">
-          {translate('profile')}
-        </NavItem>
-        <NavItem eventKey={2} href="#" style={{ marginRight: 50 }}>
-          {translate('logout')}
-        </NavItem>
+        {
+          // show profile when user is logged in
+          user.loggedIn
+            ?
+            <NavItem eventKey={6} href="/profile">
+              {translate('profile')}
+            </NavItem>
+            : null
+        }
+
+        {
+          // show login / logout
+          user.loggedIn
+            ?
+            <NavItem eventKey={7} href="#" style={{ marginRight: 50 }}>
+              {translate('logout')}
+            </NavItem>
+            :
+            <NavItem eventKey={8} href="/login" style={{ marginRight: 50 }}>
+              {translate('login')}
+            </NavItem>
+        }
       </Nav>
     </Navbar>
   </div>
 )
 
-export default localize(Header, 'locale');
+const mapStateToProps = state => ({
+  translate: getTranslate(state.locale),
+  user: state.user
+});
+
+Header = connect(mapStateToProps)(Header)
+
+export default Header;

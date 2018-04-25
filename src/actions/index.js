@@ -70,3 +70,16 @@ export function deleteProfileOnServer(name) {
         name: name
     }
 };
+
+export function onMailChange(event) {
+    return {
+        type: "ONMAILCHANGE",
+        mail: event.target.value
+    }
+};
+
+export function requestLogin() {
+    return {
+        type: "REQUESTLOGIN"
+    }
+};

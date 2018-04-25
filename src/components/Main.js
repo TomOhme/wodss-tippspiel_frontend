@@ -8,6 +8,7 @@ import GroupScoreBoard from '../containers/GroupScoreBoard';
 import Rules from './Rules';
 import Admin from './Admin';
 import Profile from '../containers/Profile';
+import Login from '../containers/Login';
 
 const Main = () => (
     <main>
@@ -19,6 +20,7 @@ const Main = () => (
             <Route path='/rules' component={Rules} />
             <Route path='/admin' component={Admin} />
             <Route path='/profile' component={Profile} />
+            <Route path='/login' component={Login} />
         </Switch>
     </main>
 );
