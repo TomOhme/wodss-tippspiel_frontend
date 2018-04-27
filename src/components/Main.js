@@ -9,6 +9,7 @@ import Rules from './Rules';
 import Admin from './Admin';
 import Profile from '../containers/Profile';
 import Login from '../containers/Login';
+import Register from '../containers/Register';
 
 const Main = () => (
     <main>
@@ -21,6 +22,7 @@ const Main = () => (
             <Route path='/admin' component={Admin} />
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
+            <Route path='/register' component={Register} />
         </Switch>
     </main>
 );

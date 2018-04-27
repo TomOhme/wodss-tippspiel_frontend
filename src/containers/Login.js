@@ -1,18 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { onMailChange, onPasswordChange, requestLogin, requestRegister } from '../actions';
+import { onMailChange, onPasswordChange, requestLogin, switchToRegister } from '../actions';
+import { Link } from 'react-router-dom'
 
 import {
     Button,
     Form,
     FormControl,
     Col,
+    Row,
     ControlLabel,
     FormGroup
 } from 'react-bootstrap';
 
-let Login = ({ user, onMailChange, onPasswordChange, requestLogin, requestRegister, translate }) => (
+let Login = ({ user, onMailChange, onPasswordChange, requestLogin, switchToRegister, translate }) => (
     <div style={{ maxWidth: 800 }}>
         <Form horizontal>
             <FormGroup controlId="formMail">
@@ -20,7 +22,8 @@ let Login = ({ user, onMailChange, onPasswordChange, requestLogin, requestRegist
                     {translate("mail")}
                 </Col>
                 <Col sm={10}>
-                    <FormControl type="text"
+                    <FormControl
+                        type="text"
                         placeholder={translate('mail')}
                         autoFocus
                         value={user.tempmail}
@@ -33,8 +36,8 @@ let Login = ({ user, onMailChange, onPasswordChange, requestLogin, requestRegist
                     {translate("password")}
                 </Col>
                 <Col sm={10}>
-                    <FormControl type="password" 
-                        placeholder={translate("password")} 
+                    <FormControl type="password"
+                        placeholder={translate("password")}
                         autoFocus
                         value={user.temppassword}
                         onChange={(event) => onPasswordChange(event)} />
@@ -43,17 +46,20 @@ let Login = ({ user, onMailChange, onPasswordChange, requestLogin, requestRegist
 
 
             <FormGroup>
-                <Col mdPush={10} md={2} className="text-right">
-                    <Button 
-                        bsStyle="primary" 
+                <Row mdPush={10} md={2} className="text-right">
+                    <Button
+                        bsStyle="primary"
                         disabled={!user.loginPossible}
-                        onClick={() => requestLogin()}>{translate("login")}
+                        onClick={() => requestLogin()}>
+                        {translate("login")}
                     </Button>
-                    <Button 
-                        bsStyle="link" 
-                        onClick={() => requestRegister()}>{translate("register")}
+                    <Button
+                        bsStyle="link">
+                        <Link to={`/register/`}>
+                            {translate("register")}
+                        </Link>
                     </Button>
-                </Col>
+                </Row>
             </FormGroup>
         </Form>
     </div>
@@ -69,7 +75,7 @@ const mapDispatchToProps = dispatch => {
         onMailChange: (event) => dispatch(onMailChange(event)),
         onPasswordChange: (event) => dispatch(onPasswordChange(event)),
         requestLogin: () => dispatch(requestLogin()),
-        requestRegister: () => dispatch(requestRegister())
+        switchToRegister: () => dispatch(switchToRegister())
     }
 }
 

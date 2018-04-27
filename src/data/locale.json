@@ -16,6 +16,9 @@
     "change": ["Ändern"],
     "mail": ["Mail-Adresse"],
     "password": ["Passwort"],
+    "passwordagain": ["Passwort erneut eingeben"],
+    "passwordnomatch": ["Passwörter stimmen nicht überein."],
+    "username": ["Benutzername"],
 
     "group": ["Gruppe"],
     "ro16": ["Achtelfinale"],

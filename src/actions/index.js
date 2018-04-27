@@ -91,8 +91,17 @@ export function requestLogin() {
     }
 };
 
-export function requestRegister() {
+export function switchToRegister() {
     return {
-        type: "REQUESTREGISTER"
+        type: "SWITCHTOREGISTER"
+    }
+};
+
+export function requestRegister(state) {
+    return {
+        type: "REQUESTREGISTER",
+        mail: state.mail,
+        username: state.username,
+        password: state.password1
     }
 };

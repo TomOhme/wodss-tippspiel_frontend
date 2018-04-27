@@ -4,7 +4,8 @@ const initialState = {
     email: "hans@mail.com",
     tempmail: "",
     temppassword: "",
-    loginPossible: false
+    loginPossible: false,
+    activeScreen: "login"
 };
 
 const userReducer = (state = initialState, action) => {
@@ -35,9 +36,9 @@ const userReducer = (state = initialState, action) => {
             console.log(action.type);
             // TODO
             return state;
-        case "REQUESTREGISTER":
-            // do this differently? e.g. with a modal
+        case "SWITCHTOREGISTER":
             console.log(action.type);
+            newState.activeScreen = "register";
             // TODO
             return state;
         default:
@@ -48,8 +49,7 @@ const userReducer = (state = initialState, action) => {
 function isLoginPossible(newState) {
     if (newState.tempmail.length > 0 && newState.temppassword.length > 0) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
