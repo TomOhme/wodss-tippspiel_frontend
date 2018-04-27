@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { createGroupOnServer, joinGroup, leaveGroup } from '../actions';
+import { createGroupOnServer, joinGroup, leaveGroup, switchGroup } from '../actions';
 
 import {
     DropdownButton,
@@ -13,16 +13,15 @@ import {
 
 import CreateGroupDialog from './CreateGroupDialog';
 
-let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGroup }) => (
+let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
                 betGroups.groupNames.map((groupName) => {
-                    // TODO eventkeys
                     return (
                         <MenuItem
                             key={groupName}
-                            eventKey="1"
+                            onSelect={(e) => switchGroup(groupName)}
                             active={groupName === betGroups.currentGroup.name}>
                             {groupName}
                         </MenuItem>
@@ -91,7 +90,8 @@ const mapDispatchToProps = dispatch => {
     return {
         createGroupOnServer: (name) => dispatch(createGroupOnServer(name)),
         joinGroup: () => dispatch(joinGroup()),
-        leaveGroup: () => dispatch(leaveGroup())
+        leaveGroup: () => dispatch(leaveGroup()),
+        switchGroup: (newGroup) => dispatch(switchGroup(newGroup))
     }
 }
 

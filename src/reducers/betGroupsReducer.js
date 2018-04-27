@@ -27,11 +27,14 @@ const initialState = {
 };
 
 const betGroupsReducer = (state = initialState, action) => {
+    var newState = Object.assign({}, state);
+
     switch (action.type) {
         case "SWITCHGROUP":
             console.log(action.type);
             // TODO
-            return state;
+            newState.currentGroup.name = action.newGroup
+            return newState;
         case "JOINGROUP":
             console.log(action.type);
             // TODO
