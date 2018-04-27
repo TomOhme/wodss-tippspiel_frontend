@@ -48,7 +48,7 @@ class CreateGroupDialog extends React.Component {
                             </FormGroup>
 
                             <FormGroup>
-                                <Col mdPush={10} md={2} className="text-right">
+                                <Col mdpush={10} md={2} className="text-right">
                                     <Button bsStyle="primary" onClick={this.submit}>{this.props.translate("create")}</Button>
                                 </Col>
                             </FormGroup>

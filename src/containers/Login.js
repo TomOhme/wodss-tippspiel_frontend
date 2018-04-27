@@ -46,7 +46,7 @@ let Login = ({ user, onMailChange, onPasswordChange, requestLogin, switchToRegis
 
 
             <FormGroup>
-                <Row mdPush={10} md={2} className="text-right">
+                <Row mdpush={10} md={2} className="text-right">
                     <Button
                         bsStyle="primary"
                         disabled={!user.loginPossible}

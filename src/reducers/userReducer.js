@@ -1,5 +1,5 @@
 const initialState = {
-    loggedIn: false,
+    loggedIn: true,
     name: "hans",
     email: "hans@mail.com",
     tempmail: "",
