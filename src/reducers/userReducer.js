@@ -41,6 +41,13 @@ const userReducer = (state = initialState, action) => {
             newState.activeScreen = "register";
             // TODO
             return state;
+        case "REQUESTREGISTER":
+            console.log(action.type);
+            console.log(action.mail);
+            console.log(action.username);
+            console.log(action.password);
+            // TODO
+            return state;
         default:
             return state;
     }

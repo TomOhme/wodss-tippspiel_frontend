@@ -130,7 +130,7 @@ class Register extends React.Component {
                 </Row>
 
                 <FormGroup>
-                    <Row mdPush={10} md={2} className="text-right">
+                    <Row mdpush={10} md={2} className="text-right">
                         <Button
                             bsStyle="primary"
                             disabled={!this.isRegisterPossible()}
