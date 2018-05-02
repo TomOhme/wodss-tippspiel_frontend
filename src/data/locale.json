@@ -18,6 +18,7 @@
     "password": ["Passwort"],
     "passwordagain": ["Passwort erneut eingeben"],
     "passwordoptional": ["Passwort (optional)"],
+    "resetpassword": ["Passwort zurücksetzen"],
     "passwordnomatch": ["Passwörter stimmen nicht überein."],
     "username": ["Benutzername"],
 
