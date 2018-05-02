@@ -87,7 +87,7 @@ class CreateGroupDialog extends React.Component {
         }
     }
     close = () => {
-        this.setState({ showModal: false, name: '' });
+        this.setState({ showModal: false, name: '', password: '' });
     }
 
     submit = () => {
