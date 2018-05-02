@@ -18,6 +18,7 @@ class CreateGroupDialog extends React.Component {
         this.state = {
             showModal: false,
             name: '',
+            password: ''
         }
     }
 
@@ -47,9 +48,27 @@ class CreateGroupDialog extends React.Component {
                                 </Col>
                             </FormGroup>
 
+                            <FormGroup controlId="formPassword">
+                                <Col componentClass={ControlLabel} md={2}>
+                                    {this.props.translate('passwordoptional')}
+                                </Col>
+                                <Col md={10}>
+                                    <FormControl type="text" 
+                                        placeholder={this.props.translate('password')} 
+                                        autoFocus
+                                        value={this.state.password} 
+                                        onChange={this.handleChange} />
+                                </Col>
+                            </FormGroup>
+
                             <FormGroup>
                                 <Col mdpush={10} md={2} className="text-right">
-                                    <Button bsStyle="primary" onClick={this.submit}>{this.props.translate("create")}</Button>
+                                    <Button 
+                                        bsStyle="primary" 
+                                        disabled={!this.isCreateButtonEnabled()}
+                                        onClick={this.submit}>
+                                        {this.props.translate("create")}
+                                    </Button>
                                 </Col>
                             </FormGroup>
                         </Form>
@@ -63,18 +82,25 @@ class CreateGroupDialog extends React.Component {
         if (e.target.id === 'formName') {
             this.setState({ name: e.target.value });
         }
+        else if (e.target.id === 'formPassword') {
+            this.setState({ password: e.target.value });
+        }
     }
     close = () => {
         this.setState({ showModal: false, name: '' });
     }
 
     submit = () => {
-        this.props.createGroupOnServer(this.state.name);
-        this.setState({ showModal: false, name: '' });
+        this.props.createGroupOnServer(this.state.name, this.state.password);
+        this.setState({ showModal: false, name: '', password: '' });
     }
 
     open = () => {
         this.setState({ showModal: true });
+    }
+
+    isCreateButtonEnabled = () => {
+        return this.state.name !== '';
     }
 };
 

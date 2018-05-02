@@ -43,10 +43,11 @@ export function leaveGroup(groupName) {
     }
 };
 
-export function createGroupOnServer(name) {
+export function createGroupOnServer(name, password) {
     return {
         type: "CREATEGROUPONSERVER",
-        name: name
+        name: name,
+        password: password
     }
 };
 

@@ -17,6 +17,7 @@
     "mail": ["Mail-Adresse"],
     "password": ["Passwort"],
     "passwordagain": ["Passwort erneut eingeben"],
+    "passwordoptional": ["Passwort (optional)"],
     "passwordnomatch": ["Passwörter stimmen nicht überein."],
     "username": ["Benutzername"],
 
