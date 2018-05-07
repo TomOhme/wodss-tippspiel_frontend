@@ -9,9 +9,9 @@ import {
     PanelGroup
 } from 'react-bootstrap';
 
-import ChangeMailDialog from './ChangeMailDialog';
+import ChangeMailForm from './ChangeMailForm';
 
-let Profile = ({ user, translate, dispatch, changeMailOnServer }) => (
+let Profile = ({ user, translate, dispatch }) => (
     <div>
 
         <PanelGroup accordion id="profilePanel">
@@ -24,7 +24,7 @@ let Profile = ({ user, translate, dispatch, changeMailOnServer }) => (
                     </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
-                <ChangeMailDialog translate={translate} changeMailOnServer={changeMailOnServer} />
+                    <ChangeMailForm translate={translate} changeMailOnServer={changeMailOnServer} />
                 </Panel.Body>
             </Panel>
 

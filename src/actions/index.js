@@ -51,10 +51,10 @@ export function createGroupOnServer(name, password) {
     }
 };
 
-export function changeMailOnServer(name) {
+export function changeMailOnServer(mail) {
     return {
         type: "CHANGEMAILONSERVER",
-        name: name
+        mail: mail
     }
 };
 

@@ -5,7 +5,7 @@ const initialState = {
     tempmail: "",
     temppassword: "",
     loginPossible: false,
-    activeScreen: "login"
+    activeScreen: "login",
 };
 
 const userReducer = (state = initialState, action) => {
