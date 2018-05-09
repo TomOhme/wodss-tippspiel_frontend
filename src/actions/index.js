@@ -1,3 +1,5 @@
+import { configuration } from '../Configuration';
+
 export function setRound(round) {
     return {
         type: "SETCURRENTROUND",
@@ -106,3 +108,22 @@ export function requestRegister(state) {
         password: state.password1
     }
 };
+
+export function fetchPlayerRankingFromServer() {
+    const url = configuration.getValue('serverUrl') + '/users/ranking';
+    return (dispatch) => {
+        fetch(url).then(response => {
+                return response.json()
+            })
+            .then((playerRanking) => {
+                dispatch(playerRankingFetchSuccess(playerRanking));
+            })
+    }
+}
+
+export function playerRankingFetchSuccess(playerRanking) {
+    return {
+      type: "PLAYERRANKINGFETCHSUCCESS",
+      playerRanking
+    };
+  }

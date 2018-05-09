@@ -18,6 +18,9 @@ const initialState = [
 
 const playerScoreBoardReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "PLAYERRANKINGFETCHSUCCESS":
+            console.log(action.playerRanking);
+            break;
         default:
             return state;
     }
