@@ -30,45 +30,43 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                     </Panel.Heading>
                     <Panel.Body>
                         <Grid>
-                            <Row>
-                                <Col xs={5} className="text-right">
-                                    <span className="country">
-                                        {translate(bets[id].home.name)}
-                                    </span>
-                                    <Image src={require('../img/' + bets[id].home.name + '.png')} />
-                                </Col>
+                            <Col md="4">
+                                <span className="country">
+                                    {translate(bets[id].home.name)}
+                                </span>
+                                <Image src={require('../img/' + bets[id].home.name + '.png')} />
+                            </Col>
 
-                                <Col xs={2} style={{ width: 160 }} verticalalign="true">
-                                    <Form inline>
-                                        <FormControl
-                                            value={bets[id].home.bet}
-                                            disabled={bets[id].finished}
-                                            onChange={(event) => dispatch(setScore(event, "home", id))}
-                                            type="number"
-                                            style={{ width: 60 }}
-                                            inline="true">
-                                        </FormControl>
-                                        <span>
+                            <Col md="3" classNames="score middle">
+                                <Form inline>
+                                    <FormControl
+                                        value={bets[id].home.bet}
+                                        disabled={bets[id].finished}
+                                        onChange={(event) => dispatch(setScore(event, "home", id))}
+                                        type="number"
+                                        style={{ width: 60 }}
+                                    >
+                                    </FormControl>
+                                    <span>
                                         :
                                         </span>
-                                        <FormControl
-                                            value={bets[id].guest.bet}
-                                            disabled={bets[id].finished}
-                                            onChange={(event) => dispatch(setScore(event, "guest", id))}
-                                            type="number"
-                                            style={{ width: 60 }}
-                                            inline="true">
-                                        </FormControl>
-                                    </Form>
-                                </Col>
+                                    <FormControl
+                                        value={bets[id].guest.bet}
+                                        disabled={bets[id].finished}
+                                        onChange={(event) => dispatch(setScore(event, "guest", id))}
+                                        type="number"
+                                        style={{ width: 60 }}
+                                    >
+                                    </FormControl>
+                                </Form>
+                            </Col>
 
-                                <Col xs={5} className="text-left">
-                                    <Image src={require('../img/' + bets[id].guest.name + '.png')} />
-                                    <span className="country">
-                                        {translate(bets[id].guest.name)}
-                                    </span>
-                                </Col>
-                            </Row>
+                            <Col md="4">
+                                <Image src={require('../img/' + bets[id].guest.name + '.png')} />
+                                <span className="country">
+                                    {translate(bets[id].guest.name)}
+                                </span>
+                            </Col>
                         </Grid>
                     </Panel.Body>
                     <Panel.Footer>
