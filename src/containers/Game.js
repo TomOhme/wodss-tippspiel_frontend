@@ -20,7 +20,7 @@ import BetSaveButton from '../containers/BetSaveButton';
 
 let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
 
-    <div classNames="container.fluid">
+    <div className="container.fluid game">
         <div className="border-gold">
             <BetResultsDialog translate={translate} />
             <BetSaveButton id={id} />

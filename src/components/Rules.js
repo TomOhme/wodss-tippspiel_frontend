@@ -3,7 +3,10 @@ import ReactMarkdown from 'react-markdown'
 import { localize } from 'react-localize-redux';
 
 const Rules = ({ translate }) => (
-    <div style={{maxWidth:600}}>
+    <div className="rules">
+        <h2>
+            {translate('rules')}
+        </h2>
         <ReactMarkdown source={translate('rule1')} />
         <ReactMarkdown source={translate('rule2')} />
         <ReactMarkdown source={translate('rule3')} />

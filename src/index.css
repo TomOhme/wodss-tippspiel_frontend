@@ -17,12 +17,29 @@
     line-height: 60px;
 }
 
-.navbar-custom {
-    background-color: #A01B20;
+a:link {
+    color: black;
 }
 
-.navitem-custom {
-    color: white;
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: #B81319;
+}
+
+a:active {
+    color: #661B20;
+}
+
+.navbar-bar-custom {
+    background-color: #D9C185;
+}
+
+.nav-item {
+    color: red;
+    background-color: #A01B20;
 }
 
 .country {
@@ -34,12 +51,24 @@
     max-width: 960px;
 }
 
+.container-small {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rules {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .background-red {
     background-color: #A01B20;
 }
 
 .border-red {
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
     border-color: #A01B20;
     padding: 10px;
@@ -50,7 +79,7 @@
 }
 
 .border-gold {
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
     border-color: #D9C185;
     padding: 10px;
@@ -65,6 +94,10 @@
     margin-left: 2px;
     margin-right: 2px;
     background: #D9C185;
+}
+
+.game {
+    margin-bottom: 18px;
 }
 
 .align {
@@ -94,4 +127,10 @@
 .btn-green {
     color: white;
     background-color: #75f243;
+}
+
+.bet-navigation {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #fff7e2;
 }

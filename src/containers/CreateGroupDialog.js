@@ -64,7 +64,7 @@ class CreateGroupDialog extends React.Component {
                             <FormGroup>
                                 <Col mdpush={10} md={2} className="text-right">
                                     <Button 
-                                        bsStyle="primary" 
+                                        bsStyle="blue" 
                                         disabled={!this.isCreateButtonEnabled()}
                                         onClick={this.submit}>
                                         {this.props.translate("create")}

@@ -12,7 +12,7 @@ import {
 import ChangeMailForm from './ChangeMailForm';
 
 let Profile = ({ user, translate, dispatch }) => (
-    <div>
+    <div className="container-small">
 
         <PanelGroup accordion id="profilePanel">
 

@@ -11,7 +11,10 @@ import {
 
 let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentGroup }) => (
     <div>
-        <Nav bsStyle="tabs" activeKey={currentGroup} onSelect={this.handleSelect}>
+        <Nav bsStyle="tabs" 
+                className="bet-navigation"
+                activeKey={currentGroup} 
+                onSelect={this.handleSelect}>
             <NavItem eventKey={"A"} onSelect={() => { dispatch(setRound("A")) }} >
                 {translate('group')} A
                 </NavItem>

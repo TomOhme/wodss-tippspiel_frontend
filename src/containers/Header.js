@@ -17,9 +17,9 @@ let Header = ({ user, translate }) => (
       {translate('title')}
     </PageHeader>
 
-    <Navbar>
+    <Navbar bsStyle="bar-custom">
       <Nav>
-        <NavItem eventKey={1} href="/" className="navitem-custom">
+        <NavItem eventKey={1} href="/" bsStyle="item">
           {translate('bets')}
         </NavItem>
         <NavItem eventKey={2} href="/betgroups">
