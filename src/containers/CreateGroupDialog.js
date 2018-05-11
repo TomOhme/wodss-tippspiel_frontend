@@ -25,7 +25,7 @@ class CreateGroupDialog extends React.Component {
     render() {
         return (
             <span>
-                <Button bsStyle="success" onClick={this.open}>
+                <Button bsStyle="green" onClick={this.open}>
                     {this.props.translate('creategroup')}
                 </Button>
 

@@ -34,7 +34,64 @@
     max-width: 960px;
 }
 
+.background-red {
+    background-color: #A01B20;
+}
+
+.border-red {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #A01B20;
+    padding: 10px;
+}
+
+.background-gold {
+    background-color: #D9C185;
+}
+
+.border-gold {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #D9C185;
+    padding: 10px;
+}
+
+.finished-labels {
+    text-align: center;
+    margin: 5px;
+}
+
+.label {
+    margin-left: 2px;
+    margin-right: 2px;
+    background: #D9C185;
+}
+
+.align {
+    text-align: center;
+}
+
 .score {
-    margin-top: 50%;
-    margin-bottom: 50%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.btn-blue {
+    color: white;
+    background-color: #076DAB;
+}
+
+.btn-red {
+    color: white;
+    background-color: #A01B20;
+}
+
+.btn-gold {
+    color: white;
+    background-color: #D9C185;
+}
+
+.btn-green {
+    color: white;
+    background-color: #75f243;
 }

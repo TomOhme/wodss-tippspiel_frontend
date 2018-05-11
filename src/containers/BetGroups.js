@@ -73,7 +73,7 @@ let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGr
         {
             // only display leave button when user is member
             (betGroups.currentGroup.userIsMember) ? (
-                <Button bsStyle="danger" onClick={leaveGroup}>
+                <Button bsStyle="red" onClick={leaveGroup}>
                     {translate('leavegroup')}
                 </Button>
             ) : null

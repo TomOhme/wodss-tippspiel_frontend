@@ -20,73 +20,63 @@ import BetSaveButton from '../containers/BetSaveButton';
 
 let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
 
-    <div className="container.fluid">
-        <ListGroup>
-            <ListGroupItem>
-                <Panel>
-                    <Panel.Heading>
-                        <BetResultsDialog translate={translate} />
-                        <BetSaveButton id={id} />
-                    </Panel.Heading>
-                    <Panel.Body>
-                        <Grid>
-                            <Col md="4">
-                                <span className="country">
-                                    {translate(bets[id].home.name)}
-                                </span>
-                                <Image src={require('../img/' + bets[id].home.name + '.png')} />
-                            </Col>
+    <div classNames="container.fluid">
+        <div className="border-gold">
+            <BetResultsDialog translate={translate} />
+            <BetSaveButton id={id} />
+            <Grid>
+                <Col md={4} className="align">
+                    <span className="country">
+                        {translate(bets[id].home.name)}
+                    </span>
+                    <Image src={require('../img/' + bets[id].home.name + '.png')} />
+                </Col>
 
-                            <Col md="3" classNames="score middle">
-                                <Form inline>
-                                    <FormControl
-                                        value={bets[id].home.bet}
-                                        disabled={bets[id].finished}
-                                        onChange={(event) => dispatch(setScore(event, "home", id))}
-                                        type="number"
-                                        style={{ width: 60 }}
-                                    >
-                                    </FormControl>
-                                    <span>
-                                        :
-                                        </span>
-                                    <FormControl
-                                        value={bets[id].guest.bet}
-                                        disabled={bets[id].finished}
-                                        onChange={(event) => dispatch(setScore(event, "guest", id))}
-                                        type="number"
-                                        style={{ width: 60 }}
-                                    >
-                                    </FormControl>
-                                </Form>
-                            </Col>
+                <Col md={3} className="score align">
+                    <Form inline>
+                        <FormControl
+                            value={bets[id].home.bet}
+                            disabled={bets[id].finished}
+                            onChange={(event) => dispatch(setScore(event, "home", id))}
+                            type="number"
+                            style={{ width: 60 }}
+                        >
+                        </FormControl>
+                        <span>
+                            :
+                        </span>
+                        <FormControl
+                            value={bets[id].guest.bet}
+                            disabled={bets[id].finished}
+                            onChange={(event) => dispatch(setScore(event, "guest", id))}
+                            type="number"
+                            style={{ width: 60 }}
+                        >
+                        </FormControl>
+                    </Form>
+                </Col>
 
-                            <Col md="4">
-                                <Image src={require('../img/' + bets[id].guest.name + '.png')} />
-                                <span className="country">
-                                    {translate(bets[id].guest.name)}
-                                </span>
-                            </Col>
-                        </Grid>
-                    </Panel.Body>
-                    <Panel.Footer>
-                        <Label>
-                            {bets[id].date}
-                        </Label>
-                        <Label>
-                            {bets[id].time}
-                        </Label>
-                        <Label className="pull-right">
-                            {translate(bets[id].place)}
-                        </Label>
-                    </Panel.Footer>
-                </Panel>
-            </ListGroupItem>
+                <Col md={4} className="align">
+                    <Image src={require('../img/' + bets[id].guest.name + '.png')} />
+                    <span className="country">
+                        {translate(bets[id].guest.name)}
+                    </span>
+                </Col>
+            </Grid>
+            <Label>
+                {bets[id].date}
+            </Label>
+            <Label>
+                {bets[id].time}
+            </Label>
+            <Label className="pull-right">
+                {translate(bets[id].place)}
+            </Label>
             {
                 // only display results when game is finished
                 (bets[id].finished === true) ?
                     (
-                        <ListGroupItem>
+                        <div className="finished-labels">
                             <Label>
                                 {translate('winner')}: {translate(bets[id].winner)}
                             </Label>
@@ -102,12 +92,12 @@ let Game = ({ id, bets, dispatch, translate, currentLanguage }) => (
                             <Label>
                                 {translate('total')}: {bets[id].total}
                             </Label>
-                        </ListGroupItem>
+                        </div>
                     )
                     : null
             }
-        </ListGroup>
-    </div>
+        </div>
+    </div >
 );
 
 const mapStateToProps = state => ({
