@@ -3,6 +3,7 @@ import Header from '../containers/Header';
 import Footer from './Footer';
 import Main from './Main';
 import { configuration } from '../Configuration';
+import "../index.less";
 
 export default class App extends React.Component {
   constructor() {

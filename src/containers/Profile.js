@@ -17,7 +17,7 @@ let Profile = ({ user, translate, dispatch }) => (
         <PanelGroup accordion id="profilePanel">
 
             {/* Change email */}
-            <Panel eventKey="1">
+            <Panel eventKey="1" bsStyle="custom" className="panel-custom">
                 <Panel.Heading>
                     <Panel.Title toggle>
                         {translate("changemail")}

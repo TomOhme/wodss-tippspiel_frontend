@@ -1,136 +1,104 @@
-/* custom css for tippspiel */
-
-/* custom navbar colors
-.navbar,
-.navbar-default {
-    background-image: linear-gradient(to bottom,#A01B20 0,#A01B20 100%) !important;
-}
-*/
-
 * {
-    font-family: 'Oxygen', sans-serif;
-}
+  font-family: 'Oxygen', sans-serif; }
 
 /* sticky footer */
 .footer {
-    height: 60px;
-    line-height: 60px;
-}
+  height: 60px;
+  line-height: 60px; }
 
 a:link {
-    color: black;
-}
+  color: black; }
 
 a:visited {
-    color: black;
-}
+  color: black; }
 
 a:hover {
-    color: #B81319;
-}
+  color: #B81319; }
 
 a:active {
-    color: #661B20;
-}
+  color: #661B20; }
 
 .navbar-bar-custom {
-    background-color: #D9C185;
-}
+  background-color: #D9C185; }
 
 .nav-item {
-    color: red;
-    background-color: #A01B20;
-}
+  background-color: #A01B20; }
 
 .country {
-    font-size: 140%;
-    font-weight: bold;
-}
+  font-size: 140%;
+  font-weight: bold; }
 
 .container {
-    max-width: 960px;
-}
+  max-width: 960px; }
 
 .container-small {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto; }
 
 .rules {
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto; }
 
 .background-red {
-    background-color: #A01B20;
-}
+  background-color: #A01B20; }
 
 .border-red {
-    border-width: 3px;
-    border-style: solid;
-    border-color: #A01B20;
-    padding: 10px;
-}
+  border-width: 3px;
+  border-style: solid;
+  border-color: #A01B20;
+  padding: 10px; }
 
 .background-gold {
-    background-color: #D9C185;
-}
+  background-color: #D9C185; }
 
 .border-gold {
-    border-width: 3px;
-    border-style: solid;
-    border-color: #D9C185;
-    padding: 10px;
-}
+  border-width: 3px;
+  border-style: solid;
+  border-color: #D9C185;
+  padding: 10px; }
 
 .finished-labels {
-    text-align: center;
-    margin: 5px;
-}
+  text-align: center;
+  margin: 5px; }
 
 .label {
-    margin-left: 2px;
-    margin-right: 2px;
-    background: #D9C185;
-}
+  margin-left: 2px;
+  margin-right: 2px;
+  background: #D9C185; }
 
 .game {
-    margin-bottom: 18px;
-}
+  margin-bottom: 18px; }
 
 .align {
-    text-align: center;
-}
+  text-align: center; }
 
 .score {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
+  padding-top: 30px;
+  padding-bottom: 30px; }
 
 .btn-blue {
-    color: white;
-    background-color: #076DAB;
-}
+  color: white;
+  background-color: #076DAB; }
 
 .btn-red {
-    color: white;
-    background-color: #A01B20;
-}
+  color: white;
+  background-color: #A01B20; }
 
 .btn-gold {
-    color: white;
-    background-color: #D9C185;
-}
+  color: white;
+  background-color: #D9C185; }
 
 .btn-green {
-    color: white;
-    background-color: #41c20e;
-}
+  color: white;
+  background-color: #41C20E; }
 
 .bet-navigation {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: #fff7e2;
-}
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #FFF7E2; }
+
+.panel-custom {
+  color: red;
+  background-color: #41C20E; }
