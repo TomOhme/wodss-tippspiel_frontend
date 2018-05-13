@@ -5,11 +5,7 @@ import { setScore } from '../actions';
 
 import {
     Label,
-    ListGroup,
-    ListGroupItem,
-    Panel,
     Grid,
-    Row,
     Col,
     Image,
     Form,

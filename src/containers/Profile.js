@@ -17,7 +17,7 @@ let Profile = ({ user, translate, dispatch }) => (
         <PanelGroup accordion id="profilePanel">
 
             {/* Change email */}
-            <Panel eventKey="1" bsStyle="custom" className="panel-custom">
+            <Panel eventKey="1" bsStyle="custom">
                 <Panel.Heading>
                     <Panel.Title toggle>
                         {translate("changemail")}
@@ -29,7 +29,7 @@ let Profile = ({ user, translate, dispatch }) => (
             </Panel>
 
             {/* Reset Password */}
-            <Panel eventKey="2">
+            <Panel eventKey="2" bsStyle="custom">
                 <Panel.Heading>
                     <Panel.Title toggle>
                         {translate("resetpassword")}
@@ -40,7 +40,7 @@ let Profile = ({ user, translate, dispatch }) => (
             </Panel>
 
             {/* Delete profile */}
-            <Panel eventKey="3">
+            <Panel eventKey="3" bsStyle="custom">
                 <Panel.Heading>
                     <Panel.Title toggle>
                         {translate("deleteprofile")}
