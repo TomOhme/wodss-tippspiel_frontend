@@ -1,5 +1,6 @@
 const initialState = {
     loggedIn: false,
+    //loggedIn: true,
     bets: [],
     betGroup: [],
     name: "",

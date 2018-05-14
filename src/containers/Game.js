@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-import { setScore } from '../actions';
+import { setScore } from '../actions/BetActions';
 
 import {
     Label,

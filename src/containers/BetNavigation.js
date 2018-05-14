@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setRound } from '../actions';
+import { setRound } from '../actions/BetActions';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import Bets from './Bets';
 

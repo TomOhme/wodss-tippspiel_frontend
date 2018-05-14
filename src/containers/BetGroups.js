@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { createGroupOnServer, joinGroup, leaveGroup, switchGroup } from '../actions';
+import { createGroupOnServer, joinGroup, leaveGroup, switchGroup } from '../actions/BetGroupActions';
 
 import {
     DropdownButton,

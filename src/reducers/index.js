@@ -23,8 +23,6 @@ const appReducer = combineReducers({
 // introduce rootReducer for logout
 const rootReducer = (state, action) => {
 
-    // TODO localize is somehow affected by the wipe and throws a nasty error...
-    
     if (action.type === 'LOGOUT') {
         // clean persistance keys so redux-persist storage will wipe
         Object.keys(state).forEach(key => {

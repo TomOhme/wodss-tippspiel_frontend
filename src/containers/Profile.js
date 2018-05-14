@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { changeMailOnServer, deleteProfileOnServer, resetPasswordOnServer } from '../actions';
+import { changeMailOnServer, deleteProfileOnServer, resetPasswordOnServer } from '../actions/ProfileActions';
 
 import {
     Button,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { onMailChange, onPasswordChange, requestLogin, switchToRegister } from '../actions';
+import { onMailChange, onPasswordChange, requestLogin, switchToRegister } from '../actions/LoginRegisterActions';
 import { Link } from 'react-router-dom'
 
 import {
