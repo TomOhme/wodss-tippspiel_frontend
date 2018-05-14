@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import App from './components/App'
-import betApp from './reducers';
+import rootReducer from './reducers';
 import './index.css';
 import { initialize } from 'react-localize-redux';
 import { addTranslation } from 'react-localize-redux';
@@ -11,19 +11,32 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
 
-{/* REDUX */ }
+// REDUX-PERSIST
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+// REDUX
 const history = createHistory()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  betApp,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  persistedReducer,
   composeEnhancers(
     applyMiddleware(thunk, routerMiddleware(history))
-  )
+  ),
+  //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-{/* LANGUAGE SUPPORT */ }
+// persist the created store
+let persistor = persistStore(store);
+
+// LANGUAGE SUPPORT
 const languages = [
   { name: 'German', code: 'de' }
 ]
@@ -32,13 +45,14 @@ store.dispatch(initialize(languages, { defaultLanguage: 'de' }));
 const localejson = require('./data/locale.json');
 store.dispatch(addTranslation(localejson));
 
-{/* make store available in all container components through Provider */ }
+// make store available in all container components through Provider
 render(
   <Provider store={store}>
-    {/* enables dispatch(push("/path")) in actions */ }
-    <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <ConnectedRouter history={history}>{/* enables dispatch(push("/path")) in actions */}
+        <App />
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 )

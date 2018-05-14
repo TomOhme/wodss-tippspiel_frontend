@@ -8,7 +8,7 @@ import groupScoreBoardReducer from './groupScoreBoardReducer';
 import userReducer from './userReducer';
 import { routerReducer } from 'react-router-redux'
 
-const betApp = combineReducers({
+const rootReducer = combineReducers({
     round: betRoundReducer,
     betGroups: betGroupsReducer,
     bets: betReducer,
@@ -19,4 +19,4 @@ const betApp = combineReducers({
     router: routerReducer
 })
 
-export default betApp;
+export default rootReducer;
