@@ -92,26 +92,44 @@ export function onPasswordChange(event) {
 
 export function requestLogin(username, password) {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "login";
+    var url = serverUrl + "/login";
 
     return (dispatch) => {
-        fetch(url, {
-            method: "post",
+        var request = new Request(url, {
+            method: 'POST',
             headers: new Headers({
+                //"Access-Control-Allow-Origin": "http://localhost:3000",
+                //"Access-Control-Allow-Origin": serverUrl,
+                //"mode": "cors",
+                //"credentials": "include",
+                //"Authorization": "",
                 "X-Requested-With": "ok",
+                //"Host": "www.schraner.info",
                 "Origin": serverUrl,
+                //"Origin": "http://localhost:3000",
                 "Content-Type": "application/json"
+                //"Content-Type": "text/plain"
             }),
-            body: {
-                username,
-                password
-            }
-        }).then();
-        dispatch(loginSuccess(username));
-    }
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+            })
+        });
 
-    return {
-        type: "REQUESTLOGIN"
+        console.log(request);
+
+        fetch(request).then(response => {
+                if (!response.ok) {
+                    throw Error("database error");
+                }
+                // Convert response to JSON
+                return response.json()
+            })
+            .then((questionnaire) => {
+                dispatch(loginSuccess(username));
+                console.log("success");
+            })
+
     }
 };
 
