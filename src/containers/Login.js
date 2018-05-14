@@ -48,9 +48,9 @@ let Login = ({ user, onMailChange, onPasswordChange, requestLogin, switchToRegis
             <FormGroup>
                 <Row mdpush={10} md={2} className="text-right">
                     <Button
-                        bsStyle="primary"
+                        bsStyle="blue"
                         disabled={!user.loginPossible}
-                        onClick={() => requestLogin()}>
+                        onClick={() => requestLogin({mail: user.tempmail, password: user.temppassword})}>
                         {translate("login")}
                     </Button>
                     <Button

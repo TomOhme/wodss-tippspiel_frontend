@@ -1,7 +1,7 @@
 const initialState = {
-    loggedIn: true,
-    name: "hans",
-    email: "hans@mail.com",
+    loggedIn: false,
+    name: "",
+    email: "",
     tempmail: "",
     temppassword: "",
     loginPossible: false,
@@ -32,10 +32,12 @@ const userReducer = (state = initialState, action) => {
             newState.temppassword = action.password;
             newState.loginPossible = isLoginPossible(newState);
             return newState;
-        case "REQUESTLOGIN":
+        case "LOGINSUCCESS":
             console.log(action.type);
-            // TODO
-            return state;
+            console.log(action.username);
+            newState.name = action.username;
+            newState.loggedIn = true;
+            return newState;
         case "SWITCHTOREGISTER":
             console.log(action.type);
             newState.activeScreen = "register";

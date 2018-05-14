@@ -1,4 +1,6 @@
-import { configuration } from '../Configuration';
+import {
+    configuration
+} from '../Configuration';
 
 export function setRound(round) {
     return {
@@ -88,11 +90,37 @@ export function onPasswordChange(event) {
     }
 };
 
-export function requestLogin() {
+export function requestLogin(username, password) {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "login";
+
+    return (dispatch) => {
+        fetch(url, {
+            method: "post",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "Origin": serverUrl,
+                "Content-Type": "application/json"
+            }),
+            body: {
+                username,
+                password
+            }
+        }).then();
+        dispatch(loginSuccess(username));
+    }
+
     return {
         type: "REQUESTLOGIN"
     }
 };
+
+export function loginSuccess(username) {
+    return {
+        type: "LOGINSUCCESS",
+        username: username
+    };
+}
 
 export function switchToRegister() {
     return {
@@ -123,7 +151,7 @@ export function fetchPlayerRankingFromServer() {
 
 export function playerRankingFetchSuccess(playerRanking) {
     return {
-      type: "PLAYERRANKINGFETCHSUCCESS",
-      playerRanking
+        type: "PLAYERRANKINGFETCHSUCCESS",
+        playerRanking
     };
-  }
+}
