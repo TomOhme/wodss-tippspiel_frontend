@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { changeMailOnServer, changePasswordOnServer, deleteProfileOnServer } from '../actions';
+import { changeMailOnServer, deleteProfileOnServer, resetPasswordOnServer } from '../actions';
 
 import {
     Button,
@@ -11,7 +11,7 @@ import {
 
 import ChangeMailForm from './ChangeMailForm';
 
-let Profile = ({ user, translate, dispatch }) => (
+let Profile = ({ user, translate, dispatch, resetPasswordOnServer }) => (
     <div className="container-small">
 
         <PanelGroup accordion id="profilePanel">
@@ -36,6 +36,11 @@ let Profile = ({ user, translate, dispatch }) => (
                     </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
+                    <Button 
+                        onClick={() => resetPasswordOnServer()}
+                        bsStyle="blue">
+                        {translate("resetpassword")}
+                    </Button>
                 </Panel.Body>
             </Panel>
 
@@ -62,7 +67,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeMailOnServer: (mail) => dispatch(changeMailOnServer())
+        changeMailOnServer: (mail) => dispatch(changeMailOnServer()),
+        resetPasswordOnServer: () => dispatch(resetPasswordOnServer())
     }
 }
 

@@ -62,9 +62,9 @@ export function changeMailOnServer(mail) {
     }
 };
 
-export function changePasswordOnServer(name) {
+export function resetPasswordOnServer(name) {
     return {
-        type: "CHANGEPASSWORDONSERVER",
+        type: "RESETPASSWORDONSERVER",
         name: name
     }
 };
@@ -105,7 +105,6 @@ export function requestLogin() {
                 //"Access-Control-Allow-Origin": serverUrl,
                 //"mode": "cors",
                 //"credentials": "include",
-                //"Authorization": "",
                 "X-Requested-With": "ok",
                 //"Host": "www.schraner.info",
                 "Origin": serverUrl,
@@ -119,8 +118,6 @@ export function requestLogin() {
             })
         });
 
-        console.log(request);
-
         fetch(request).then(response => {
                 if (!response.ok) {
                     throw Error("server error");
@@ -129,14 +126,12 @@ export function requestLogin() {
             })
             .then((userData) => {
                 dispatch(loginSuccess(userData));
-                console.log("success");
             })
-
     }
-    //}, (loginData);
 };
 
 export function loginSuccess(userData) {
+    console.log("action");
     return {
         type: "LOGINSUCCESS",
         userData

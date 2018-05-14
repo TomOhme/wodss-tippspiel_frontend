@@ -31,7 +31,7 @@ class ChangeMailForm extends React.Component {
                     <Col componentClass={ControlLabel} md={2}>
                         {this.translate('mail')}
                     </Col>
-                    <Col md={10}>
+                    <Col md={5}>
                         <FormControl type="text"
                             placeholder={this.translate('mail')}
                             autoFocus
@@ -41,7 +41,7 @@ class ChangeMailForm extends React.Component {
                 </FormGroup>
 
                 <FormGroup>
-                    <Col mdpush={10} md={2} className="text-right">
+                    <Col md={7} className="text-right">
                         <Button
                             bsStyle="blue"
                             disabled={this.state.mail.length === 0}

@@ -1,7 +1,15 @@
 const initialState = {
     loggedIn: false,
+    bets: [],
+    betGroup: [],
     name: "",
     email: "",
+    reminders: "false",
+    dailyResults: "false",
+    roles: [{
+        id: 0,
+        name: ""
+    }],
     tempmail: "",
     temppassword: "",
     loginPossible: false,
@@ -16,7 +24,7 @@ const userReducer = (state = initialState, action) => {
             console.log(action.type);
             // TODO
             return state;
-        case "CHANGEPASSWORDONSERVER":
+        case "RESETPASSWORDONSERVER":
             console.log(action.type);
             // TODO
             return state;
@@ -32,12 +40,23 @@ const userReducer = (state = initialState, action) => {
             newState.temppassword = action.password;
             newState.loginPossible = isLoginPossible(newState);
             return newState;
+
         case "LOGINSUCCESS":
-            console.log(action.type);
-            console.log(action.userData);
-            //newState.name = action.userData.name;
+            // update logged in
             newState.loggedIn = true;
+
+            // set user data
+            var data = action.userData;
+            newState.bets = data.bets;
+            newState.betGroup = data.betGroup;
+            newState.name = data.name;
+            newState.email = data.email;
+            newState.reminders = data.reminders;
+            newState.dailyResults = data.dailyResults;
+            newState.roles = data.roles;
+
             return newState;
+
         case "SWITCHTOREGISTER":
             console.log(action.type);
             newState.activeScreen = "register";
