@@ -2,6 +2,10 @@ import {
     configuration
 } from '../Configuration';
 
+import {
+    push
+} from 'react-router-redux'
+
 export function setRound(round) {
     return {
         type: "SETCURRENTROUND",
@@ -125,13 +129,15 @@ export function requestLogin() {
                 return response.json()
             })
             .then((userData) => {
-                dispatch(loginSuccess(userData));
+                dispatch(loginSuccess(userData))
             })
+            .then((response) =>
+                dispatch(push("/"))
+            );
     }
 };
 
 export function loginSuccess(userData) {
-    console.log("action");
     return {
         type: "LOGINSUCCESS",
         userData

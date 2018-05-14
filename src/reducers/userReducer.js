@@ -16,7 +16,7 @@ const initialState = {
     activeScreen: "login",
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action, store) => {
     var newState = Object.assign({}, state);
 
     switch (action.type) {

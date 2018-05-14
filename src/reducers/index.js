@@ -6,6 +6,7 @@ import betReducer from './betReducer';
 import playerScoreBoardReducer from './playerScoreBoardReducer';
 import groupScoreBoardReducer from './groupScoreBoardReducer';
 import userReducer from './userReducer';
+import { routerReducer } from 'react-router-redux'
 
 const betApp = combineReducers({
     round: betRoundReducer,
@@ -14,7 +15,8 @@ const betApp = combineReducers({
     playerScores:  playerScoreBoardReducer,
     groupScores:  groupScoreBoardReducer,
     user:  userReducer,
-    locale: localeReducer
+    locale: localeReducer,
+    router: routerReducer
 })
 
 export default betApp;
