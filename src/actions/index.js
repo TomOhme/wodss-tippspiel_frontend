@@ -90,11 +90,14 @@ export function onPasswordChange(event) {
     }
 };
 
-export function requestLogin(username, password) {
+export function requestLogin() {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "/login";
 
-    return (dispatch) => {
+    return (dispatch, getState) => {
+
+        const state = getState();
+
         var request = new Request(url, {
             method: 'POST',
             headers: new Headers({
@@ -111,8 +114,8 @@ export function requestLogin(username, password) {
                 //"Content-Type": "text/plain"
             }),
             body: JSON.stringify({
-                "username": username,
-                "password": password
+                "username": state.user.tempmail,
+                "password": state.user.temppassword
             })
         });
 
@@ -120,23 +123,23 @@ export function requestLogin(username, password) {
 
         fetch(request).then(response => {
                 if (!response.ok) {
-                    throw Error("database error");
+                    throw Error("server error");
                 }
-                // Convert response to JSON
                 return response.json()
             })
-            .then((questionnaire) => {
-                dispatch(loginSuccess(username));
+            .then((userData) => {
+                dispatch(loginSuccess(userData));
                 console.log("success");
             })
 
     }
+    //}, (loginData);
 };
 
-export function loginSuccess(username) {
+export function loginSuccess(userData) {
     return {
         type: "LOGINSUCCESS",
-        username: username
+        userData
     };
 }
 

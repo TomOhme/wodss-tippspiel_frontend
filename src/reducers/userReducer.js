@@ -34,8 +34,8 @@ const userReducer = (state = initialState, action) => {
             return newState;
         case "LOGINSUCCESS":
             console.log(action.type);
-            console.log(action.username);
-            newState.name = action.username;
+            console.log(action.userData);
+            //newState.name = action.userData.name;
             newState.loggedIn = true;
             return newState;
         case "SWITCHTOREGISTER":
