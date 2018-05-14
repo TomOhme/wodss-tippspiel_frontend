@@ -177,3 +177,9 @@ export function playerRankingFetchSuccess(playerRanking) {
         playerRanking
     };
 }
+
+export function logOut() {
+    return {
+        type: "LOGOUT"
+    };
+}

@@ -7,13 +7,12 @@ import rootReducer from './reducers';
 import './index.css';
 import { initialize } from 'react-localize-redux';
 import { addTranslation } from 'react-localize-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk';
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
+import storage from 'redux-persist/lib/storage'
 
 // REDUX-PERSIST
 const persistConfig = {

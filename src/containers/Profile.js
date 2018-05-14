@@ -11,7 +11,7 @@ import {
 
 import ChangeMailForm from './ChangeMailForm';
 
-let Profile = ({ user, translate, dispatch, resetPasswordOnServer }) => (
+let Profile = ({ user, translate, resetPasswordOnServer }) => (
     <div className="container-small">
 
         <PanelGroup accordion id="profilePanel">

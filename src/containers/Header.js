@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
+import { logOut } from '../actions';
 
 import {
   Navbar,
@@ -11,7 +12,7 @@ import {
   PageHeader
 } from 'react-bootstrap';
 
-let Header = ({ user, translate }) => (
+let Header = ({ user, translate, logOut }) => (
   <div>
     <PageHeader>
       {translate('title')}
@@ -51,7 +52,7 @@ let Header = ({ user, translate }) => (
           // show login / logout
           user.loggedIn
             ?
-            <NavItem eventKey={7} href="#" style={{ marginRight: 50 }}>
+            <NavItem eventKey={7} onClick={() => logOut()} href="#" style={{ marginRight: 50 }}>
               {translate('logout')}
             </NavItem>
             :
@@ -69,6 +70,12 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-Header = connect(mapStateToProps)(Header)
+const mapDispatchToProps = dispatch => {
+    return {
+      logOut: () => dispatch(logOut())
+    }
+}
+
+Header = connect(mapStateToProps, mapDispatchToProps)(Header)
 
 export default Header;
