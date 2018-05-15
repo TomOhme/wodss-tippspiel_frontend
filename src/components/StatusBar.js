@@ -1,5 +1,4 @@
 import React from 'react';
-import { configuration } from '../Configuration';
 import { connect } from 'react-redux';
 import { dismissError } from '../actions';
 

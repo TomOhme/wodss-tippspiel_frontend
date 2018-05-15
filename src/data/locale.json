@@ -21,6 +21,10 @@
     "resetpassword": ["Passwort zurücksetzen"],
     "passwordnomatch": ["Passwörter stimmen nicht überein."],
     "username": ["Benutzername"],
+    "reminders": ["Erinnerungen"],
+    "dailyresults": ["Tägliche Resultate"],
+    "on": ["An"],
+    "off": ["Aus"],
 
     "group": ["Gruppe"],
     "ro16": ["Achtelfinale"],

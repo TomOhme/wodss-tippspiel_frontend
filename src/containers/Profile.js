@@ -6,7 +6,9 @@ import { changeMailOnServer, deleteProfileOnServer, resetPasswordOnServer } from
 import {
     Button,
     Panel,
-    PanelGroup
+    PanelGroup,
+    ListGroup,
+    ListGroupItem
 } from 'react-bootstrap';
 
 import ChangeMailForm from './ChangeMailForm';
@@ -14,6 +16,20 @@ import ChangeMailForm from './ChangeMailForm';
 let Profile = ({ user, translate, resetPasswordOnServer }) => (
     <div className="container-small">
 
+        <ListGroup>
+            <ListGroupItem>{translate("username")}: {user.name}</ListGroupItem>
+
+            <ListGroupItem>{translate("mail")}: {user.email}</ListGroupItem>
+
+            <ListGroupItem>
+                    {translate("reminders")}: {(user.reminders) ? (translate("on")) : (translate("off"))}
+            </ListGroupItem>
+
+            <ListGroupItem>
+            {translate("dailyresults")}: {(user.dailyResults) ? (translate("on")) : (translate("off"))}
+            </ListGroupItem>
+        </ListGroup>
+        
         <PanelGroup accordion id="profilePanel">
 
             {/* Change email */}
@@ -36,7 +52,7 @@ let Profile = ({ user, translate, resetPasswordOnServer }) => (
                     </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
-                    <Button 
+                    <Button
                         onClick={() => resetPasswordOnServer()}
                         bsStyle="blue">
                         {translate("resetpassword")}
@@ -52,7 +68,7 @@ let Profile = ({ user, translate, resetPasswordOnServer }) => (
                     </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
-                    <Button 
+                    <Button
                         onClick={() => deleteProfileOnServer()}
                         bsStyle="red">
                         {translate("deleteprofile")}
