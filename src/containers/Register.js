@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { requestRegister } from '../actions';
+import { requestRegister } from '../actions/LoginRegisterActions';
 
 import {
     Button,

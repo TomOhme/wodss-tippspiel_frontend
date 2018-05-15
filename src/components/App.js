@@ -2,12 +2,15 @@ import React from 'react';
 import Header from '../containers/Header';
 import Footer from './Footer';
 import Main from './Main';
+import Loading from './Loading';
 import { configuration } from '../Configuration';
+import { connect } from 'react-redux';
 
-export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {}
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.loading = props.loading;
   }
 
   componentDidMount() {
@@ -33,9 +36,20 @@ export default class App extends React.Component {
   render() {
     return <div className="container">
       <Header />
-      <Main />
+      {console.log(this.loading)}
+      {
+        (this.loading) ? (<Loading />) : (<Main />)
+      }
       <Footer />
     </div>
   }
 
 }
+
+const mapStateToProps = state => ({
+  loading: state.loading
+});
+
+App = connect(mapStateToProps)(App)
+
+export default App;

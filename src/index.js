@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import App from './components/App'
-import rootReducer from './reducers';
+import appReducer from './reducers';
 import './index.css';
 import { initialize } from 'react-localize-redux';
 import { addTranslation } from 'react-localize-redux';
@@ -19,7 +19,7 @@ const persistConfig = {
   key: 'root',
   storage,
 }
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, appReducer)
 
 // REDUX
 const history = createHistory()

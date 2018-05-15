@@ -8,6 +8,7 @@ import groupScoreBoardReducer from './groupScoreBoardReducer';
 import userReducer from './userReducer';
 import { routerReducer } from 'react-router-redux'
 import storage from 'redux-persist/lib/storage'
+import { loadingReducer } from './loadingReducer';
 
 const appReducer = combineReducers({
     round: betRoundReducer,
@@ -17,13 +18,14 @@ const appReducer = combineReducers({
     groupScores: groupScoreBoardReducer,
     user: userReducer,
     locale: localeReducer,
-    router: routerReducer
+    router: routerReducer,
+    loading: loadingReducer
 })
 
 // introduce rootReducer for logout
 const rootReducer = (state, action) => {
 
-    if (action.type === 'LOGOUT') {
+    if (action.type === "LOGOUT") {
         // clean persistance keys so redux-persist storage will wipe
         Object.keys(state).forEach(key => {
             console.log(key);

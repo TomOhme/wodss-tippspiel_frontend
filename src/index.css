@@ -101,3 +101,10 @@ a:active {
 
 .panel-custom {
   background-color: #FFF7E2; }
+
+.loading {
+  min-height: 200px; }
+
+.spinner {
+  margin-top: 50px;
+  vertical-align: middle; }

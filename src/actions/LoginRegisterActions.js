@@ -6,27 +6,25 @@ import {
     push
 } from 'react-router-redux'
 
+import { loading } from './'
+
 export function requestLogin() {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "/login";
 
+
     return (dispatch, getState) => {
+
+        dispatch(loading(true));
 
         const state = getState();
 
         var request = new Request(url, {
             method: 'POST',
             headers: new Headers({
-                //"Access-Control-Allow-Origin": "http://localhost:3000",
-                //"Access-Control-Allow-Origin": serverUrl,
-                //"mode": "cors",
-                //"credentials": "include",
                 "X-Requested-With": "ok",
-                //"Host": "www.schraner.info",
                 "Origin": serverUrl,
-                //"Origin": "http://localhost:3000",
                 "Content-Type": "application/json"
-                //"Content-Type": "text/plain"
             }),
             body: JSON.stringify({
                 "username": state.user.tempmail,
@@ -42,10 +40,9 @@ export function requestLogin() {
             })
             .then((userData) => {
                 dispatch(loginSuccess(userData))
-            })
-            .then((response) =>
+                dispatch(loading(false));
                 dispatch(push("/"))
-            );
+            })
     }
 };
 
