@@ -1,8 +1,8 @@
 // generic actions that are used everywhere
 
-export function loading(bool) {
+export function isLoading(bool) {
     return {
-        type: "LOADING",
-        loading: bool
+        type: "ISLOADING",
+        isLoading: bool
     };
 }

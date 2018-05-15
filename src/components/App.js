@@ -10,7 +10,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.loading = props.loading;
+    this.isLoading = props.isLoading;
   }
 
   componentDidMount() {
@@ -36,9 +36,9 @@ class App extends React.Component {
   render() {
     return <div className="container">
       <Header />
-      {console.log(this.loading)}
+      {console.log(this.isLoading)}
       {
-        (this.loading) ? (<Loading />) : (<Main />)
+        (this.isLoading) ? (<Loading />) : (<Main />)
       }
       <Footer />
     </div>
@@ -47,7 +47,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.loading
+  isLoading: state.isLoading
 });
 
 App = connect(mapStateToProps)(App)

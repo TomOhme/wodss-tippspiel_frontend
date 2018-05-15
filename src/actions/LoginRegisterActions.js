@@ -1,21 +1,16 @@
-import {
-    configuration
-} from '../Configuration';
+import { configuration } from '../Configuration';
 
-import {
-    push
-} from 'react-router-redux'
+import { push } from 'react-router-redux'
 
-import { loading } from './'
+import { isLoading } from './'
 
 export function requestLogin() {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "/login";
 
-
     return (dispatch, getState) => {
 
-        dispatch(loading(true));
+        dispatch(isLoading(true));
 
         const state = getState();
 
@@ -34,13 +29,14 @@ export function requestLogin() {
 
         fetch(request).then(response => {
                 if (!response.ok) {
+                    dispatch(isLoading(false));
                     throw Error("server error");
                 }
                 return response.json()
             })
             .then((userData) => {
                 dispatch(loginSuccess(userData))
-                dispatch(loading(false));
+                dispatch(isLoading(false));
                 dispatch(push("/"))
             })
     }
