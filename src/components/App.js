@@ -10,7 +10,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.isLoading = props.isLoading;
+    this.props = props;
   }
 
   componentDidMount() {
@@ -36,9 +36,9 @@ class App extends React.Component {
   render() {
     return <div className="container">
       <Header />
-      {console.log(this.isLoading)}
+      {console.log(this.props.isLoading)}
       {
-        (this.isLoading) ? (<Loading />) : (<Main />)
+        (this.props.isLoading) ? (<Loading />) : (<Main />)
       }
       <Footer />
     </div>
