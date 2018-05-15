@@ -5,8 +5,6 @@ const initialState = {
     betGroup: [],
     name: "",
     email: "",
-    reminders: "false",
-    dailyResults: "false",
     roles: [
         ""
     ],
@@ -51,8 +49,6 @@ const userReducer = (state = initialState, action, store) => {
             newState.betGroup = data.betGroup;
             newState.name = data.name;
             newState.email = data.email;
-            newState.reminders = data.reminders;
-            newState.dailyResults = data.dailyResults;
             newState.roles = data.roles;
 
             return newState;

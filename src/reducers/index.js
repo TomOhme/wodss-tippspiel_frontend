@@ -30,7 +30,6 @@ const rootReducer = (state, action) => {
     if (action.type === "LOGOUT") {
         // clean persistance keys so redux-persist storage will wipe
         Object.keys(state).forEach(key => {
-            console.log(key);
             storage.removeItem(`persist:${key}`);
         });
 
@@ -45,10 +44,7 @@ const rootReducer = (state, action) => {
         state.isLoading = undefined;
         state.error = undefined;
 
-        // reload page
-        window.location.reload(true);
-
-        // TODO redirect to bets?
+        // TODO redirect to bets
     }
 
     return appReducer(state, action)

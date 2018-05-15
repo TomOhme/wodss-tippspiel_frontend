@@ -46,10 +46,14 @@ export function requestLogin() {
             .then((userData) => {
                 if (userData !== null) {
                     dispatch(loginSuccess(userData))
-                    dispatch(isLoading(false));
                     dispatch(push("/"))
                 }
             })
+            .then(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
+
     }
 };
 
