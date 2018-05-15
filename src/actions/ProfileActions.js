@@ -12,9 +12,8 @@ export function resetPasswordOnServer(name) {
     }
 };
 
-export function deleteProfileOnServer(name) {
+export function deleteProfileOnServer() {
     return {
         type: "DELETEPROFILEONSERVER",
-        name: name
     }
 };

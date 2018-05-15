@@ -36,7 +36,6 @@ class App extends React.Component {
   render() {
     return <div className="container">
       <Header />
-      {console.log(this.props.isLoading)}
       {
         (this.props.isLoading) ? (<Loading />) : (<Main />)
       }

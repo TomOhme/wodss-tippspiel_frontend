@@ -52,6 +52,11 @@ let Profile = ({ user, translate, resetPasswordOnServer }) => (
                     </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
+                    <Button 
+                        onClick={() => deleteProfileOnServer()}
+                        bsStyle="red">
+                        {translate("deleteprofile")}
+                    </Button>
                 </Panel.Body>
             </Panel>
 
