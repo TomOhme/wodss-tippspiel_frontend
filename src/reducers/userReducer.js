@@ -7,10 +7,9 @@ const initialState = {
     email: "",
     reminders: "false",
     dailyResults: "false",
-    roles: [{
-        id: 0,
-        name: ""
-    }],
+    roles: [
+        ""
+    ],
     tempmail: "",
     temppassword: "",
     loginPossible: false,
