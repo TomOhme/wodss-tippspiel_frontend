@@ -9,6 +9,7 @@ import userReducer from './userReducer';
 import { routerReducer } from 'react-router-redux'
 import storage from 'redux-persist/lib/storage'
 import { isLoadingReducer } from './isLoadingReducer';
+import { errorReducer } from './errorReducer';
 
 const appReducer = combineReducers({
     round: betRoundReducer,
@@ -19,7 +20,8 @@ const appReducer = combineReducers({
     user: userReducer,
     locale: localeReducer,
     router: routerReducer,
-    isLoading: isLoadingReducer
+    isLoading: isLoadingReducer,
+    error: errorReducer
 })
 
 // introduce rootReducer for logout
@@ -41,6 +43,7 @@ const rootReducer = (state, action) => {
         state.groupScores = undefined;
         state.user = undefined;
         state.isLoading = undefined;
+        state.error = undefined;
 
         // reload page
         window.location.reload(true);

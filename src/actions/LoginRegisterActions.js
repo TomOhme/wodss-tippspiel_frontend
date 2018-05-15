@@ -1,8 +1,15 @@
-import { configuration } from '../Configuration';
+import {
+    configuration
+} from '../Configuration';
 
-import { push } from 'react-router-redux'
+import {
+    push
+} from 'react-router-redux'
 
-import { isLoading } from './'
+import {
+    isLoading,
+    showError
+} from './'
 
 export function requestLogin() {
     var serverUrl = configuration.getValue("serverUrl");
@@ -30,14 +37,18 @@ export function requestLogin() {
         fetch(request).then(response => {
                 if (!response.ok) {
                     dispatch(isLoading(false));
-                    throw Error("server error");
+
+                    dispatch(showError("Login failed"));
+                    return null;
                 }
                 return response.json()
             })
             .then((userData) => {
-                dispatch(loginSuccess(userData))
-                dispatch(isLoading(false));
-                dispatch(push("/"))
+                if (userData !== null) {
+                    dispatch(loginSuccess(userData))
+                    dispatch(isLoading(false));
+                    dispatch(push("/"))
+                }
             })
     }
 };

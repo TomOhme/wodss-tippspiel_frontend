@@ -3,6 +3,7 @@ import Header from '../containers/Header';
 import Footer from './Footer';
 import Main from './Main';
 import Loading from './Loading';
+import StatusBar from './StatusBar';
 import { configuration } from '../Configuration';
 import { connect } from 'react-redux';
 
@@ -21,11 +22,7 @@ class App extends React.Component {
       return response.json();
     })
       .then(file => {
-        let url = file.url;
-        if (url.slice(-1) === '/') {
-          url = url.slice(0, -1);
-        }
-        configuration.setValue('serverUrl', url);
+        configuration.setValue('serverUrl', file.url);
       })
       .catch(ex => {
         console.log(ex);
@@ -36,6 +33,7 @@ class App extends React.Component {
   render() {
     return <div className="container">
       <Header />
+      <StatusBar />
       {
         (this.props.isLoading) ? (<Loading />) : (<Main />)
       }

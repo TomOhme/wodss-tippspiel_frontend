@@ -1,6 +1,4 @@
 const initialState = [
-    {}
-    /*
     {
         number: 1,
         name: "hase",
@@ -16,7 +14,6 @@ const initialState = [
         name: "zebra",
         points: 222
     }
-    */
 ];
 
 const playerScoreBoardReducer = (state = initialState, action) => {

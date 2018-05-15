@@ -108,3 +108,8 @@ a:active {
 .spinner {
   margin-top: 50px;
   vertical-align: middle; }
+
+.error-box {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto; }

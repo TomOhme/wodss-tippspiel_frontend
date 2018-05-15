@@ -6,3 +6,16 @@ export function isLoading(bool) {
         isLoading: bool
     };
 }
+
+export function dismissError() {
+    return {
+        type: "DISMISSERROR",
+    };
+}
+
+export function showError(message) {
+    return {
+        type: "SHOWERROR",
+        message
+    };
+}
