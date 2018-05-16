@@ -11,6 +11,7 @@ class StatusBar extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
+        this.props.error.showError = false;
     }
 
     render() {

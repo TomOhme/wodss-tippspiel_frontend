@@ -13,7 +13,7 @@ import {
 
 export function requestLogin() {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "/login";
+    var url = serverUrl + "login";
 
     return (dispatch, getState) => {
 
@@ -35,25 +35,24 @@ export function requestLogin() {
         });
 
         fetch(request).then(response => {
-                if (!response.ok) {
-                    dispatch(isLoading(false));
-
-                    dispatch(showError("Login failed"));
-                    return null;
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error("Login failed");
                 }
-                return response.json()
             })
             .then((userData) => {
-                if (userData !== null) {
-                    dispatch(loginSuccess(userData))
-                    dispatch(push("/"))
-                }
+                dispatch(loginSuccess(userData))
+                dispatch(push("/"))
+                //window
             })
-            .then(() => {
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
                 // disable spinner regardless
                 dispatch(isLoading(false));
             })
-
     }
 };
 
