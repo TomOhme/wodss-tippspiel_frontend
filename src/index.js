@@ -16,7 +16,7 @@ import storage from 'redux-persist/lib/storage'
 import _ from 'underscore';
 
 // FOR DEVELOPMENT TESTS
-document._ = _;
+window._ = _;
 
 // REDUX-PERSIST
 const persistConfig = {

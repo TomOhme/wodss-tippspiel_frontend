@@ -1,13 +1,17 @@
+import _ from 'underscore';
+
 const initialState = {
     loggedIn: false,
     //loggedIn: true,
     bets: [],
     betGroup: [],
-    name: "",
+    name: "test",
     email: "",
     roles: [
         ""
     ],
+    dailyresults: false,
+    reminders: false,
     tempmail: "",
     temppassword: "",
     loginPossible: false,
@@ -49,7 +53,11 @@ const userReducer = (state = initialState, action, store) => {
             newState.betGroup = data.betGroup;
             newState.name = data.name;
             newState.email = data.email;
-            newState.roles = data.roles;
+
+            // flatten roles to strings of role name
+            newState.roles = _.map(data.roles, function (role) {
+                return role.name
+            });
 
             return newState;
 

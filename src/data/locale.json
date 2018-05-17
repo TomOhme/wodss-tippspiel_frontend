@@ -23,6 +23,9 @@
     "username": ["Benutzername"],
     "reminders": ["Erinnerungen"],
     "dailyresults": ["Tägliche Resultate"],
+    "roles": ["Rollen"],
+    "ROLE_USER": ["Benutzer"],
+    "ROLE_ADMIN": ["Administrator"],
     "on": ["An"],
     "off": ["Aus"],
 

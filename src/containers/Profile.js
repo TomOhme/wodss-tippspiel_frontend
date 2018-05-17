@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
 import { changeMailOnServer, deleteProfileOnServer, resetPasswordOnServer } from '../actions/ProfileActions';
+import _ from 'underscore';
 
 import {
     Button,
@@ -16,6 +17,8 @@ import ChangeMailForm from './ChangeMailForm';
 let Profile = ({ user, translate, resetPasswordOnServer }) => (
     <div className="container-small">
 
+        {/* TODO show when user is not logged in, don't show data */}
+
         <ListGroup>
             <ListGroupItem>{translate("username")}: {user.name}</ListGroupItem>
 
@@ -27,6 +30,15 @@ let Profile = ({ user, translate, resetPasswordOnServer }) => (
 
             <ListGroupItem>
             {translate("dailyresults")}: {(user.dailyResults) ? (translate("on")) : (translate("off"))}
+            </ListGroupItem>
+
+            <ListGroupItem>
+                    {translate("roles")}: {
+                        _.each(user.roles, function(role) {
+                            translate(role); // TODO fix translation
+                        })
+                    }
+                    {console.log(user.roles)}
             </ListGroupItem>
         </ListGroup>
         

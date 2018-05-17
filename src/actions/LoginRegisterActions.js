@@ -35,16 +35,16 @@ export function requestLogin() {
         });
 
         fetch(request).then(response => {
-                if (response.ok) {
-                    return response.json()
-                } else {
-                    throw new Error("Login failed");
-                }
-            })
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw new Error("Login failed");
+            }
+        })
             .then((userData) => {
                 dispatch(loginSuccess(userData))
-                dispatch(push("/"))
-                //window
+                dispatch(push("/")) // change url to home
+                window.location.reload(); // reload home to display
             })
             .catch((error) => {
                 dispatch(showError(error.message));
