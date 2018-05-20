@@ -1,1 +1,65 @@
-[]
+[{
+        "id": 57,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "guest": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "date": "6.7.",
+        "time": "16:00",
+        "place": "nis"
+    },
+    {
+        "id": 58,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "guest": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "date": "6.7.",
+        "time": "20:00",
+        "place": "kas"
+    },
+    {
+        "id": 59,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "guest": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "date": "7.7.",
+        "time": "16:00",
+        "place": "sam"
+    },
+    {
+        "id": 60,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "guest": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "date": "7.7.",
+        "time": "20:00",
+        "place": "sot"
+    }
+]

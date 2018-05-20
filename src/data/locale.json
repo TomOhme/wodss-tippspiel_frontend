@@ -102,6 +102,8 @@
     "sau": ["Saudi-Arabien"],
     "kor": ["Südkorea"],
 
+    "tbd": ["Ausstehend"],
+
     "rule1": ["* Tippen nur bis vor Spielbeginn"],
     "rule2": ["* Tipps von anderen erst sichtbar wenn Spiel begonnen hat"],
     "rule3": ["* 5 Punkte bei korrektem Sieger Tipp"],

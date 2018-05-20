@@ -1,1 +1,33 @@
-[]
+[{
+        "id": 61,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "guest": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "date": "10.7.",
+        "time": "20:00",
+        "place": "san"
+    },
+    {
+        "id": 62,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "guest": {
+            "name": "tbd",
+            "bet": 0
+        },
+        "date": "11.7.",
+        "time": "20:00",
+        "place": "mos"
+    }
+]
