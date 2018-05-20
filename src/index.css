@@ -22,7 +22,7 @@ a:active {
   color: #661B20; }
 
 .navbar-bar-custom {
-  background-color: #D9C185; }
+  background-color: #8ed5ff; }
 
 .nav-item {
   background-color: #A01B20; }
@@ -59,7 +59,7 @@ a:active {
 .border-gold {
   border-width: 3px;
   border-style: solid;
-  border-color: #D9C185;
+  border-color: #DDF7FF;
   padding: 10px; }
 
 .finished-labels {
@@ -69,7 +69,8 @@ a:active {
 .label {
   margin-left: 2px;
   margin-right: 2px;
-  background: #D9C185; }
+  color: black;
+  background: #DDF7FF; }
 
 .game {
   margin-bottom: 18px; }
@@ -100,7 +101,7 @@ a:active {
 .bet-navigation {
   margin-top: 10px;
   margin-bottom: 20px;
-  background-color: #FFF7E2; }
+  background-color: #DDF7FF; }
 
 .panel-custom {
   background-color: #FFF7E2; }
