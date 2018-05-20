@@ -7,13 +7,7 @@ import Game from './Game';
 
 let Bets = ({ currentRound, bets }) => (
     <div>
-        {/* <Game game={bets["A"][0]} key={0} /> */}
         {
-            /*
-            _.each(bets["A"], (game) => {
-                return <Game game={game} key={game.id} />
-            })
-            */
            Object.values(bets[currentRound]).map(game => {
                 console.log(bets["A"])
                 return <Game game={game} key={game.id} />

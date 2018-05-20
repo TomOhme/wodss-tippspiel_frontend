@@ -1,5 +1,18 @@
+import A from '../data/A.json';
+import B from '../data/B.json';
+import C from '../data/C.json';
+import D from '../data/D.json';
+import E from '../data/E.json';
+import F from '../data/F.json';
+import G from '../data/G.json';
+import H from '../data/H.json';
+import ro16 from '../data/ro16.json';
+import ro8 from '../data/ro8.json';
+import semi from '../data/semi.json';
+import finals from '../data/finals.json';
+
 const initialState = {
-    /*
+/*
     0: {
         saved: true,
         finished: true,
@@ -20,163 +33,19 @@ const initialState = {
         difference: "2",
         total: "5"
     },
-    1: {
-        saved: true,
-        finished: false,
-        home: {
-            name: "kor",
-            bet: 0
-        },
-        guest: {
-            name: "fra",
-            bet: 0
-        },
-        date: "22.6.",
-        time: "21:00",
-        place: "sot",
-        winner: "tbd",
-        homegoals: "0",
-        guestgoals: "0",
-        difference: "0",
-        total: "0"
-    },
-    */
-    "A": [
-        {
-            id: 1,
-            saved: true,
-            finished: false,
-            home: {
-                name: "rus",
-                bet: 0
-            },
-            guest: {
-                name: "sau",
-                bet: 0
-            },
-            date: "14.6.",
-            time: "18:00",
-            place: "mol"
-        },
-        {
-            id: 2,
-            saved: true,
-            finished: false,
-            home: {
-                name: "egy",
-                bet: 0
-            },
-            guest: {
-                name: "uru",
-                bet: 0
-            },
-            date: "15.6.",
-            time: "14:00",
-            place: "jek"
-        },
-        {
-            id: 3,
-            saved: true,
-            finished: false,
-            home: {
-                name: "rus",
-                bet: 0
-            },
-            guest: {
-                name: "egy",
-                bet: 0
-            },
-            date: "19.6.",
-            time: "21:00",
-            place: "san"
-        },
-        {
-            id: 4,
-            saved: true,
-            finished: false,
-            home: {
-                name: "uru",
-                bet: 0
-            },
-            guest: {
-                name: "sau",
-                bet: 0
-            },
-            date: "20.6.",
-            time: "18:00",
-            place: "ros"
-        },
-        {
-            id: 5,
-            saved: true,
-            finished: false,
-            home: {
-                name: "uru",
-                bet: 0
-            },
-            guest: {
-                name: "rus",
-                bet: 0
-            },
-            date: "25.6.",
-            time: "16:00",
-            place: "sam"
-        },
-        {
-            id: 6,
-            saved: true,
-            finished: false,
-            home: {
-                name: "sau",
-                bet: 0
-            },
-            guest: {
-                name: "egy",
-                bet: 0
-            },
-            date: "25.6.",
-            time: "16:00",
-            place: "wol"
-        },
-    ],
-    "B": [
-        {
-            id: -1,
-            saved: true,
-            finished: false,
-            home: {
-                name: "egy",
-                bet: 0
-            },
-            guest: {
-                name: "uru",
-                bet: 0
-            },
-            date: "15.6.",
-            time: "14:00",
-            place: "jek"
-        }
-    ],
-    "C": [
-    ],
-    "D": [
-    ],
-    "E": [
-    ],
-    "F": [
-    ],
-    "G": [
-    ],
-    "H": [
-    ],
-    "ro16": [
-    ],
-    "ro8": [
-    ],
-    "semi": [
-    ],
-    "finals": [
-    ]
+*/
+    "A": A,
+    "B": B,
+    "C": C,
+    "D": D,
+    "E": E,
+    "F": F,
+    "G": G,
+    "H": H,
+    "ro16": ro16,
+    "ro8": ro8,
+    "semi": semi,
+    "finals": finals
 };
 
 const betReducer = (state = initialState, action) => {

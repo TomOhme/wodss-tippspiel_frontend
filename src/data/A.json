@@ -1,0 +1,97 @@
+[{
+        "id": 1,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "rus",
+            "bet": 0
+        },
+        "guest": {
+            "name": "sau",
+            "bet": 0
+        },
+        "date": "14.6.",
+        "time": "18:00",
+        "place": "mol"
+    },
+    {
+        "id": 2,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "egy",
+            "bet": 0
+        },
+        "guest": {
+            "name": "uru",
+            "bet": 0
+        },
+        "date": "15.6.",
+        "time": "14:00",
+        "place": "jek"
+    },
+    {
+        "id": 3,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "rus",
+            "bet": 0
+        },
+        "guest": {
+            "name": "egy",
+            "bet": 0
+        },
+        "date": "19.6.",
+        "time": "21:00",
+        "place": "san"
+    },
+    {
+        "id": 4,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "uru",
+            "bet": 0
+        },
+        "guest": {
+            "name": "sau",
+            "bet": 0
+        },
+        "date": "20.6.",
+        "time": "18:00",
+        "place": "ros"
+    },
+    {
+        "id": 5,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "uru",
+            "bet": 0
+        },
+        "guest": {
+            "name": "rus",
+            "bet": 0
+        },
+        "date": "25.6.",
+        "time": "16:00",
+        "place": "sam"
+    },
+    {
+        "id": 6,
+        "saved": true,
+        "finished": false,
+        "home": {
+            "name": "sau",
+            "bet": 0
+        },
+        "guest": {
+            "name": "egy",
+            "bet": 0
+        },
+        "date": "25.6.",
+        "time": "16:00",
+        "place": "wol"
+    }
+]
