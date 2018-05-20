@@ -16,16 +16,16 @@ a:visited {
   color: black; }
 
 a:hover {
-  color: #B81319; }
+  color: #076DAB; }
 
 a:active {
-  color: #661B20; }
+  color: #014266; }
 
 .navbar-bar-custom {
-  background-color: #8ed5ff; }
+  background-color: #8ED5FF; }
 
 .nav-item {
-  background-color: #A01B20; }
+  background-color: #ea8f95; }
 
 .country {
   font-size: 140%;
@@ -45,12 +45,12 @@ a:active {
   margin-right: auto; }
 
 .background-red {
-  background-color: #A01B20; }
+  background-color: #ea8f95; }
 
 .border-red {
   border-width: 3px;
   border-style: solid;
-  border-color: #A01B20;
+  border-color: #ea8f95;
   padding: 10px; }
 
 .background-gold {
@@ -59,8 +59,9 @@ a:active {
 .border-gold {
   border-width: 3px;
   border-style: solid;
-  border-color: #DDF7FF;
-  padding: 10px; }
+  border-color: #8ED5FF;
+  padding: 10px;
+  border-radius: 5px; }
 
 .finished-labels {
   text-align: center;
@@ -88,20 +89,21 @@ a:active {
 
 .btn-red {
   color: white;
-  background-color: #A01B20; }
+  background-color: #ea8f95; }
 
 .btn-gold {
   color: white;
   background-color: #D9C185; }
 
 .btn-green {
-  color: white;
-  background-color: #41C20E; }
+  color: black;
+  background-color: #b3eaa4; }
 
 .bet-navigation {
   margin-top: 10px;
   margin-bottom: 20px;
-  background-color: #DDF7FF; }
+  background-color: #DDF7FF;
+  border-radius: 5px; }
 
 .panel-custom {
   background-color: #FFF7E2; }
