@@ -33,6 +33,7 @@
     "ro16": ["Achtelfinale"],
     "ro8": ["Viertelfinale"],
     "semifinals": ["Halbfinale"],
+    "gameforthird": ["Spiel um Platz 3"],
     "finals": ["Finale"],
 
     "betresults": ["Tippresultate"],

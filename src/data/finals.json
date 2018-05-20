@@ -1,5 +1,6 @@
 [{
         "id": 63,
+        "name": "gameforthird",
         "saved": true,
         "finished": false,
         "home": {
@@ -16,6 +17,7 @@
     },
     {
         "id": 64,
+        "name": "finals",
         "saved": true,
         "finished": false,
         "home": {

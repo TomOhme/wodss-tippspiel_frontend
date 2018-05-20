@@ -119,3 +119,7 @@ a:active {
 
 .fix-pull {
   margin-right: 60px; }
+
+.game-name {
+  font-weight: bold;
+  text-align: center; }
