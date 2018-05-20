@@ -1,17 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
+import _ from 'underscore';
 
 import Game from './Game';
 
 let Bets = ({ currentRound, bets }) => (
     <div>
-        {currentRound} TODO
-
+        {/* <Game game={bets["A"][0]} key={0} /> */}
         {
-            Object.keys(bets).map(key => {
-                return <Game id={key} key={key} />
+            /*
+            _.each(bets["A"], (game) => {
+                return <Game game={game} key={game.id} />
             })
+            */
+           Object.values(bets[currentRound]).map(game => {
+                console.log(bets["A"])
+                return <Game game={game} key={game.id} />
+           }) 
         }
     </div>
 );

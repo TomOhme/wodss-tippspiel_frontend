@@ -1,5 +1,5 @@
 const initialState = {
-    currentGroup: "A",
+    currentRound: "A",
 };
 
 const betRoundReducer = (state = initialState, action) => {

@@ -52,11 +52,11 @@ let Header = ({ user, translate, logOut }) => (
           // show login / logout
           user.loggedIn
             ?
-            <NavItem eventKey={7} onClick={() => logOut()} href="#" style={{ marginRight: 50 }}>
+            <NavItem eventKey={7} onClick={() => logOut()} href="#" className="navbar-right fix-pull">
               {translate('logout')}
             </NavItem>
             :
-            <NavItem eventKey={8} href="/login" style={{ marginRight: 50 }}>
+            <NavItem eventKey={8} href="/login" className="navbar-right fix-pull" >
               {translate('login')}
             </NavItem>
         }

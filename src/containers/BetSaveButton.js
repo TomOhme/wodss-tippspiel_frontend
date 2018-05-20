@@ -7,13 +7,13 @@ import {
     Button,
 } from 'react-bootstrap';
 
-let BetSaveButton = ({ id, bets, dispatch, translate }) => (
+let BetSaveButton = ({ game, dispatch, translate }) => (
     <Button
-        className="pull-right"
-        onClick={(event) => dispatch(save(event, id))}
-        disabled={bets[id].saved}
-        bsStyle={bets[id].saved ? 'green' : 'red'}>
-        {translate(bets[id].saved ? 'saved' : 'notsaved')}
+        className="pull-right fix-pull"
+        onClick={(event) => dispatch(save(event, game.id))}
+        disabled={game.saved}
+        bsStyle={game.saved ? 'green' : 'red'}>
+        {translate(game.saved ? 'saved' : 'notsaved')}
     </Button>
 );
 

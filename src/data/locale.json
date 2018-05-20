@@ -31,7 +31,7 @@
 
     "group": ["Gruppe"],
     "ro16": ["Achtelfinale"],
-    "quarterfinals": ["Viertelfinale"],
+    "ro8": ["Viertelfinale"],
     "semifinals": ["Halbfinale"],
     "finals": ["Finale"],
 

@@ -1,6 +1,9 @@
 * {
   font-family: 'Oxygen', sans-serif; }
 
+body {
+  overflow-y: scroll; }
+
 /* sticky footer */
 .footer {
   height: 60px;
@@ -113,3 +116,6 @@ a:active {
   max-width: 760px;
   margin-left: auto;
   margin-right: auto; }
+
+.fix-pull {
+  margin-right: 60px; }

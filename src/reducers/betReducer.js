@@ -1,5 +1,6 @@
 const initialState = {
-    "0": {
+    /*
+    0: {
         saved: true,
         finished: true,
         home: {
@@ -19,7 +20,7 @@ const initialState = {
         difference: "2",
         total: "5"
     },
-    "1": {
+    1: {
         saved: true,
         finished: false,
         home: {
@@ -38,7 +39,144 @@ const initialState = {
         guestgoals: "0",
         difference: "0",
         total: "0"
-    }
+    },
+    */
+    "A": [
+        {
+            id: 1,
+            saved: true,
+            finished: false,
+            home: {
+                name: "rus",
+                bet: 0
+            },
+            guest: {
+                name: "sau",
+                bet: 0
+            },
+            date: "14.6.",
+            time: "18:00",
+            place: "mol"
+        },
+        {
+            id: 2,
+            saved: true,
+            finished: false,
+            home: {
+                name: "egy",
+                bet: 0
+            },
+            guest: {
+                name: "uru",
+                bet: 0
+            },
+            date: "15.6.",
+            time: "14:00",
+            place: "jek"
+        },
+        {
+            id: 3,
+            saved: true,
+            finished: false,
+            home: {
+                name: "rus",
+                bet: 0
+            },
+            guest: {
+                name: "egy",
+                bet: 0
+            },
+            date: "19.6.",
+            time: "21:00",
+            place: "san"
+        },
+        {
+            id: 4,
+            saved: true,
+            finished: false,
+            home: {
+                name: "uru",
+                bet: 0
+            },
+            guest: {
+                name: "sau",
+                bet: 0
+            },
+            date: "20.6.",
+            time: "18:00",
+            place: "ros"
+        },
+        {
+            id: 5,
+            saved: true,
+            finished: false,
+            home: {
+                name: "uru",
+                bet: 0
+            },
+            guest: {
+                name: "rus",
+                bet: 0
+            },
+            date: "25.6.",
+            time: "16:00",
+            place: "sam"
+        },
+        {
+            id: 6,
+            saved: true,
+            finished: false,
+            home: {
+                name: "sau",
+                bet: 0
+            },
+            guest: {
+                name: "egy",
+                bet: 0
+            },
+            date: "25.6.",
+            time: "16:00",
+            place: "wol"
+        },
+    ],
+    "B": [
+        {
+            id: -1,
+            saved: true,
+            finished: false,
+            home: {
+                name: "egy",
+                bet: 0
+            },
+            guest: {
+                name: "uru",
+                bet: 0
+            },
+            date: "15.6.",
+            time: "14:00",
+            place: "jek"
+        }
+    ],
+    "C": [
+    ],
+    "D": [
+    ],
+    "E": [
+    ],
+    "F": [
+    ],
+    "G": [
+    ],
+    "H": [
+    ],
+    "ro16": [
+    ],
+    "ro8": [
+    ],
+    "semi": [
+    ],
+    "finals": [
+    ]
 };
 
 const betReducer = (state = initialState, action) => {
@@ -60,11 +198,9 @@ const betReducer = (state = initialState, action) => {
 
             if (action.team === 'home') {
                 newState[action.id].home.bet = newVal;
-            }
-            else if (action.team === 'guest') {
+            } else if (action.team === 'guest') {
                 newState[action.id].guest.bet = newVal;
-            }
-            else {
+            } else {
                 return state; // wrong team
             }
 

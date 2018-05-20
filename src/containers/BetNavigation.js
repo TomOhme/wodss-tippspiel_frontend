@@ -42,8 +42,8 @@ let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentGroup
             <NavItem eventKey={"ro16"} onSelect={() => { dispatch(setRound("ro16")) }}>
                 {translate('ro16')}
             </NavItem>
-            <NavItem eventKey={"quarter"} onSelect={() => { dispatch(setRound("quarter")) }}>
-                {translate('quarterfinals')}
+            <NavItem eventKey={"ro8"} onSelect={() => { dispatch(setRound("ro8")) }}>
+                {translate('ro8')}
             </NavItem>
             <NavItem eventKey={"semi"} onSelect={() => { dispatch(setRound("semi")) }}>
                 {translate('semifinals')}

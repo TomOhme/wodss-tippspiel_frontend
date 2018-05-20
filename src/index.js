@@ -15,9 +15,6 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import _ from 'underscore';
 
-// FOR DEVELOPMENT TESTS
-window._ = _;
-
 // REDUX-PERSIST
 const persistConfig = {
   key: 'root',
@@ -47,6 +44,10 @@ store.dispatch(initialize(languages, { defaultLanguage: 'de' }));
 
 const localejson = require('./data/locale.json');
 store.dispatch(addTranslation(localejson));
+
+// FOR DEVELOPMENT TESTS
+window._ = _;
+window.dispatch = store.dispatch; // for firing dispatch manually
 
 // make store available in all container components through Provider
 render(
