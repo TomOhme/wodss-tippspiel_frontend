@@ -85,13 +85,13 @@ export function getBetGroupsFromServer() {
 
         var request = new Request(url, {
             method: "GET",
+            Origin: serverUrl,
+            credentials: "include",
             headers: new Headers({
                 "X-Requested-With": "ok",
-                "Origin": serverUrl,
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
             })
         });
-
-        console.log(request);
 
         fetch(request).then(response => {
                 if (response.ok) {
@@ -102,7 +102,7 @@ export function getBetGroupsFromServer() {
             })
             .then((betGroupsData) => {
                 dispatch(getBetGroupsSuccess(betGroupsData));
-                window.location.reload();
+                //window.location.reload();
             })
             .catch((error) => {
                 dispatch(showError(error.message));

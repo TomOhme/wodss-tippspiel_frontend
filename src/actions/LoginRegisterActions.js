@@ -23,9 +23,10 @@ export function requestLogin() {
 
         var request = new Request(url, {
             method: 'POST',
+            Origin: serverUrl,
+            credentials: "include",
             headers: new Headers({
                 "X-Requested-With": "ok",
-                "Origin": serverUrl,
                 "Content-Type": "application/json"
             }),
             body: JSON.stringify({
@@ -37,6 +38,7 @@ export function requestLogin() {
         console.log(request);
 
         fetch(request).then(response => {
+            console.log(response);
                 if (response.ok) {
                     return response.json()
                 } else {
@@ -44,9 +46,9 @@ export function requestLogin() {
                 }
             })
             .then((userData) => {
+                window.data = userData;
                 dispatch(loginSuccess(userData))
                 dispatch(push("/")) // change url to home
-                window.location.reload(); // reload home to display
             })
             .catch((error) => {
                 dispatch(showError(error.message));
