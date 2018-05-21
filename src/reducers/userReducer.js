@@ -1,6 +1,7 @@
 import _ from 'underscore';
 
 const initialState = {
+    id: 0,
     loggedIn: false,
     //loggedIn: true,
     bets: [],
@@ -49,6 +50,10 @@ const userReducer = (state = initialState, action, store) => {
 
             // set user data
             var data = action.userData;
+
+            console.log(data);
+
+            newState.id = data.id;
             newState.bets = data.bets;
             newState.betGroup = data.betGroup;
             newState.name = data.name;

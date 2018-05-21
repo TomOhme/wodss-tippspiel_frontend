@@ -40,7 +40,6 @@ export function saveBetOnServer(event, round, game, betId) {
         if (betId === undefined) {
             // new bet
             method = "POST";
-            //request = ...
         } else {
             // update bet
             method = "PUT";
@@ -48,20 +47,19 @@ export function saveBetOnServer(event, round, game, betId) {
             url += betId;
         }
 
-            request = new Request(url, {
-                // TODO
-                method: "PUT",
-                headers: new Headers({
-                    "X-Requested-With": "ok",
-                    "Origin": serverUrl,
-                    "Content-Type": "application/json"
-                }),
-                body: JSON.stringify({
-                    "id": game.id,
-                    "home": game.home,
-                    "guest": game.guest 
-                })
-            });
+        request = new Request(url, {
+            method: method,
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "Origin": serverUrl,
+                "Content-Type": "application/json"
+            }),
+            body: JSON.stringify({
+                "id": game.id,
+                "home": game.home,
+                "guest": game.guest
+            })
+        });
 
         fetch(request).then(response => {
                 if (response.ok) {
@@ -91,5 +89,50 @@ export function saveSuccess(round, id) {
         type: "SAVESUCCESS",
         round: round,
         id: id
+    }
+}
+
+export function getBetsForUser() {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "user/bets";
+
+    return (dispatch, getState) => {
+        dispatch(isLoading(true));
+        const state = getState();
+
+        var request = new Request(url, {
+            method: "GET",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "Origin": serverUrl
+            }),
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else if (response.status === 404) {
+                    return response.json();
+                } else {
+                    throw new Error("Bet fetch on server failed");
+                }
+            })
+            .then((response) => {
+                if (response === 404) {
+                    return; // no bets available, do nothing
+                }
+
+                response.forEach(element => {
+                    // TODO
+                    // is this an array or object? includes .bets?
+                });
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
     }
 }
