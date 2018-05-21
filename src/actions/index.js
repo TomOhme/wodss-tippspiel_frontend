@@ -19,3 +19,16 @@ export function showError(message) {
         message
     };
 }
+
+export function dismissMessage() {
+    return {
+        type: "DISMISSMESSAGE",
+    };
+}
+
+export function showMessage(message) {
+    return {
+        type: "SHOWMESSAGE",
+        message
+    };
+}

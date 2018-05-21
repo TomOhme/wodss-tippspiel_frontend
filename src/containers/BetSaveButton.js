@@ -10,7 +10,7 @@ import {
 let BetSaveButton = ({ currentRound, game, dispatch, translate }) => (
     <Button
         className="pull-right fix-pull"
-        onClick={(event) => dispatch(saveBetOnServer(event, currentRound, game.id))}
+        onClick={(event) => dispatch(saveBetOnServer(event, currentRound, game))}
         disabled={game.saved}
         bsStyle={game.saved ? 'green' : 'red'}>
         {translate(game.saved ? 'saved' : 'notsaved')}

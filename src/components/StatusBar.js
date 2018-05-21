@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dismissError } from '../actions';
+import { dismissError, dismissMessage } from '../actions';
 
 import {
     Alert
@@ -11,16 +11,26 @@ class StatusBar extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.props.error.showError = false;
+        this.props.notification.showError = false;
+        this.props.notification.showMessage = false;
     }
 
     render() {
         return <div>
             {
-                (this.props.error.showError)
+                (this.props.notification.showMessage)
+                ?
+                <Alert className="error-box" bsStyle="basic" onDismiss={() => this.props.dismissMessage()}>
+                    {this.props.notification.message}
+                </Alert>
+                :
+                null
+            }
+            {
+                (this.props.notification.showError)
                 ?
                 <Alert className="error-box" bsStyle="danger" onDismiss={() => this.props.dismissError()}>
-                    {this.props.error.message}
+                    {this.props.notification.message}
                 </Alert>
                 :
                 null
@@ -31,12 +41,13 @@ class StatusBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    error: state.error
+    notification: state.notification
 });
 
 const mapDispatchToProps = dispatch => {
     return {
-        dismissError: () => dispatch(dismissError())
+        dismissError: () => dispatch(dismissError()),
+        dismissMessage: () => dispatch(dismissMessage())
     }
 }
 

@@ -9,7 +9,7 @@ import userReducer from './userReducer';
 import { routerReducer } from 'react-router-redux'
 import storage from 'redux-persist/lib/storage'
 import { isLoadingReducer } from './isLoadingReducer';
-import { errorReducer } from './errorReducer';
+import { notificationReducer } from './notificationReducer';
 
 const appReducer = combineReducers({
     round: betRoundReducer,
@@ -21,7 +21,7 @@ const appReducer = combineReducers({
     locale: localeReducer,
     router: routerReducer,
     isLoading: isLoadingReducer,
-    error: errorReducer
+    notification: notificationReducer 
 })
 
 // introduce rootReducer for logout
@@ -42,7 +42,7 @@ const rootReducer = (state, action) => {
         state.groupScores = undefined;
         state.user = undefined;
         state.isLoading = undefined;
-        state.error = undefined;
+        state.notification = undefined;
 
         // TODO redirect to bets
     }

@@ -4,7 +4,8 @@ import {
 
 import {
     isLoading,
-    showError
+    showError,
+    showMessage
 } from './'
 
 
@@ -25,39 +26,53 @@ export function setScore(event, round, team, id) {
     }
 };
 
-export function saveBetOnServer(event, round, id) {
+export function saveBetOnServer(event, round, game, betId) {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "login";
+    var url = serverUrl + "bet";
 
     return (dispatch, getState) => {
-
         dispatch(isLoading(true));
-
         const state = getState();
 
-        var request = new Request(url, {
-            // TODO
-            method: 'POST',
-            headers: new Headers({
-                "X-Requested-With": "ok",
-                "Origin": serverUrl,
-                "Content-Type": "application/json"
-            }),
-            body: JSON.stringify({
-                "username": state.user.tempmail,
-                "password": state.user.temppassword
-            })
-        });
+        var request;
+        var method;
+
+        if (betId === undefined) {
+            // new bet
+            method = "POST";
+            //request = ...
+        } else {
+            // update bet
+            method = "PUT";
+            url += "?id=";
+            url += betId;
+        }
+
+            request = new Request(url, {
+                // TODO
+                method: "PUT",
+                headers: new Headers({
+                    "X-Requested-With": "ok",
+                    "Origin": serverUrl,
+                    "Content-Type": "application/json"
+                }),
+                body: JSON.stringify({
+                    "id": game.id,
+                    "home": game.home,
+                    "guest": game.guest 
+                })
+            });
 
         fetch(request).then(response => {
                 if (response.ok) {
+                    dispatch(showMessage("Bet update success")); // TODO german with translate()
                     return response.json()
                 } else {
-                    throw new Error("Login failed");
+                    throw new Error("Bet update on server failed");
                 }
             })
             .then((userData) => {
-                dispatch(saveSuccess(round, id));
+                dispatch(saveSuccess(round, game.id));
                 //dispatch(push("/")) // change url to home
                 //window.location.reload(); // reload page to display TODO necessary?
             })

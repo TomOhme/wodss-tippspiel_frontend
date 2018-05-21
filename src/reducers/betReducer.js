@@ -52,6 +52,7 @@ const initialState = {
 
 const betReducer = (state = initialState, action) => {
     var newState = Object.assign({}, state);
+    var newGame;
 
     switch (action.type) {
         case 'SETSCORE':
@@ -62,7 +63,7 @@ const betReducer = (state = initialState, action) => {
                 return state;
             }
 
-            var newGame = _.findWhere(newState[action.round], {
+            newGame = _.findWhere(newState[action.round], {
                 id: action.id
             });
 
@@ -78,9 +79,8 @@ const betReducer = (state = initialState, action) => {
 
             return newState;
         case 'SAVESUCCESS':
-            // TODO
             // set saved to true when UPDATE was successful
-            var newGame = _.findWhere(newState[action.round], {
+            newGame = _.findWhere(newState[action.round], {
                 id: action.id
             });
             newGame.saved = true;
