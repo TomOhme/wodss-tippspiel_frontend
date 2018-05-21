@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
 import { logOut } from '../actions/LoginRegisterActions';
+import _ from 'underscore';
 
 import {
   Navbar,
@@ -33,9 +34,15 @@ let Header = ({ user, translate, logOut }) => (
         <NavItem eventKey={4} href="/rules">
           {translate('rules')}
         </NavItem>
-        <NavItem eventKey={5} href="/admin" hidden={false}>
-          {translate('admin')}
-        </NavItem>
+        {
+          (_.contains(user.roles, "ROLE_ADMIN"))
+            ?
+            <NavItem eventKey={5} href="/admin">
+              {translate('admin')}
+            </NavItem>
+            :
+            null
+        }
       </Nav>
       <Nav pullRight>
         {
@@ -71,9 +78,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-    return {
-      logOut: () => dispatch(logOut())
-    }
+  return {
+    logOut: () => dispatch(logOut())
+  }
 }
 
 Header = connect(mapStateToProps, mapDispatchToProps)(Header)
