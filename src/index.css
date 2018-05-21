@@ -1,5 +1,6 @@
 * {
-  font-family: 'Oxygen', sans-serif; }
+  font-family: 'Oxygen', sans-serif;
+  color: black; }
 
 body {
   overflow-y: scroll; }
@@ -28,8 +29,7 @@ a:active {
   background-color: #ea8f95; }
 
 .country {
-  font-size: 140%;
-  font-weight: bold; }
+  font-size: 140%; }
 
 .container {
   max-width: 960px; }
@@ -70,6 +70,8 @@ a:active {
 .label {
   margin-left: 2px;
   margin-right: 2px;
+  font-weight: normal;
+  font-size: small;
   color: black;
   background: #DDF7FF; }
 
@@ -84,11 +86,11 @@ a:active {
   padding-bottom: 30px; }
 
 .btn-blue {
-  color: white;
-  background-color: #076DAB; }
+  color: black;
+  background-color: #8ED5FF; }
 
 .btn-red {
-  color: white;
+  color: black;
   background-color: #ea8f95; }
 
 .btn-gold {
