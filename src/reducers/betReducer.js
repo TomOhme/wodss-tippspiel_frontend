@@ -14,28 +14,28 @@ import semi from '../data/semi.json';
 import finals from '../data/finals.json';
 
 const initialState = {
-/*
-    0: {
-        saved: true,
-        finished: true,
-        home: {
-            name: "swi",
-            bet: 3
+    /*
+        0: {
+            saved: true,
+            finished: true,
+            home: {
+                name: "swi",
+                bet: 3
+            },
+            guest: {
+                name: "ger",
+                bet: 4
+            },
+            date: "21.6.",
+            time: "20:00",
+            place: "kal",
+            winner: "swi",
+            homegoals: "3",
+            guestgoals: "1",
+            difference: "2",
+            total: "5"
         },
-        guest: {
-            name: "ger",
-            bet: 4
-        },
-        date: "21.6.",
-        time: "20:00",
-        place: "kal",
-        winner: "swi",
-        homegoals: "3",
-        guestgoals: "1",
-        difference: "2",
-        total: "5"
-    },
-*/
+    */
     "A": A,
     "B": B,
     "C": C,
@@ -55,11 +55,6 @@ const betReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case 'SETSCORE':
-            /*
-            console.log(action.event.target.value);
-            console.log(action.team);
-            console.log(action.id);
-            */
             var newVal = action.event.target.value;
 
             // check that value >= 0
@@ -67,7 +62,9 @@ const betReducer = (state = initialState, action) => {
                 return state;
             }
 
-            var newGame = _.findWhere(newState[action.round], {id: action.id});
+            var newGame = _.findWhere(newState[action.round], {
+                id: action.id
+            });
 
             if (action.team === 'home') {
                 newGame.home.bet = newVal; // TODO
@@ -77,19 +74,15 @@ const betReducer = (state = initialState, action) => {
                 return state; // wrong team
             }
 
-            //newState[action.round]
-
-            // set saved to false
-            // TODO
             newGame.saved = false;
 
-            console.log(newGame);
-
             return newState;
-        case 'SAVE':
+        case 'SAVESUCCESS':
             // TODO
             // set saved to true when UPDATE was successful
-            var newGame = _.findWhere(newState[action.round], {id: action.id});
+            var newGame = _.findWhere(newState[action.round], {
+                id: action.id
+            });
             newGame.saved = true;
 
             return newState;

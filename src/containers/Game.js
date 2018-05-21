@@ -107,8 +107,8 @@ let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
                                     </Label>
                                     <Label>
                                         {translate('total')}: {game.total}
-                                    </Label>
-                                </div>
+                           max-width        </Label>
+                           max-width    </div>
                             )
                             : null
                     }
