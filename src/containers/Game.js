@@ -40,14 +40,14 @@ let Game = ({ game, dispatch, translate, currentLanguage }) => (
                     <BetSaveButton game={game} />
                 </Row>
                 <Row>
-                    <Col md={4} className="align">
+                    <Col xs={4} className="" style={{textAlign: "right", marginLeft: "3%"}}>
                         <span className="country">
                             {translate(game.home.name)}
                         </span>
                         <Image src={require('../img/' + game.home.name + '.png')} />
                     </Col>
 
-                    <Col md={3} className="score align">
+                    <Col xs={2} className="" style={{marginTop: "5%"}}>
                         <Form inline>
                             <FormControl
                                 value={game.home.bet}
@@ -57,9 +57,9 @@ let Game = ({ game, dispatch, translate, currentLanguage }) => (
                                 style={{ width: 60 }}
                             >
                             </FormControl>
-                            <span>
+                            <span className="score-colon">
                                 :
-                        </span>
+                            </span>
                             <FormControl
                                 value={game.guest.bet}
                                 disabled={game.finished}
@@ -71,7 +71,7 @@ let Game = ({ game, dispatch, translate, currentLanguage }) => (
                         </Form>
                     </Col>
 
-                    <Col md={4} className="align">
+                    <Col xs={4} className="" style={{textAlign: "left"}}>
                         <Image src={require('../img/' + game.guest.name + '.png')} />
                         <span className="country">
                             {translate(game.guest.name)}
