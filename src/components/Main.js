@@ -6,7 +6,6 @@ import BetGroups from '../containers/BetGroups';
 import PlayerScoreBoard from '../containers/PlayerScoreBoard';
 import GroupScoreBoard from '../containers/GroupScoreBoard';
 import Rules from './Rules';
-import Admin from './Admin';
 import Profile from '../containers/Profile';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
@@ -19,7 +18,6 @@ const Main = () => (
             <Route path='/playerscoreboard' component={PlayerScoreBoard} />
             <Route path='/groupscoreboard' component={GroupScoreBoard} />
             <Route path='/rules' component={Rules} />
-            <Route path='/admin' component={Admin} />
             <Route path='/profile' component={Profile} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />

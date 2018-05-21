@@ -2,7 +2,7 @@ const initialState = [
     {
         number: 1,
         name: "Team T",
-        averagepoints: 849
+        averagepoints: 68
     },
     {
         number: 2,
@@ -17,7 +17,14 @@ const initialState = [
 ];
 
 const groupScoreBoardReducer = (state = initialState, action) => {
+    var newState = Object.assign({}, state);
+
     switch (action.type) {
+        case "GETGROUPRANKINGSUCCESS":
+            console.log(action.groupRanking);
+            newState = action.groupRanking;
+            // TODO calc average points, use _.reduce()
+            return newState;
         default:
             return state;
     }

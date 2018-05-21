@@ -34,15 +34,6 @@ let Header = ({ user, translate, logOut }) => (
         <NavItem eventKey={4} href="/rules">
           {translate('rules')}
         </NavItem>
-        {
-          (_.contains(user.roles, "ROLE_ADMIN"))
-            ?
-            <NavItem eventKey={5} href="/admin">
-              {translate('admin')}
-            </NavItem>
-            :
-            null
-        }
       </Nav>
       <Nav pullRight>
         {
