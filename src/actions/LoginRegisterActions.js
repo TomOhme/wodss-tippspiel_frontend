@@ -34,6 +34,8 @@ export function requestLogin() {
             })
         });
 
+        console.log(request);
+
         fetch(request).then(response => {
                 if (response.ok) {
                     return response.json()

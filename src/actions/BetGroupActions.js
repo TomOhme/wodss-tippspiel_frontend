@@ -84,12 +84,14 @@ export function getBetGroupsFromServer() {
         const state = getState();
 
         var request = new Request(url, {
-            method: 'GET',
+            method: "GET",
             headers: new Headers({
                 "X-Requested-With": "ok",
                 "Origin": serverUrl,
             })
         });
+
+        console.log(request);
 
         fetch(request).then(response => {
                 if (response.ok) {
