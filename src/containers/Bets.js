@@ -9,8 +9,7 @@ let Bets = ({ currentRound, bets }) => (
     <div>
         {
            Object.values(bets[currentRound]).map(game => {
-                console.log(bets["A"])
-                return <Game game={game} key={game.id} />
+                return <Game round={currentRound} game={game} key={game.id} />
            }) 
         }
     </div>

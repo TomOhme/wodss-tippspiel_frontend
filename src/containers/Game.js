@@ -15,7 +15,7 @@ import {
 import BetResultsDialog from '../containers/BetResultsDialog';
 import BetSaveButton from '../containers/BetSaveButton';
 
-let Game = ({ game, dispatch, translate, currentLanguage }) => (
+let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
 
     <div className="game">
         {
@@ -40,19 +40,19 @@ let Game = ({ game, dispatch, translate, currentLanguage }) => (
                     <BetSaveButton game={game} />
                 </Row>
                 <Row>
-                    <Col xs={4} className="" style={{textAlign: "right", marginLeft: "3%"}}>
+                    <Col xs={4} className="" style={{ textAlign: "right", marginLeft: "3%" }}>
                         <span className="country">
                             {translate(game.home.name)}
                         </span>
                         <Image src={require('../img/' + game.home.name + '.png')} />
                     </Col>
 
-                    <Col xs={2} className="" style={{marginTop: "5%"}}>
+                    <Col xs={2} className="" style={{ marginTop: "5%" }}>
                         <Form inline>
                             <FormControl
                                 value={game.home.bet}
                                 disabled={game.finished}
-                                onChange={(event) => dispatch(setScore(event, "home", game.id))}
+                                onChange={(event) => dispatch(setScore(event, currentRound, "home", game.id))}
                                 type="number"
                                 style={{ width: 60 }}
                             >
@@ -63,7 +63,7 @@ let Game = ({ game, dispatch, translate, currentLanguage }) => (
                             <FormControl
                                 value={game.guest.bet}
                                 disabled={game.finished}
-                                onChange={(event) => dispatch(setScore(event, "guest", game.id))}
+                                onChange={(event) => dispatch(setScore(event, currentRound, "guest", game.id))}
                                 type="number"
                                 style={{ width: 60 }}
                             >
@@ -71,7 +71,7 @@ let Game = ({ game, dispatch, translate, currentLanguage }) => (
                         </Form>
                     </Col>
 
-                    <Col xs={4} className="" style={{textAlign: "left"}}>
+                    <Col xs={4} className="" style={{ textAlign: "left" }}>
                         <Image src={require('../img/' + game.guest.name + '.png')} />
                         <span className="country">
                             {translate(game.guest.name)}
@@ -119,6 +119,8 @@ let Game = ({ game, dispatch, translate, currentLanguage }) => (
 );
 
 const mapStateToProps = state => ({
+    currentRound: state.round.currentRound,
+    bets: state.bets,
     translate: getTranslate(state.locale),
     currentLanguage: getActiveLanguage(state.locale).code
 });

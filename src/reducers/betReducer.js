@@ -1,3 +1,5 @@
+import _ from 'underscore';
+
 import A from '../data/A.json';
 import B from '../data/B.json';
 import C from '../data/C.json';
@@ -65,17 +67,23 @@ const betReducer = (state = initialState, action) => {
                 return state;
             }
 
+            var newGame = _.findWhere(newState[action.round], {id: action.id});
+
             if (action.team === 'home') {
-                newState[action.id].home.bet = newVal;
+                newGame.home.bet = newVal; // TODO
             } else if (action.team === 'guest') {
-                newState[action.id].guest.bet = newVal;
+                newGame.guest.bet = newVal; // TODO
             } else {
                 return state; // wrong team
             }
 
+            //newState[action.round]
+
             // set saved to false
             // TODO
-            newState[action.id].saved = false;
+            newGame.saved = false;
+
+            console.log(newGame);
 
             return newState;
         case 'SAVE':

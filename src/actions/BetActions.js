@@ -5,9 +5,10 @@ export function setRound(round) {
     }
 };
 
-export function setScore(event, team, id) {
+export function setScore(event, round, team, id) {
     return {
         type: "SETSCORE",
+        round: round,
         team: team, // e.g. 'home' or 'guest'
         id: id,
         event: event
