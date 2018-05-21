@@ -33,7 +33,7 @@ let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGr
         {
             // only display join button when user is not member
             (!betGroups.currentGroup.userIsMember) ? (
-                <Button bsStyle="primary">
+                <Button className="" bsStyle="primary">
                     {translate('joingroup')}
                 </Button>
             ) : null

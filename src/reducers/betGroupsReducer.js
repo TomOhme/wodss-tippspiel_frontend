@@ -1,3 +1,5 @@
+import _ from 'underscore';
+
 const initialState = {
     groupNames: [
         "Team T",
@@ -46,6 +48,10 @@ const betGroupsReducer = (state = initialState, action) => {
         case "CREATEGROUPONSERVER":
             console.log(action.type);
             // TODO
+            return state;
+        case "GETBETGROUPSSUCCESS":
+            const betGroupsData = action.betGroupsData;
+            newState.groupNames = _.pluck(betGroupsData, "name");
             return state;
         default: 
             return state;
