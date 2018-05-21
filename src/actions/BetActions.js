@@ -15,10 +15,11 @@ export function setScore(event, round, team, id) {
     }
 };
 
-export function save(event, id) {
+export function save(event, round, id) {
     return {
         type: "SAVE",
-        event: event,
-        id: id
+        round: round,
+        id: id,
+        event: event
     }
 };

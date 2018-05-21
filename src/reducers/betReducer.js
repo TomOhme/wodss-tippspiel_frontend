@@ -89,7 +89,9 @@ const betReducer = (state = initialState, action) => {
         case 'SAVE':
             // TODO
             // set saved to true when UPDATE was successful
-            newState[action.id].saved = true;
+            var newGame = _.findWhere(newState[action.round], {id: action.id});
+            newGame.saved = true;
+
             return newState;
         default:
             return state;
