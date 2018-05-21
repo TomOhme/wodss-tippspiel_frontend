@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { createGroupOnServer, joinGroup, leaveGroup, switchGroup } from '../actions/BetGroupActions';
+import { createGroupOnServer, getBetGroupsFromServer, joinGroup, leaveGroup, switchGroup } from '../actions/BetGroupActions';
 
 import {
     DropdownButton,
@@ -13,7 +13,7 @@ import {
 
 import CreateGroupDialog from './CreateGroupDialog';
 
-let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
+let BetGroups = ({ betGroups, translate, getBetGroupsFromServer, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
@@ -33,13 +33,17 @@ let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGr
         {
             // only display join button when user is not member
             (!betGroups.currentGroup.userIsMember) ? (
-                <Button className="" bsStyle="primary">
+                <Button className="button" bsStyle="primary">
                     {translate('joingroup')}
                 </Button>
             ) : null
         }
 
         <CreateGroupDialog translate={translate} createGroupOnServer={createGroupOnServer} />
+
+        <Button onClick={() => getBetGroupsFromServer()}>
+            <Glyphicon glyph="refresh" />
+        </Button>
 
         <br />
 
@@ -73,7 +77,7 @@ let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGr
         {
             // only display leave button when user is member
             (betGroups.currentGroup.userIsMember) ? (
-                <Button bsStyle="red" onClick={leaveGroup}>
+                <Button className="button" bsStyle="red" onClick={leaveGroup}>
                     {translate('leavegroup')}
                 </Button>
             ) : null
@@ -88,6 +92,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
+        getBetGroupsFromServer: () => dispatch(getBetGroupsFromServer()),
         createGroupOnServer: (name) => dispatch(createGroupOnServer(name)),
         joinGroup: () => dispatch(joinGroup()),
         leaveGroup: () => dispatch(leaveGroup()),
