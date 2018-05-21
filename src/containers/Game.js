@@ -15,7 +15,7 @@ import {
 import BetResultsDialog from '../containers/BetResultsDialog';
 import BetSaveButton from '../containers/BetSaveButton';
 
-let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
+let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) => (
 
     <div className="game">
         {
@@ -37,7 +37,13 @@ let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
                             :
                             null
                     }
-                    <BetSaveButton game={game} />
+                    {
+                        (user.loggedIn)
+                            ?
+                            <BetSaveButton game={game} />
+                            :
+                            null
+                    }
                 </Row>
                 <Row>
                     <Col xs={4} className="" style={{ textAlign: "right", marginLeft: "3%" }}>
@@ -48,10 +54,11 @@ let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
                     </Col>
 
                     <Col xs={2} className="" style={{ marginTop: "5%" }}>
+                        {/* TODO use separate component with own state! */}
                         <Form inline>
                             <FormControl
                                 value={game.home.bet}
-                                disabled={game.finished}
+                                disabled={!user.loggedIn || game.finished}
                                 onChange={(event) => dispatch(setScore(event, currentRound, "home", game.id))}
                                 type="number"
                                 style={{ width: 60 }}
@@ -62,7 +69,7 @@ let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
                             </span>
                             <FormControl
                                 value={game.guest.bet}
-                                disabled={game.finished}
+                                disabled={!user.loggedIn || game.finished}
                                 onChange={(event) => dispatch(setScore(event, currentRound, "guest", game.id))}
                                 type="number"
                                 style={{ width: 60 }}
@@ -107,8 +114,8 @@ let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
                                     </Label>
                                     <Label>
                                         {translate('total')}: {game.total}
-                           max-width        </Label>
-                           max-width    </div>
+                                        max-width        </Label>
+                                    max-width    </div>
                             )
                             : null
                     }
@@ -119,6 +126,7 @@ let Game = ({ currentRound, game, dispatch, translate, currentLanguage }) => (
 );
 
 const mapStateToProps = state => ({
+    user: state.user,
     currentRound: state.round.currentRound,
     bets: state.bets,
     translate: getTranslate(state.locale),

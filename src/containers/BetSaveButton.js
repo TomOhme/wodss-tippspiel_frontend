@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { save } from '../actions/BetActions';
+import { saveBetOnServer } from '../actions/BetActions';
 
 import {
     Button,
@@ -10,7 +10,7 @@ import {
 let BetSaveButton = ({ currentRound, game, dispatch, translate }) => (
     <Button
         className="pull-right fix-pull"
-        onClick={(event) => dispatch(save(event, currentRound, game.id))}
+        onClick={(event) => dispatch(saveBetOnServer(event, currentRound, game.id))}
         disabled={game.saved}
         bsStyle={game.saved ? 'green' : 'red'}>
         {translate(game.saved ? 'saved' : 'notsaved')}
