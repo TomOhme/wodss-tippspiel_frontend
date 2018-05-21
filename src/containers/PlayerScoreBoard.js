@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
+import { getPlayerRankingFromServer } from '../actions/PlayerRankingActions';
+import _ from 'underscore';
 
 import {
     Form,
@@ -9,7 +11,8 @@ import {
     Table,
     Pagination,
     Grid,
-    Row
+    Row,
+    Glyphicon
 } from 'react-bootstrap';
 
 /* TODO make dynamic */
@@ -21,10 +24,14 @@ for (let number = 1; number <= 10; number++) {
     );
 }
 
-let PlayerScoreBoard = ({ playerScores, translate }) => (
+let PlayerScoreBoard = ({ playerScores, translate, getPlayerRankingFromServer }) => (
     <div>
         <Grid>
-            <Row className="text-center">
+            <Row className="">
+                <Button className="button" onClick={() => getPlayerRankingFromServer()}>
+                    <Glyphicon glyph="refresh" />
+                </Button>
+
                 <Form inline>
                     <FormControl type="text" placeholder={translate('name')}></FormControl>
                     <Button type="submit">{translate('search')}</Button>
@@ -43,14 +50,12 @@ let PlayerScoreBoard = ({ playerScores, translate }) => (
                 </thead>
                 <tbody>
                     {
-                        playerScores.map(score => {
-                            return (
-                                <tr key={score.number}>
-                                    <td>{score.number}</td>
-                                    <td>{score.name}</td>
-                                    <td>{score.points}</td>
-                                </tr>
-                            )
+                        Object.values(playerScores).map(score => {
+                            return <tr key={score.id}>
+                                <td>{score.id}</td>
+                                <td>{score.name}</td>
+                                <td>{score.points}</td>
+                            </tr>
                         })
                     }
                 </tbody>
@@ -68,6 +73,12 @@ const mapStateToProps = state => ({
     playerScores: state.playerScores
 });
 
-PlayerScoreBoard = connect(mapStateToProps)(PlayerScoreBoard)
+const mapDispatchToProps = dispatch => {
+    return {
+        getPlayerRankingFromServer: () => dispatch(getPlayerRankingFromServer())
+    }
+}
+
+PlayerScoreBoard = connect(mapStateToProps, mapDispatchToProps)(PlayerScoreBoard)
 
 export default PlayerScoreBoard;

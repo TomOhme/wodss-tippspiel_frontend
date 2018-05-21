@@ -1,26 +1,29 @@
 const initialState = [
     {
-        number: 1,
+        id: 1,
         name: "hase",
         points: 888
     },
     {
-        number: 2,
+        id: 2,
         name: "maulwurf",
         points: 555
     },
     {
-        number: 3,
+        id: 3,
         name: "zebra",
         points: 222
     }
 ];
 
 const playerScoreBoardReducer = (state = initialState, action) => {
+    var newState = Object.assign({}, state);
+
     switch (action.type) {
-        case "PLAYERRANKINGFETCHSUCCESS":
+        case "GETPLAYERRANKINGSUCCESS":
             console.log(action.playerRanking);
-            break;
+            newState = action.playerRanking;
+            return newState;
         default:
             return state;
     }

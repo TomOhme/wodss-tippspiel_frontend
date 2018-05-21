@@ -102,9 +102,11 @@ export function getBetsForUser() {
 
         var request = new Request(url, {
             method: "GET",
+            Origin: serverUrl,
+            credentials: "include",
             headers: new Headers({
                 "X-Requested-With": "ok",
-                "Origin": serverUrl
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
             }),
         });
 

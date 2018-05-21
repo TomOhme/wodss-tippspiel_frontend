@@ -1,18 +1,47 @@
-export function fetchPlayerRankingFromServer() {
-    const url = configuration.getValue('serverUrl') + '/users/ranking';
-    return (dispatch) => {
-        fetch(url).then(response => {
-                return response.json()
+import {
+    configuration
+} from '../Configuration';
+
+import {
+    isLoading,
+    showError
+} from './'
+
+
+export function getPlayerRankingFromServer() {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "betgroups";
+
+    return (dispatch, getState) => {
+        var request = new Request(url, {
+            method: "GET",
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
+            })
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error("Get playerranking failed");
+                }
             })
             .then((playerRanking) => {
-                dispatch(playerRankingFetchSuccess(playerRanking));
+                dispatch(getPlayerRankingSuccess(playerRanking));
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
             })
     }
 }
 
-export function playerRankingFetchSuccess(playerRanking) {
+export function getPlayerRankingSuccess(playerRanking) {
     return {
-        type: "PLAYERRANKINGFETCHSUCCESS",
+        type: "GETPLAYERRANKINGSUCCESS",
         playerRanking
     };
 }
