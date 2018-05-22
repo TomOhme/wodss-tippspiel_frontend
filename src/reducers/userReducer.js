@@ -6,7 +6,7 @@ const initialState = {
     //loggedIn: true,
     bets: [],
     betGroup: [],
-    name: "test",
+    name: "",
     email: "",
     roles: [
         ""

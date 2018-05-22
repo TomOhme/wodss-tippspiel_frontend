@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { changeMailOnServer, deleteProfileOnServer, resetPasswordOnServer } from '../actions/ProfileActions';
+import { updateProfileOnServer, deleteProfileOnServer, resetPasswordOnServer } from '../actions/ProfileActions';
 import _ from 'underscore';
 
 import {
@@ -12,7 +12,7 @@ import {
     ListGroupItem
 } from 'react-bootstrap';
 
-import ChangeMailForm from './ChangeMailForm';
+import ChangeProfileForm from './ChangeProfileForm';
 
 let Profile = ({ user, translate, resetPasswordOnServer }) => (
     <div className="container-small">
@@ -44,15 +44,15 @@ let Profile = ({ user, translate, resetPasswordOnServer }) => (
         
         <PanelGroup accordion id="profilePanel">
 
-            {/* Change email */}
+            {/* Update profile */}
             <Panel eventKey="1" bsStyle="custom">
                 <Panel.Heading>
                     <Panel.Title toggle>
-                        {translate("changemail")}
+                        {translate("updateprofile")}
                     </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
-                    <ChangeMailForm translate={translate} changeMailOnServer={changeMailOnServer} />
+                    <ChangeProfileForm translate={translate} user={user} updateProfileOnServer={updateProfileOnServer} />
                 </Panel.Body>
             </Panel>
 
@@ -100,7 +100,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeMailOnServer: (mail) => dispatch(changeMailOnServer()),
+        updateProfileOnServer: (newProfile) => dispatch(updateProfileOnServer(newProfile)),
         resetPasswordOnServer: () => dispatch(resetPasswordOnServer())
     }
 }

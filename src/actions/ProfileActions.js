@@ -8,9 +8,9 @@ import {
 } from './';
 
 
-export function changeProfileOnServer(newProfile) {
+export function updateProfileOnServer(newProfile) {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "users/" + userId;
+    var url = serverUrl + "users/" + newProfile.userId;
 
     return (dispatch, getState) => {
 
