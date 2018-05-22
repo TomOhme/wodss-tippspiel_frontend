@@ -8,9 +8,9 @@ import {
 } from './'
 
 
-export function getPlayerRankingFromServer() {
+export function getGroupRankingFromServer() {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "users/ranking";
+    var url = serverUrl + "betgroups";
 
     return (dispatch, getState) => {
         var request = new Request(url, {
@@ -27,11 +27,11 @@ export function getPlayerRankingFromServer() {
                 if (response.ok) {
                     return response.json()
                 } else {
-                    throw new Error("Get playerranking failed");
+                    throw new Error("Get groupranking failed");
                 }
             })
-            .then((playerRanking) => {
-                dispatch(getPlayerRankingSuccess(playerRanking));
+            .then((groupRanking) => {
+                dispatch(getGroupRankingSuccess(groupRanking));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -39,9 +39,9 @@ export function getPlayerRankingFromServer() {
     }
 }
 
-export function getPlayerRankingSuccess(playerRanking) {
+export function getGroupRankingSuccess(groupRanking) {
     return {
-        type: "GETPLAYERRANKINGSUCCESS",
-        playerRanking
+        type: "GETGROUPRANKINGSUCCESS",
+        groupRanking
     };
 }

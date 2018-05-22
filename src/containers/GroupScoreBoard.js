@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
+import { getGroupRankingFromServer } from '../actions/GroupRankingActions';
 
 import {
     Form,
@@ -8,12 +9,16 @@ import {
     FormControl,
     Table,
     Grid,
-    Row
+    Row,
+    Glyphicon
 } from 'react-bootstrap';
 
-let GroupScoreBoard = ({ groupScores, translate }) => (
+let GroupScoreBoard = ({ getGroupRankingFromServer, betGroups, translate }) => (
     <div>
         <Grid>
+            <Button className="button" onClick={() => getGroupRankingFromServer()}>
+                <Glyphicon glyph="refresh" />
+            </Button>
             <Row className="text-center">
                 <Form inline>
                     <FormControl type="text" placeholder={translate('name')}></FormControl>
@@ -33,14 +38,12 @@ let GroupScoreBoard = ({ groupScores, translate }) => (
                 </thead>
                 <tbody>
                     {
-                        groupScores.map(score => {
-                            return (
-                                <tr key={score.number}>
-                                    <td>{score.number}</td>
-                                    <td>{score.name}</td>
-                                    <td>{score.averagepoints}</td>
-                                </tr>
-                            )
+                        Object.values(betGroups.groupRanking).map(group => {
+                            return <tr key={group.id}>
+                                <td>{group.rank}</td>
+                                <td>{group.name}</td>
+                                <td>{group.score}</td>
+                            </tr>
                         })
                     }
                 </tbody>
@@ -52,9 +55,15 @@ let GroupScoreBoard = ({ groupScores, translate }) => (
 
 const mapStateToProps = state => ({
     translate: getTranslate(state.locale),
-    groupScores: state.groupScores
+    betGroups: state.betGroups
 });
 
-GroupScoreBoard = connect(mapStateToProps)(GroupScoreBoard)
+const mapDispatchToProps = dispatch => {
+    return {
+        getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer())
+    }
+}
+
+GroupScoreBoard = connect(mapStateToProps, mapDispatchToProps)(GroupScoreBoard)
 
 export default GroupScoreBoard;

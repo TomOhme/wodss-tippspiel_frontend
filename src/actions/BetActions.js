@@ -49,9 +49,11 @@ export function saveBetOnServer(event, round, game, betId) {
 
         request = new Request(url, {
             method: method,
+            Origin: serverUrl,
+            credentials: "include",
             headers: new Headers({
                 "X-Requested-With": "ok",
-                "Origin": serverUrl,
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie,
                 "Content-Type": "application/json"
             }),
             body: JSON.stringify({

@@ -26,6 +26,12 @@ const initialState = {
             },
         ]
     },
+    groupRanking: [{
+        id: 1,
+        rank: 1,
+        name: "Testgroup",
+        score: 13
+    }]
 };
 
 const betGroupsReducer = (state = initialState, action) => {
@@ -49,10 +55,16 @@ const betGroupsReducer = (state = initialState, action) => {
             console.log(action.type);
             // TODO
             return state;
-        case "GETBETGROUPSSUCCESS":
-            const betGroupsData = action.betGroupsData;
-            newState.groupNames = _.pluck(betGroupsData, "name");
-            return state;
+        case "GETGROUPRANKINGSUCCESS":
+            console.log(action.groupRanking);
+            var newGroupRanking = _.sortBy(action.groupRanking, "score");
+            _.each(newGroupRanking, (group) => {
+                group.rank = _.indexOf(newGroupRanking, group) + 1;
+            });
+            newState.groupRanking = newGroupRanking;
+            //const betGroupsData = action.betGroupsData;
+            //newState.groupNames = _.pluck(betGroupsData, "name");
+            return newState;
         default: 
             return state;
     }
