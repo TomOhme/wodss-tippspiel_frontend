@@ -54,7 +54,7 @@ let Login = ({ user, onMailChange, onPasswordChange, requestLogin, switchToRegis
                     <Button
                         bsStyle="blue"
                         disabled={!user.loginPossible}
-                        onClick={() => requestLogin()}>
+                        onClick={() => requestLogin(user.tempmail, user.temppassword)}>
                         {translate("login")}
                     </Button>
                     <Button

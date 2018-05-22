@@ -11,10 +11,14 @@ import {
     showError
 } from './';
 
-import { getPlayerRankingFromServer } from './PlayerRankingActions';
-import { getGroupRankingFromServer } from './BetGroupActions';
+import {
+    getPlayerRankingFromServer
+} from './PlayerRankingActions';
+import {
+    getGroupRankingFromServer
+} from './BetGroupActions';
 
-export function requestLogin() {
+export function requestLogin(mail, password) {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "login";
 
@@ -33,8 +37,8 @@ export function requestLogin() {
                 "Content-Type": "application/json"
             }),
             body: JSON.stringify({
-                "username": state.user.tempmail,
-                "password": state.user.temppassword
+                "username": mail,
+                "password": password
             })
         });
 
@@ -112,10 +116,72 @@ export function switchToRegister() {
 };
 
 export function requestRegister(state) {
-    return {
-        type: "REQUESTREGISTER",
-        mail: state.mail,
-        username: state.username,
-        password: state.password1
+    const username = state.username;
+    const mail = state.mail;
+    const password = state.password1;
+    const reminders = state.reminders;
+
+    const serverUrl = configuration.getValue("serverUrl");
+    // TODO
+    var url = serverUrl + "register";
+
+    return (dispatch, getState) => {
+
+        dispatch(isLoading(true));
+
+        const state = getState();
+        // TODO
+
+        var request = new Request(url, {
+            method: 'POST',
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "Content-Type": "application/json"
+            }),
+            body: JSON.stringify({
+                "name": username,
+                "email": mail,
+                "password": password,
+                "reminders": reminders
+            })
+        });
+
+        console.log(request);
+
+        fetch(request).then(response => {
+                console.log(response);
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error("Login failed");
+                }
+            })
+            .then((userData) => {
+                dispatch(loginSuccess(userData))
+                dispatch(push("/")) // change url to home
+
+                // load rankings, bets etc
+                // TODO bets
+                dispatch(getPlayerRankingFromServer());
+                dispatch(getGroupRankingFromServer());
+
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
     }
+
 };
+
+export function registerSuccess(mail, password) {
+    return (dispatch) => {
+        // TODO wait for some seconds
+        dispatch(requestLogin(mail, password));
+    }
+}

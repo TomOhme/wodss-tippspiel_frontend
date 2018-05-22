@@ -11,7 +11,8 @@ import {
     Col,
     Row,
     ControlLabel,
-    FormGroup
+    FormGroup,
+    Checkbox
 } from 'react-bootstrap';
 
 class Register extends React.Component {
@@ -25,6 +26,7 @@ class Register extends React.Component {
             username: '',
             password1: '',
             password2: '',
+            reminders: true,
             registerPossible: false
         }
 
@@ -45,6 +47,9 @@ class Register extends React.Component {
         else if (e.target.id === 'formPassword2') {
             this.setState({ password2: e.target.value });
         }
+        else if (e.target.id === 'formReminders') {
+            this.setState({ reminders: e.target.value });
+        }
     }
 
     isRegisterPossible() {
@@ -63,6 +68,11 @@ class Register extends React.Component {
 
     passwordsMatch() {
         return this.state.password1 === this.state.password2;
+    }
+
+    toggleReminders() {
+        const oldReminders = this.state.reminders;
+        this.setState({ reminders: !oldReminders });
     }
 
     render() {
@@ -123,6 +133,19 @@ class Register extends React.Component {
                             autoFocus
                             value={this.state.password2}
                             onChange={(event) => this.handleChange(event)} />
+                    </Col>
+                </FormGroup>
+
+                <FormGroup controlId="formReminders">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        {this.translate("reminders")}
+                    </Col>
+                    <Col sm={10}>
+                        <Checkbox
+                            placeholder={this.translate('reminders')}
+                            autoFocus
+                            checked={this.state.reminders}
+                            onChange={() => this.toggleReminders()} />
                     </Col>
                 </FormGroup>
 
