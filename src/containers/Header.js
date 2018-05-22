@@ -24,9 +24,15 @@ let Header = ({ user, translate, logOut }) => (
         <NavItem eventKey={1} href="/" bsStyle="item">
           {translate('bets')}
         </NavItem>
-        <NavItem eventKey={2} href="/betgroups">
-          {translate('betgroups')}
-        </NavItem>
+        {
+          (user.loggedIn)
+            ?
+            <NavItem eventKey={2} href="/betgroups">
+              {translate('betgroups')}
+            </NavItem>
+            :
+            null
+        }
         <NavDropdown eventKey={3} title="Rangliste" id="basic-nav-dropdown">
           <MenuItem eventKey={3.1} href="/playerscoreboard">{translate('players')}</MenuItem>
           <MenuItem eventKey={3.2} href="/groupscoreboard">{translate('groups')}</MenuItem>
