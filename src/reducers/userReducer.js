@@ -23,15 +23,14 @@ const userReducer = (state = initialState, action, store) => {
     var newState = Object.assign({}, state);
 
     switch (action.type) {
-        case "CHANGEMAILONSERVER":
-            console.log(action.type);
-            // TODO
-            return state;
-        case "RESETPASSWORDONSERVER":
-            console.log(action.type);
-            // TODO
-            return state;
-        case "DELETEPROFILEONSERVER":
+        case "UPDATEPROFILESUCCESS":
+            const newProfile = action.newProfile;
+            newState.name = newProfile.name;
+            newState.email = newProfile.email;
+            newState.reminders = newProfile.reminders;
+            newState.dailyresults = newProfile.dailyresults;
+            return newState;
+        case "DELETEPROFILEONSERVERSUCCESS":
             console.log(action.type);
             // TODO
             return state;

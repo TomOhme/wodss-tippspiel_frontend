@@ -124,12 +124,9 @@ export function requestRegister(state) {
     const serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "users";
 
-    return (dispatch, getState) => {
+    return (dispatch) => {
 
         dispatch(isLoading(true));
-
-        const state = getState();
-        // TODO
 
         var request = new Request(url, {
             method: 'POST',
