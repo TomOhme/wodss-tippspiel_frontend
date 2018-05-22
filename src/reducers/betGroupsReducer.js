@@ -26,7 +26,7 @@ const initialState = {
             },
         ]
     },
-    groupRanking: [{
+    groups: [{
         id: 1,
         rank: 1,
         name: "Testgroup",
@@ -61,7 +61,7 @@ const betGroupsReducer = (state = initialState, action) => {
             _.each(newGroupRanking, (group) => {
                 group.rank = _.indexOf(newGroupRanking, group) + 1;
             });
-            newState.groupRanking = newGroupRanking;
+            newState.groups = newGroupRanking;
             //const betGroupsData = action.betGroupsData;
             //newState.groupNames = _.pluck(betGroupsData, "name");
             return newState;

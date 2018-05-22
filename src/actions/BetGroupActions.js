@@ -8,10 +8,57 @@ import {
 } from './'
 
 
-export function switchGroup(newGroup) {
+export function switchGroupSuccess(newGroup) {
     return {
-        type: "SWITCHGROUP",
+        type: "SWITCHGROUPSUCCESS",
         newGroup
+    }
+};
+
+export function switchGroup(newGroup) {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "betgroups";
+
+    return (dispatch, getState) => {
+
+        dispatch(isLoading(true));
+
+        const state = getState();
+
+        var request = new Request(url, {
+            method: 'POST',
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "Origin": serverUrl,
+                "Content-Type": "application/json",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
+            }),
+            body: JSON.stringify({
+                "name": name,
+                "password": password 
+            })
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error("Create betgroup failed");
+                }
+            })
+            .then((response) => {
+                dispatch(getBetGroupsFromServer()); // reload
+                //window.location.reload();
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
     }
 };
 

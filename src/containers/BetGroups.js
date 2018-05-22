@@ -17,13 +17,13 @@ let BetGroups = ({ betGroups, translate, getBetGroupsFromServer, createGroupOnSe
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
-                betGroups.groupNames.map((groupName) => {
+                betGroups.groups.map((group) => {
                     return (
                         <MenuItem
-                            key={groupName}
-                            onSelect={(e) => switchGroup(groupName)}
-                            active={groupName === betGroups.currentGroup.name}>
-                            {groupName}
+                            key={group.id}
+                            onSelect={(e) => switchGroup(group.name)}
+                            active={group.name === betGroups.currentGroup.name}>
+                            {group.name}
                         </MenuItem>
                     )
                 })

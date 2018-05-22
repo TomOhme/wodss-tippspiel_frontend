@@ -38,7 +38,7 @@ let GroupScoreBoard = ({ getGroupRankingFromServer, betGroups, translate }) => (
                 </thead>
                 <tbody>
                     {
-                        Object.values(betGroups.groupRanking).map(group => {
+                        Object.values(betGroups.groups).map(group => {
                             return <tr key={group.id}>
                                 <td>{group.rank}</td>
                                 <td>{group.name}</td>
