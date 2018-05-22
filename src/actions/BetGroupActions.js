@@ -9,6 +9,7 @@ import {
 
 
 export function switchGroup(group) {
+
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "betgroups/" + group.id + "/users"
 
@@ -42,7 +43,7 @@ export function switchGroup(group) {
     }
 };
 
-export function joinGroupOnServer(group, password) {
+export function joinGroupOnServer(group, password, userId) {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "betgroups/" + group.id + "/adduser"
 
@@ -71,7 +72,7 @@ export function joinGroupOnServer(group, password) {
             })
             .then((users) => {
                 group.users = users;
-                dispatch(switchGroupSuccess(group));
+                dispatch(switchGroupSuccess(group, userId));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -79,10 +80,11 @@ export function joinGroupOnServer(group, password) {
     }
 }
 
-export function switchGroupSuccess(group) {
+export function switchGroupSuccess(group, userId) {
     return {
         type: "SWITCHGROUPSUCCESS",
-        group
+        group,
+        userId
     }
 }
 

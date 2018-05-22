@@ -5,6 +5,7 @@ const initialState = {
         id: 1,
         name: "Testgroup",
         userIsMember: false,
+        user_ids: [],
         users: [{
             id: 1,
             rank: 1,
@@ -16,7 +17,9 @@ const initialState = {
         id: 1,
         rank: 1,
         name: "Testgroup",
-        score: 13
+        score: 13,
+        user_ids: [],
+        users: []
     }]
 };
 
@@ -40,10 +43,12 @@ const betGroupsReducer = (state = initialState, action) => {
             // TODO
             console.log(action.group);
             newState.currentGroup = action.group;
-            const userIds = _.map(action.group.users, (user) => {
+            /*
+            const userIds = _.map(action.group.user_ids, (user) => {
                 return user.id;
             });
-            newState.currentGroup.userIsMember = _.contains(userIds, state.user.id);
+            */
+            newState.currentGroup.userIsMember = _.contains(action.group.user_ids, action.userId);
             return newState;
         case "GETGROUPRANKINGSUCCESS":
             //console.log(action.groupRanking["0"]);

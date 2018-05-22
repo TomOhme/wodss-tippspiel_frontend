@@ -14,7 +14,7 @@ import {
 import CreateGroupDialog from './CreateGroupDialog';
 import JoinGroupPasswordDialog from './JoinGroupPasswordDialog';
 
-let BetGroups = ({ betGroups, translate, showJoinModal, hideJoinModal, createGroupOnServer, joinGroupOnServer, leaveGroup, switchGroup }) => (
+let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, createGroupOnServer, joinGroupOnServer, leaveGroup, switchGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
@@ -35,7 +35,7 @@ let BetGroups = ({ betGroups, translate, showJoinModal, hideJoinModal, createGro
             // only display join button when user is not member
             (!betGroups.currentGroup.userIsMember)
                 ?
-                <JoinGroupPasswordDialog group={betGroups.currentGroup} joinGroupOnServer={joinGroupOnServer} translate={translate} />
+                <JoinGroupPasswordDialog userId={user} group={betGroups.currentGroup} joinGroupOnServer={joinGroupOnServer} translate={translate} />
                 :
                 null
         }
@@ -90,14 +90,15 @@ let BetGroups = ({ betGroups, translate, showJoinModal, hideJoinModal, createGro
 
 const mapStateToProps = state => ({
     translate: getTranslate(state.locale),
-    betGroups: state.betGroups
+    betGroups: state.betGroups,
+    user: state.user
 });
 
 const mapDispatchToProps = dispatch => {
     return {
         getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer()),
         createGroupOnServer: (name) => dispatch(createGroupOnServer(name)),
-        joinGroupOnServer: () => dispatch(joinGroupOnServer()),
+        joinGroupOnServer: (group, password, userId) => dispatch(joinGroupOnServer(group, password, userId)),
         leaveGroup: () => dispatch(leaveGroup()),
         switchGroup: (newGroup) => dispatch(switchGroup(newGroup))
     }
