@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { getGroupRankingFromServer } from '../actions/GroupRankingActions';
+import { getGroupRankingFromServer } from '../actions/BetGroupActions';
 
 import {
     Form,

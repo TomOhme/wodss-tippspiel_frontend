@@ -73,8 +73,6 @@ export function saveBetOnServer(event, round, game, betId) {
             })
             .then((userData) => {
                 dispatch(saveSuccess(round, game.id));
-                //dispatch(push("/")) // change url to home
-                //window.location.reload(); // reload page to display TODO necessary?
             })
             .catch((error) => {
                 dispatch(showError(error.message));

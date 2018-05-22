@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { createGroupOnServer, joinGroup, leaveGroup, switchGroup, getGroupRankingFromServer } from '../actions/BetGroupActions';
+import { createGroupOnServer, leaveGroup, switchGroup, getGroupRankingFromServer, joinGroupOnServer } from '../actions/BetGroupActions';
 
 import {
     DropdownButton,
@@ -12,8 +12,9 @@ import {
 } from 'react-bootstrap';
 
 import CreateGroupDialog from './CreateGroupDialog';
+import JoinGroupPasswordDialog from './JoinGroupPasswordDialog';
 
-let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
+let BetGroups = ({ betGroups, translate, showJoinModal, hideJoinModal, createGroupOnServer, joinGroupOnServer, leaveGroup, switchGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
@@ -32,16 +33,16 @@ let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGr
 
         {
             // only display join button when user is not member
-            (!betGroups.currentGroup.userIsMember) ? (
-                <Button className="button" bsStyle="blue">
-                    {translate('joingroup')}
-                </Button>
-            ) : null
+            (!betGroups.currentGroup.userIsMember)
+                ?
+                <JoinGroupPasswordDialog group={betGroups.currentGroup} joinGroupOnServer={joinGroupOnServer} translate={translate} />
+                :
+                null
         }
 
         <CreateGroupDialog translate={translate} createGroupOnServer={createGroupOnServer} />
 
-        <Button onClick={() => getGroupRankingFromServer()}>
+        <Button onClick={() => { getGroupRankingFromServer() }}>
             <Glyphicon glyph="refresh" />
         </Button>
 
@@ -60,15 +61,13 @@ let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGr
             </thead>
             <tbody>
                 {
-                    betGroups.currentGroup.users.map((user) => {
-                        return (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.points}</td>
-                                <td><Button><Glyphicon glyph="user" /></Button></td>
-                            </tr>
-                        )
+                    betGroups.currentGroup.users.map(user => {
+                        return <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.points}</td>
+                            <td><Button><Glyphicon glyph="user" /></Button></td>
+                        </tr>
                     })
                 }
             </tbody>
@@ -94,7 +93,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer()),
         createGroupOnServer: (name) => dispatch(createGroupOnServer(name)),
-        joinGroup: () => dispatch(joinGroup()),
+        joinGroupOnServer: () => dispatch(joinGroupOnServer()),
         leaveGroup: () => dispatch(leaveGroup()),
         switchGroup: (newGroup) => dispatch(switchGroup(newGroup))
     }

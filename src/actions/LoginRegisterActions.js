@@ -4,12 +4,15 @@ import {
 
 import {
     push
-} from 'react-router-redux'
+} from 'react-router-redux';
 
 import {
     isLoading,
     showError
-} from './'
+} from './';
+
+import { getPlayerRankingFromServer } from './PlayerRankingActions';
+import { getGroupRankingFromServer } from './BetGroupActions';
 
 export function requestLogin() {
     var serverUrl = configuration.getValue("serverUrl");
@@ -46,9 +49,14 @@ export function requestLogin() {
                 }
             })
             .then((userData) => {
-                window.data = userData;
                 dispatch(loginSuccess(userData))
                 dispatch(push("/")) // change url to home
+
+                // load rankings, bets etc
+                // TODO bets
+                dispatch(getPlayerRankingFromServer());
+                dispatch(getGroupRankingFromServer());
+
             })
             .catch((error) => {
                 dispatch(showError(error.message));

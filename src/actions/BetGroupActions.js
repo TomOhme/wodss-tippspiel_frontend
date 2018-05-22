@@ -8,13 +8,6 @@ import {
 } from './'
 
 
-export function switchGroupSuccess(newGroup) {
-    return {
-        type: "SWITCHGROUPSUCCESS",
-        newGroup
-    }
-};
-
 export function switchGroup(group) {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "betgroups/" + group.id + "/users"
@@ -49,10 +42,53 @@ export function switchGroup(group) {
     }
 };
 
-export function joinGroup(groupName) {
+export function joinGroupOnServer(group, password) {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "betgroups/" + group.id + "/adduser"
+
+    return (dispatch, getState) => {
+        var request = new Request(url, {
+            method: "PUT",
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
+            }),
+            body: JSON.stringify({
+                "password": password
+            })
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else if (response.status === 404) {
+                    return []; // no users
+                } else {
+                    throw new Error("Get group failed");
+                }
+            })
+            .then((users) => {
+                group.users = users;
+                dispatch(switchGroupSuccess(group));
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+    }
+}
+
+export function switchGroupSuccess(group) {
     return {
-        type: "JOINGROUP",
-        groupName: groupName
+        type: "SWITCHGROUPSUCCESS",
+        group
+    }
+}
+
+export function joinGroupSuccess(group) {
+    return (dispatch) => {
+        dispatch(switchGroup());
     }
 };
 
@@ -110,19 +146,20 @@ export function createGroupOnServer(name, password) {
     }
 };
 
-
-export function getBetGroupsSuccess(betGroupsData) {
-    return {
-        type: "GETBETGROUPSSUCCESS",
-        betGroupsData: betGroupsData
-    }
-};
-
 export function getGroupRankingFromServer() {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "betgroups";
 
+    console.log("test1");
+
     return (dispatch, getState) => {
+
+        console.log("test2");
+
+        dispatch(isLoading(true));
+
+        const state = getState();
+
         var request = new Request(url, {
             method: "GET",
             Origin: serverUrl,
@@ -133,6 +170,7 @@ export function getGroupRankingFromServer() {
             })
         });
 
+
         fetch(request).then(response => {
                 if (response.ok) {
                     return response.json()
@@ -142,9 +180,14 @@ export function getGroupRankingFromServer() {
             })
             .then((groupRanking) => {
                 dispatch(getGroupRankingSuccess(groupRanking));
+                dispatch(switchGroup(state.betGroups.groups[0])); // switch currentgroup to first group
             })
             .catch((error) => {
                 dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
             })
     }
 }

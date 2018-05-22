@@ -2,6 +2,7 @@ import _ from 'underscore';
 
 const initialState = {
     currentGroup: {
+        id: 1,
         name: "Testgroup",
         userIsMember: false,
         users: [{
@@ -23,7 +24,7 @@ const betGroupsReducer = (state = initialState, action) => {
     var newState = Object.assign({}, state);
 
     switch (action.type) {
-        case "JOINGROUP":
+        case "JOINGROUPSUCCESS":
             console.log(action.type);
             // TODO
             return state;
@@ -45,12 +46,13 @@ const betGroupsReducer = (state = initialState, action) => {
             newState.currentGroup.userIsMember = _.contains(userIds, state.user.id);
             return newState;
         case "GETGROUPRANKINGSUCCESS":
-            console.log(action.groupRanking);
+            //console.log(action.groupRanking["0"]);
             var newGroupRanking = _.sortBy(action.groupRanking, "score");
             _.each(newGroupRanking, (group) => {
                 group.rank = _.indexOf(newGroupRanking, group) + 1;
             });
             newState.groups = newGroupRanking;
+            newState.currentGroup = newState.groups[0];
             //const betGroupsData = action.betGroupsData;
             //newState.groupNames = _.pluck(betGroupsData, "name");
             return newState;

@@ -9,11 +9,11 @@ import {
     NavItem
 } from 'react-bootstrap';
 
-let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentGroup }) => (
+let BetNavigation = ({ dispatch, translate, currentLanguage, group, currentRound }) => (
     <div>
         <Nav bsStyle="tabs" 
                 className="bet-navigation"
-                activeKey={currentGroup} 
+                activeKey={currentRound} 
                 onSelect={this.handleSelect}>
             <NavItem eventKey={"A"} onSelect={() => { dispatch(setRound("A")) }} >
                 {translate('group')} A
