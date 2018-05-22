@@ -122,8 +122,7 @@ export function requestRegister(state) {
     const reminders = state.reminders;
 
     const serverUrl = configuration.getValue("serverUrl");
-    // TODO
-    var url = serverUrl + "register";
+    var url = serverUrl + "users";
 
     return (dispatch, getState) => {
 
@@ -155,18 +154,11 @@ export function requestRegister(state) {
                 if (response.ok) {
                     return response.json()
                 } else {
-                    throw new Error("Login failed");
+                    throw new Error("Register failed");
                 }
             })
             .then((userData) => {
-                dispatch(loginSuccess(userData))
-                dispatch(push("/")) // change url to home
-
-                // load rankings, bets etc
-                // TODO bets
-                dispatch(getPlayerRankingFromServer());
-                dispatch(getGroupRankingFromServer());
-
+                dispatch(registerSuccess(mail, password));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -179,9 +171,15 @@ export function requestRegister(state) {
 
 };
 
-export function registerSuccess(mail, password) {
+export async function registerSuccess(mail, password) {
+    // wait for some seconds
+    await sleep(5000);
+
     return (dispatch) => {
-        // TODO wait for some seconds
         dispatch(requestLogin(mail, password));
     }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
