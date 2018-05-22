@@ -8,7 +8,8 @@ import {
 
 import {
     isLoading,
-    showError
+    showError,
+    showMessage
 } from './';
 
 import {
@@ -19,6 +20,7 @@ import {
 } from './BetGroupActions';
 
 export function requestLogin(mail, password) {
+
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "login";
 
@@ -27,6 +29,12 @@ export function requestLogin(mail, password) {
         dispatch(isLoading(true));
 
         const state = getState();
+
+        const mail = state.user.tempmail;
+        const password = state.user.temppassword;
+
+        console.log(mail);
+        console.log(password);
 
         var request = new Request(url, {
             method: 'POST',
@@ -80,16 +88,49 @@ export function loginSuccess(userData) {
 }
 
 export function startLogout() {
-    return (dispatch) => {
-        dispatch(logOut());
-        // TODO fix change url (problem with persist)
-        //dispatch(push("/")); // change url to home
-        //window.location.reload();
-    }
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "logout";
 
+    return (dispatch) => {
+
+        dispatch(isLoading(true));
+
+        var request = new Request(url, {
+            method: "POST",
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie,
+                "Content-Type": "application/json"
+            })
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    dispatch(showMessage("Logout success")); // TODO german with translate()
+                    return response.json()
+                } else {
+                    throw new Error("Logout on server failed");
+                }
+            })
+            .then((logoutData) => {
+                dispatch(clientLogOut());
+                // TODO fix change url (problem with persist)
+                //dispatch(push("/")); // change url to home
+                //window.location.reload();
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
+    }
 }
 
-export function logOut() {
+export function clientLogOut() {
     return {
         type: "LOGOUT"
     }
@@ -149,7 +190,6 @@ export function requestRegister(state) {
         console.log(request);
 
         fetch(request).then(response => {
-                console.log(response);
                 if (response.ok) {
                     return response.json()
                 } else {

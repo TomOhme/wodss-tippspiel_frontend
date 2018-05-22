@@ -20,7 +20,7 @@ class StatusBar extends React.Component {
             {
                 (this.props.notification.showMessage)
                 ?
-                <Alert className="error-box" bsStyle="basic" onDismiss={() => this.props.dismissMessage()}>
+                <Alert className="error-box" bsStyle="info" onDismiss={() => this.props.dismissMessage()}>
                     {this.props.notification.message}
                 </Alert>
                 :

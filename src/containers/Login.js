@@ -76,7 +76,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        onMailChange: (event) => dispatch(onMailChange(event)),
+        onMailChange: (event) => {dispatch(onMailChange(event)); console.log(event.target.value) },
         onPasswordChange: (event) => dispatch(onPasswordChange(event)),
         requestLogin: () => dispatch(requestLogin()),
         switchToRegister: () => dispatch(switchToRegister())
