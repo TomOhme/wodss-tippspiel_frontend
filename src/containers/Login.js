@@ -14,60 +14,80 @@ import {
     FormGroup
 } from 'react-bootstrap';
 
-let Login = ({ user, onMailChange, onPasswordChange, requestLogin, switchToRegister, translate }) => (
-    <div style={{ maxWidth: 800 }}>
-        <h3>
-            {translate("login")}
-        </h3>
-        <br />
-        <Form horizontal>
-            <FormGroup controlId="formMail">
-                <Col componentClass={ControlLabel} sm={2}>
-                    {translate("mail")}
-                </Col>
-                <Col sm={10}>
-                    <FormControl
-                        type="text"
-                        placeholder={translate('mail')}
-                        autoFocus
-                        value={user.tempmail}
-                        onChange={(event) => onMailChange(event)} />
-                </Col>
-            </FormGroup>
+class Login extends React.Component {
 
-            <FormGroup controlId="formPassword">
-                <Col componentClass={ControlLabel} sm={2}>
-                    {translate("password")}
-                </Col>
-                <Col sm={10}>
-                    <FormControl type="password"
-                        placeholder={translate("password")}
-                        autoFocus
-                        value={user.temppassword}
-                        onChange={(event) => onPasswordChange(event)} />
-                </Col>
-            </FormGroup>
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            mail: "",
+            password: ""
+        }
+    }
+
+    onMailChange(event) {
+        this.setState({ mail: event.target.value });
+    }
+
+    onPasswordChange(event) {
+        this.setState({ password: event.target.value });
+    }
+
+    render() {
+        return <div style={{ maxWidth: 800 }}>
+            <h3>
+                {this.translate("login")}
+            </h3>
+            <br />
+            <Form horizontal>
+                <FormGroup controlId="formMail">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        {this.translate("mail")}
+                    </Col>
+                    <Col sm={10}>
+                        <FormControl
+                            type="text"
+                            placeholder={this.translate('mail')}
+                            autoFocus
+                            value={this.state.tempmail}
+                            onChange={(event) => this.onMailChange(event)} />
+                    </Col>
+                </FormGroup>
+
+                <FormGroup controlId="formPassword">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        {this.translate("password")}
+                    </Col>
+                    <Col sm={10}>
+                        <FormControl type="password"
+                            placeholder={this.translate("password")}
+                            autoFocus
+                            value={this.state.password}
+                            onChange={(event) => this.onPasswordChange(event)} />
+                    </Col>
+                </FormGroup>
 
 
-            <FormGroup>
-                <Row mdpush={10} md={2} className="text-right">
-                    <Button
-                        bsStyle="blue"
-                        disabled={!user.loginPossible}
-                        onClick={() => requestLogin(user.tempmail, user.temppassword)}>
-                        {translate("login")}
-                    </Button>
-                    <Button
-                        bsStyle="link">
-                        <Link to={`/register`} onClick={() => window.location.reload()}>
-                            {translate("register")}
-                        </Link>
-                    </Button>
-                </Row>
-            </FormGroup>
-        </Form>
-    </div>
-);
+                <FormGroup>
+                    <Row mdpush={10} md={2} className="text-right">
+                        <Button
+                            bsStyle="blue"
+                            disabled={!this.user.loginPossible}
+                            onClick={() => this.requestLogin(this.state.mail, this.state.password)}>
+                            {this.translate("login")}
+                        </Button>
+                        <Button
+                            bsStyle="link">
+                            <Link to={`/register`} onClick={() => window.location.reload()}>
+                                {this.translate("register")}
+                            </Link>
+                        </Button>
+                    </Row>
+                </FormGroup>
+            </Form>
+        </div>
+    }
+}
 
 const mapStateToProps = state => ({
     translate: getTranslate(state.locale),
@@ -76,8 +96,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        onMailChange: (event) => {dispatch(onMailChange(event)); console.log(event.target.value) },
-        onPasswordChange: (event) => dispatch(onPasswordChange(event)),
         requestLogin: () => dispatch(requestLogin()),
         switchToRegister: () => dispatch(switchToRegister())
     }
