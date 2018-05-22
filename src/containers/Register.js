@@ -27,7 +27,8 @@ class Register extends React.Component {
             password1: '',
             password2: '',
             reminders: true,
-            registerPossible: false
+            dailyresults: true,
+            registerPossible: false,
         }
 
         this.translate = this.props.translate;
@@ -49,6 +50,9 @@ class Register extends React.Component {
         }
         else if (e.target.id === 'formReminders') {
             this.setState({ reminders: e.target.value });
+        }
+        else if (e.target.id === 'formDailyResults') {
+            this.setState({ dailyresults: e.target.value });
         }
     }
 
@@ -73,6 +77,11 @@ class Register extends React.Component {
     toggleReminders() {
         const oldReminders = this.state.reminders;
         this.setState({ reminders: !oldReminders });
+    }
+
+    toggleDailyResults() {
+        const oldDailyResults = this.state.dailyresults;
+        this.setState({ dailyresults: !oldDailyResults });
     }
 
     render() {
@@ -146,6 +155,19 @@ class Register extends React.Component {
                             autoFocus
                             checked={this.state.reminders}
                             onChange={() => this.toggleReminders()} />
+                    </Col>
+                </FormGroup>
+
+                <FormGroup controlId="formDailyResults">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        {this.translate("dailyresults")}
+                    </Col>
+                    <Col sm={10}>
+                        <Checkbox
+                            placeholder={this.translate('dailyresults')}
+                            autoFocus
+                            checked={this.state.dailyresults}
+                            onChange={() => this.toggleDailyResults()} />
                     </Col>
                 </FormGroup>
 
