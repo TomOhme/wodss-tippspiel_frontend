@@ -170,9 +170,9 @@ export function requestRegister(state) {
 
 };
 
-export async function registerSuccess(mail, password) {
+export function registerSuccess(mail, password) {
     // wait for some seconds
-    await sleep(5000);
+    sleep(5000);
 
     return (dispatch) => {
         dispatch(requestLogin(mail, password));

@@ -16,11 +16,11 @@ class ChangeProfileForm extends React.Component {
         super(props);
 
         this.state = {
-            newmail: "",
-            newusername: "",
-            newpassword: "",
+            newmail: props.user.email,
+            newusername: props.user.name,
             reminders: props.user.reminders,
             dailyresults: props.user.dailyresults,
+            password: "",
         };
 
         this.translate = props.translate;
@@ -62,19 +62,6 @@ class ChangeProfileForm extends React.Component {
                     </Col>
                 </FormGroup>
 
-                <FormGroup controlId="formPassword">
-                    <Col componentClass={ControlLabel} md={2}>
-                        {this.translate('newpassword')}
-                    </Col>
-                    <Col md={5}>
-                        <FormControl type="text"
-                            placeholder={this.translate('password')}
-                            autoFocus
-                            value={this.state.mail}
-                            onChange={(e) => this.handleChange(e)} />
-                    </Col>
-                </FormGroup>
-
                 <FormGroup controlId="formReminders">
                     <Col componentClass={ControlLabel} sm={2}>
                         {this.translate("reminders")}
@@ -100,6 +87,22 @@ class ChangeProfileForm extends React.Component {
                             onChange={() => this.toggleDailyResults()} />
                     </Col>
                 </FormGroup>
+
+                <br />
+
+                <FormGroup controlId="formPassword">
+                    <Col componentClass={ControlLabel} md={2}>
+                        {this.translate('passwordforconfirm')}
+                    </Col>
+                    <Col md={5}>
+                        <FormControl type="text"
+                            placeholder={this.translate('password')}
+                            autoFocus
+                            value={this.state.mail}
+                            onChange={(e) => this.handleChange(e)} />
+                    </Col>
+                </FormGroup>
+
 
                 <FormGroup>
                     <Col md={7} className="text-right">

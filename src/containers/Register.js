@@ -63,6 +63,7 @@ class Register extends React.Component {
             && this.state.password1.length > 0
             && this.state.password2.length > 0
             && this.passwordsMatch()) {
+                // TODO password at least 10 chars
             return true;
         }
         else {

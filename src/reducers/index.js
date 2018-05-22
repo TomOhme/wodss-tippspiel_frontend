@@ -43,6 +43,9 @@ const rootReducer = (state, action) => {
         state.user = undefined;
         state.isLoading = undefined;
         state.notification = undefined;
+
+        // delete all cookies
+        document.cookie = ""; 
     }
 
     return appReducer(state, action)

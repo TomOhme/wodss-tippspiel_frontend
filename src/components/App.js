@@ -1,11 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { configuration } from '../Configuration';
 import Header from '../containers/Header';
 import Footer from './Footer';
 import Main from './Main';
 import Loading from './Loading';
 import StatusBar from './StatusBar';
-import { configuration } from '../Configuration';
-import { connect } from 'react-redux';
+import { getPlayerRankingFromServer } from '../actions/PlayerRankingActions';
+import { getGroupRankingFromServer } from '../actions/BetGroupActions';
 
 class App extends React.Component {
 
@@ -27,7 +30,12 @@ class App extends React.Component {
       .catch(ex => {
         console.log(ex);
         // TODO display error
-      })
+      });
+
+    // load general data
+    // TODO load bets
+    getPlayerRankingFromServer();
+    getGroupRankingFromServer();
   }
 
   render() {
@@ -47,6 +55,11 @@ const mapStateToProps = state => ({
   isLoading: state.isLoading
 });
 
-App = connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => ({
+  getPlayerRankingFromServer: () => dispatch(getPlayerRankingFromServer()),
+  getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer())
+});
+
+App = connect(mapStateToProps, mapDispatchToProps)(App)
 
 export default App;

@@ -20,6 +20,7 @@
     "password": ["Passwort"],
     "passwordagain": ["Passwort erneut eingeben"],
     "passwordoptional": ["Passwort (optional)"],
+    "passwordforconfirm": ["Passwort für Bestätigung"],
     "resetpassword": ["Passwort zurücksetzen"],
     "passwordnomatch": ["Passwörter stimmen nicht überein."],
     "username": ["Benutzername"],

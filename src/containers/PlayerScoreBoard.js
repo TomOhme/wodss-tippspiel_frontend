@@ -52,7 +52,7 @@ let PlayerScoreBoard = ({ playerScores, translate, getPlayerRankingFromServer })
                     {
                         Object.values(playerScores).map(player => {
                             return <tr key={player.id}>
-                                <td>{player.id}</td>
+                                <td>{player.rank}</td>
                                 <td>{player.name}</td>
                                 <td>{player.score}</td>
                             </tr>
