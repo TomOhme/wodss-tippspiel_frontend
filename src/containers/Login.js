@@ -16,6 +16,10 @@ import {
 
 let Login = ({ user, onMailChange, onPasswordChange, requestLogin, switchToRegister, translate }) => (
     <div style={{ maxWidth: 800 }}>
+        <h3>
+            {translate("login")}
+        </h3>
+        <br />
         <Form horizontal>
             <FormGroup controlId="formMail">
                 <Col componentClass={ControlLabel} sm={2}>
@@ -55,7 +59,7 @@ let Login = ({ user, onMailChange, onPasswordChange, requestLogin, switchToRegis
                     </Button>
                     <Button
                         bsStyle="link">
-                        <Link to={`/register/`}>
+                        <Link to={`/register`} onClick={() => window.location.reload()}>
                             {translate("register")}
                         </Link>
                     </Button>

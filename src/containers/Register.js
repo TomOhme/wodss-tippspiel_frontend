@@ -67,6 +67,10 @@ class Register extends React.Component {
 
     render() {
         return <div style={{ maxWidth: 800 }}>
+            <h3>
+                {this.translate("register")}
+            </h3>
+            <br />
             <Form horizontal>
                 <FormGroup controlId="formMail">
                     <Col componentClass={ControlLabel} sm={2}>
@@ -132,7 +136,7 @@ class Register extends React.Component {
                 <FormGroup>
                     <Row mdpush={10} md={2} className="text-right">
                         <Button
-                            bsStyle="primary"
+                            bsStyle="blue"
                             disabled={!this.isRegisterPossible()}
                             onClick={() => this.requestRegister(this.state)}>
                             {this.translate("register")}
