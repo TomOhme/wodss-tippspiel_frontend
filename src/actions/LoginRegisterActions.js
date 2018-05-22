@@ -38,7 +38,7 @@ export function requestLogin() {
         console.log(request);
 
         fetch(request).then(response => {
-            console.log(response);
+                console.log(response);
                 if (response.ok) {
                     return response.json()
                 } else {
@@ -67,10 +67,20 @@ export function loginSuccess(userData) {
     };
 }
 
+export function startLogout() {
+    return (dispatch) => {
+        dispatch(logOut());
+        // TODO fix change url (problem with persist)
+        //dispatch(push("/")); // change url to home
+        //window.location.reload();
+    }
+
+}
+
 export function logOut() {
     return {
         type: "LOGOUT"
-    };
+    }
 }
 
 export function onMailChange(event) {

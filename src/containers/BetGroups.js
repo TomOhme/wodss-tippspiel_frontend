@@ -13,7 +13,7 @@ import {
 
 import CreateGroupDialog from './CreateGroupDialog';
 
-let BetGroups = ({ betGroups, translate, getGroupRankingFromServer, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
+let BetGroups = ({ betGroups, translate, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
@@ -33,7 +33,7 @@ let BetGroups = ({ betGroups, translate, getGroupRankingFromServer, createGroupO
         {
             // only display join button when user is not member
             (!betGroups.currentGroup.userIsMember) ? (
-                <Button className="button" bsStyle="primary">
+                <Button className="button" bsStyle="blue">
                     {translate('joingroup')}
                 </Button>
             ) : null

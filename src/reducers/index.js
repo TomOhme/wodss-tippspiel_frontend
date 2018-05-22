@@ -43,8 +43,6 @@ const rootReducer = (state, action) => {
         state.user = undefined;
         state.isLoading = undefined;
         state.notification = undefined;
-
-        // TODO redirect to bets
     }
 
     return appReducer(state, action)
