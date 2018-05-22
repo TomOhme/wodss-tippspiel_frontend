@@ -61,14 +61,18 @@ let BetGroups = ({ betGroups, translate, showJoinModal, hideJoinModal, createGro
             </thead>
             <tbody>
                 {
-                    betGroups.currentGroup.users.map(user => {
-                        return <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.points}</td>
-                            <td><Button><Glyphicon glyph="user" /></Button></td>
-                        </tr>
-                    })
+                    (betGroups.currentGroup.users !== undefined)
+                        ?
+                        betGroups.currentGroup.users.map(user => {
+                            return <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.points}</td>
+                                <td><Button><Glyphicon glyph="user" /></Button></td>
+                            </tr>
+                        })
+                        :
+                        null
                 }
             </tbody>
         </Table>

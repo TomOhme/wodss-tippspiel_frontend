@@ -52,7 +52,7 @@ const betGroupsReducer = (state = initialState, action) => {
                 group.rank = _.indexOf(newGroupRanking, group) + 1;
             });
             newState.groups = newGroupRanking;
-            newState.currentGroup = newState.groups[0];
+            newState.currentGroup = newGroupRanking[0];
             //const betGroupsData = action.betGroupsData;
             //newState.groupNames = _.pluck(betGroupsData, "name");
             return newState;
