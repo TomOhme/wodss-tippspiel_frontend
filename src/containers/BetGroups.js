@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { createGroupOnServer, getBetGroupsFromServer, joinGroup, leaveGroup, switchGroup } from '../actions/BetGroupActions';
+import { createGroupOnServer, joinGroup, leaveGroup, switchGroup, getGroupRankingFromServer } from '../actions/BetGroupActions';
 
 import {
     DropdownButton,
@@ -13,7 +13,7 @@ import {
 
 import CreateGroupDialog from './CreateGroupDialog';
 
-let BetGroups = ({ betGroups, translate, getBetGroupsFromServer, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
+let BetGroups = ({ betGroups, translate, getGroupRankingFromServer, createGroupOnServer, joinGroup, leaveGroup, switchGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
@@ -21,7 +21,7 @@ let BetGroups = ({ betGroups, translate, getBetGroupsFromServer, createGroupOnSe
                     return (
                         <MenuItem
                             key={group.id}
-                            onSelect={(e) => switchGroup(group.name)}
+                            onSelect={(e) => switchGroup(group)}
                             active={group.name === betGroups.currentGroup.name}>
                             {group.name}
                         </MenuItem>
@@ -41,7 +41,7 @@ let BetGroups = ({ betGroups, translate, getBetGroupsFromServer, createGroupOnSe
 
         <CreateGroupDialog translate={translate} createGroupOnServer={createGroupOnServer} />
 
-        <Button onClick={() => getBetGroupsFromServer()}>
+        <Button onClick={() => getGroupRankingFromServer()}>
             <Glyphicon glyph="refresh" />
         </Button>
 
@@ -60,12 +60,12 @@ let BetGroups = ({ betGroups, translate, getBetGroupsFromServer, createGroupOnSe
             </thead>
             <tbody>
                 {
-                    betGroups.currentGroup.members.map((group) => {
+                    betGroups.currentGroup.users.map((user) => {
                         return (
-                            <tr key={group.number}>
-                                <td>{group.number}</td>
-                                <td>{group.name}</td>
-                                <td>{group.points}</td>
+                            <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.points}</td>
                                 <td><Button><Glyphicon glyph="user" /></Button></td>
                             </tr>
                         )
@@ -92,7 +92,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        getBetGroupsFromServer: () => dispatch(getBetGroupsFromServer()),
+        getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer()),
         createGroupOnServer: (name) => dispatch(createGroupOnServer(name)),
         joinGroup: () => dispatch(joinGroup()),
         leaveGroup: () => dispatch(leaveGroup()),
