@@ -45,11 +45,11 @@ export function switchGroup(group) {
 
 export function joinGroupOnServer(group, password, userId) {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "betgroups/" + group.id + "/adduser"
+    var url = serverUrl + "betgroupmemberships/" + group.id;
 
     return (dispatch, getState) => {
         var request = new Request(url, {
-            method: "PUT",
+            method: "POST",
             Origin: serverUrl,
             credentials: "include",
             headers: new Headers({
@@ -64,10 +64,8 @@ export function joinGroupOnServer(group, password, userId) {
         fetch(request).then(response => {
                 if (response.ok) {
                     return response.json()
-                } else if (response.status === 404) {
-                    return []; // no users
                 } else {
-                    throw new Error("Get group failed");
+                    throw new Error("Join group failed");
                 }
             })
             .then((users) => {
