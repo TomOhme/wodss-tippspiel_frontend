@@ -202,9 +202,6 @@ export function requestRegister(state) {
 };
 
 export function registerSuccess(mail, password) {
-    // wait for some seconds
-    setTimeout(5000);
-
     return (dispatch) => {
         dispatch(requestLogin(mail, password));
     }

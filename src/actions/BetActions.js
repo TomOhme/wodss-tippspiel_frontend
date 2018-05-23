@@ -94,7 +94,7 @@ export function saveSuccess(round, id) {
 
 export function getBetsForUser() {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "user/bets";
+    var url = serverUrl + "userbets";
 
     return (dispatch, getState) => {
         dispatch(isLoading(true));

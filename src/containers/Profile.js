@@ -32,13 +32,6 @@ let Profile = ({ user, translate, resetPasswordOnServer }) => (
             {translate("dailyresults")}: {(user.dailyResults) ? (translate("on")) : (translate("off"))}
             </ListGroupItem>
 
-            <ListGroupItem>
-                    {translate("roles")}: {
-                        _.each(user.roles, function(role) {
-                            return translate(role); // TODO fix translation
-                        })
-                    }
-            </ListGroupItem>
         </ListGroup>
         
         <PanelGroup accordion id="profilePanel">

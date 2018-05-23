@@ -8,13 +8,8 @@ const initialState = {
     betGroup: [],
     name: "",
     email: "",
-    roles: [
-        ""
-    ],
     dailyresults: false,
     reminders: false,
-    tempmail: "",
-    temppassword: "",
     loginPossible: false,
     activeScreen: "login",
 };

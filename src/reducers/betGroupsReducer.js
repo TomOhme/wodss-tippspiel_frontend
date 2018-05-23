@@ -1,18 +1,7 @@
 import _ from 'underscore';
 
 const initialState = {
-    currentGroup: {
-        id: 1,
-        name: "Testgroup",
-        userIsMember: false,
-        user_ids: [],
-        users: [{
-            id: 1,
-            rank: 1,
-            name: "hase",
-            points: 16
-        }]
-    },
+    currentGroup: getDummyGroup(),
     groups: [{
         id: 1,
         rank: 1,
@@ -57,7 +46,10 @@ const betGroupsReducer = (state = initialState, action) => {
                 group.rank = _.indexOf(newGroupRanking, group) + 1;
             });
             newState.groups = newGroupRanking;
-            newState.currentGroup = newGroupRanking[0];
+
+            if (newState.groups.length === 0) {
+                newState.currentGroup = getDummyGroup();
+            }
             //const betGroupsData = action.betGroupsData;
             //newState.groupNames = _.pluck(betGroupsData, "name");
             return newState;
@@ -67,3 +59,18 @@ const betGroupsReducer = (state = initialState, action) => {
 };
 
 export default betGroupsReducer;
+
+function getDummyGroup() {
+    return {
+        id: 1,
+        name: "Testgroup",
+        userIsMember: false,
+        user_ids: [],
+        users: [{
+            id: 1,
+            rank: 1,
+            name: "hase",
+            points: 16
+        }]
+    }
+}
