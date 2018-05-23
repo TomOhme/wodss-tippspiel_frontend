@@ -37,10 +37,7 @@ export function updateProfileOnServer(newProfile) {
             })
         });
 
-        console.log(request);
-
         fetch(request).then(response => {
-                console.log(response);
                 if (response.ok) {
                     return response.json()
                 } else {

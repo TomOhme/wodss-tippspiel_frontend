@@ -42,8 +42,6 @@ const userReducer = (state = initialState, action, store) => {
             // set user data
             var data = action.userData;
 
-            console.log(data);
-
             newState.id = data.id;
             newState.bets = data.bets;
             newState.betGroup = data.betGroup;
@@ -58,16 +56,7 @@ const userReducer = (state = initialState, action, store) => {
             return newState;
 
         case "SWITCHTOREGISTER":
-            console.log(action.type);
             newState.activeScreen = "register";
-            // TODO
-            return state;
-        case "REQUESTREGISTER":
-            console.log(action.type);
-            console.log(action.mail);
-            console.log(action.username);
-            console.log(action.password);
-            // TODO
             return state;
         default:
             return state;

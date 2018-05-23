@@ -33,9 +33,6 @@ export function requestLogin(mail, password) {
 
         const state = getState();
 
-        console.log(mail);
-        console.log(password);
-
         var request = new Request(url, {
             method: 'POST',
             Origin: serverUrl,
@@ -50,10 +47,7 @@ export function requestLogin(mail, password) {
             })
         });
 
-        console.log(request);
-
         fetch(request).then(response => {
-                console.log(response);
                 if (response.ok) {
                     return response.json()
                 } else {
@@ -185,8 +179,6 @@ export function requestRegister(state) {
                 "dailyresults": dailyresults
             })
         });
-
-        console.log(request);
 
         fetch(request).then(response => {
                 if (response.ok) {

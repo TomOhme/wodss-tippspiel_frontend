@@ -24,7 +24,6 @@ const groupScoreBoardReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case "GETGROUPRANKINGSUCCESS":
-            console.log(action.groupRanking);
             newState = action.groupRanking;
             return newState;
         default:

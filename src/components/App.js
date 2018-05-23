@@ -29,7 +29,6 @@ class App extends React.Component {
       })
       .catch(ex => {
         console.log(ex);
-        // TODO display error
       });
 
     // load general data

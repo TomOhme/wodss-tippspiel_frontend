@@ -153,11 +153,7 @@ export function getGroupRankingFromServer() {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "betgroups";
 
-    console.log("test1");
-
     return (dispatch, getState) => {
-
-        console.log("test2");
 
         dispatch(isLoading(true));
 
