@@ -21,16 +21,31 @@ class Login extends React.Component {
 
         this.state = {
             mail: "",
-            password: ""
+            password: "",
+            loginPossible: false
         }
+
+        this.translate = props.translate;
+        this.user = props.user;
+        this.requestLogin = props.requestLogin;
     }
 
     onMailChange(event) {
         this.setState({ mail: event.target.value });
+        this.checkLoginPossible();
     }
 
     onPasswordChange(event) {
         this.setState({ password: event.target.value });
+        this.checkLoginPossible();
+    }
+
+    checkLoginPossible() {
+        if (this.state.mail.length > 0 && this.state.password.length > 0) {
+            this.setState({ loginPossible: true });
+        } else {
+            this.setState({ loginPossible: false });
+        }
     }
 
     render() {
@@ -72,7 +87,7 @@ class Login extends React.Component {
                     <Row mdpush={10} md={2} className="text-right">
                         <Button
                             bsStyle="blue"
-                            disabled={!this.user.loginPossible}
+                            disabled={!this.state.loginPossible}
                             onClick={() => this.requestLogin(this.state.mail, this.state.password)}>
                             {this.translate("login")}
                         </Button>

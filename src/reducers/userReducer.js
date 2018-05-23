@@ -34,14 +34,6 @@ const userReducer = (state = initialState, action, store) => {
             console.log(action.type);
             // TODO
             return state;
-        case "ONMAILCHANGE":
-            newState.tempmail = action.mail;
-            newState.loginPossible = isLoginPossible(newState);
-            return newState;
-        case "ONPASSWORDCHANGE":
-            newState.temppassword = action.password;
-            newState.loginPossible = isLoginPossible(newState);
-            return newState;
 
         case "LOGINSUCCESS":
             // update logged in
@@ -82,12 +74,5 @@ const userReducer = (state = initialState, action, store) => {
     }
 };
 
-function isLoginPossible(newState) {
-    if (newState.tempmail.length > 0 && newState.temppassword.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 export default userReducer;

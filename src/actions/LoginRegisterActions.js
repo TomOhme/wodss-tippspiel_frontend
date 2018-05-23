@@ -102,7 +102,7 @@ export function startLogout() {
             headers: new Headers({
                 "X-Requested-With": "ok",
                 "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie,
-                "Content-Type": "application/json"
+                // TODO
             })
         });
 

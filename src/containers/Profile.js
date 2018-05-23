@@ -35,10 +35,9 @@ let Profile = ({ user, translate, resetPasswordOnServer }) => (
             <ListGroupItem>
                     {translate("roles")}: {
                         _.each(user.roles, function(role) {
-                            translate(role); // TODO fix translation
+                            return translate(role); // TODO fix translation
                         })
                     }
-                    {console.log(user.roles)}
             </ListGroupItem>
         </ListGroup>
         
