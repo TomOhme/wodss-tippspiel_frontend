@@ -111,7 +111,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        requestLogin: () => dispatch(requestLogin()),
+        requestLogin: (mail, password) => dispatch(requestLogin(mail, password)),
         switchToRegister: () => dispatch(switchToRegister())
     }
 }

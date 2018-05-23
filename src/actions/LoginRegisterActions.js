@@ -30,9 +30,6 @@ export function requestLogin(mail, password) {
 
         const state = getState();
 
-        const mail = state.user.tempmail;
-        const password = state.user.temppassword;
-
         console.log(mail);
         console.log(password);
 
