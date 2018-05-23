@@ -138,3 +138,48 @@ export function getBetsForUser() {
             })
     }
 }
+
+export function getGames() {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "games";
+
+    return (dispatch, getState) => {
+        dispatch(isLoading(true));
+        const state = getState();
+
+        var request = new Request(url, {
+            method: "GET",
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
+            }),
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Games fetch on server failed");
+                }
+            })
+            .then((games) => {
+                dispatch(getGamesSuccess(games));
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
+    }
+}
+
+function getGamesSuccess(games) {
+    return {
+        type: "GETGAMESSUCCESS",
+        games
+    }
+}

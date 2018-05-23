@@ -4,8 +4,18 @@ import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 
 import Game from './Game';
 
+import { getGames } from '../actions/BetActions';
+
+import {
+    Button,
+    Glyphicon
+} from 'react-bootstrap';
+
 let Bets = ({ currentRound, bets }) => (
     <div>
+        <Button onClick={() => { getGames() }}>
+            <Glyphicon glyph="refresh" />
+        </Button>
         {
            Object.values(bets[currentRound]).map(game => {
                 return <Game round={currentRound} game={game} key={game.id} />
@@ -21,6 +31,12 @@ const mapStateToProps = state => ({
     currentLanguage: getActiveLanguage(state.locale).code
 });
 
-Bets = connect(mapStateToProps)(Bets)
+const mapDispatchToProps = dispatch => {
+    return {
+        getGames: () => dispatch(getGames())
+    }
+}
+
+Bets = connect(mapStateToProps, mapDispatchToProps)(Bets)
 
 export default Bets;
