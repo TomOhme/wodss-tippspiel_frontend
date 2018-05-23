@@ -209,13 +209,9 @@ export function requestRegister(state) {
 
 export function registerSuccess(mail, password) {
     // wait for some seconds
-    sleep(5000);
+    setTimeout(5000);
 
     return (dispatch) => {
         dispatch(requestLogin(mail, password));
     }
-}
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }

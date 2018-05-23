@@ -135,6 +135,7 @@ export function createGroupOnServer(name, password) {
                 }
             })
             .then((response) => {
+                setTimeout(2000); // wait till server created group
                 dispatch(getGroupRankingFromServer()); // reload
                 //window.location.reload();
             })
