@@ -70,6 +70,38 @@ export function joinGroupOnServer(group, password, userId) {
             })
             .then((users) => {
                 group.users = users;
+                dispatch(joinGroupSuccess(group));
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+    }
+}
+
+export function leaveGroupOnServer(group) {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "betgroupmemberships/" + group.id;
+
+    return (dispatch, getState) => {
+        var request = new Request(url, {
+            method: "DELETE",
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
+            })
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error("Leave group failed");
+                }
+            })
+            .then((users) => {
+                group.users = users;
                 dispatch(switchGroupSuccess(group, userId));
             })
             .catch((error) => {
@@ -88,7 +120,7 @@ export function switchGroupSuccess(group, userId) {
 
 export function joinGroupSuccess(group) {
     return (dispatch) => {
-        dispatch(switchGroup());
+        dispatch(switchGroup(group));
     }
 };
 

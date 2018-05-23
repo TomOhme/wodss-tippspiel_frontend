@@ -1,23 +1,4 @@
-const initialState = [
-    {
-        id: 1,
-        rank: 3,
-        name: "Team T",
-        score: 68
-    },
-    {
-        id: 2,
-        rank: 1,
-        name: "Gruppe Kiosk",
-        score: 456
-    },
-    {
-        id: 3,
-        rank: 2,
-        name: "TestGroupPleaseIgnore",
-        score: 123
-    }
-];
+const initialState = [];
 
 const groupScoreBoardReducer = (state = initialState, action) => {
     var newState = Object.assign({}, state);

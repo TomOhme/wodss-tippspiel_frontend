@@ -33,16 +33,15 @@ const rootReducer = (state, action) => {
             storage.removeItem(`persist:${key}`);
         });
 
-        // reset all state (except from external packages) 
-        // so the user is logged out all application state is reinitialized
+        // reset some states (don't reset state from external packages!) 
         state.round = undefined;
-        state.betGroups = undefined;
+        //state.betGroups = undefined;
         state.bets = undefined;
-        state.playerScores = undefined;
-        state.groupScores = undefined;
+        //state.playerScores = undefined;
+        //state.groupScores = undefined;
         state.user = undefined;
-        state.isLoading = undefined;
-        state.notification = undefined;
+        //state.isLoading = undefined;
+        //state.notification = undefined;
 
         // delete all cookies
         document.cookie = ""; 

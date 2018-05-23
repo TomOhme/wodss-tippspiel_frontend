@@ -1,26 +1,6 @@
 import _ from 'underscore';
 
-const initialState = [
-    {
-        id: 1,
-        rank: 1,
-        name: "hase",
-        score: 888
-    },
-    {
-        id: 2,
-        rank: 2,
-        name: "hase",
-        name: "maulwurf",
-        score: 555
-    },
-    {
-        id: 3,
-        rank: 3,
-        name: "zebra",
-        score: 222
-    }
-];
+const initialState = [];
 
 const playerScoreBoardReducer = (state = initialState, action) => {
     var newState = Object.assign({}, state);
