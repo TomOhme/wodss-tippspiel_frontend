@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
+import _ from 'underscore';
 
 import Game from './Game';
 
@@ -11,15 +12,21 @@ import {
     Glyphicon
 } from 'react-bootstrap';
 
-let Bets = ({ currentRound, bets }) => (
+let Bets = ({ currentRound, bets, getGames }) => (
     <div>
         <Button onClick={() => { getGames() }}>
             <Glyphicon glyph="refresh" />
         </Button>
+
         {
+            /*
            Object.values(bets[currentRound]).map(game => {
                 return <Game round={currentRound} game={game} key={game.id} />
            }) 
+           */
+          _.each(bets, function(bet) {
+            return <Game round={currentRound} game={bet} key={homeTeamName + awayTeamName} />
+          })
         }
     </div>
 );

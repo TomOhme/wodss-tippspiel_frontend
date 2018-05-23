@@ -86,6 +86,10 @@ const betReducer = (state = initialState, action) => {
             newGame.saved = true;
 
             return newState;
+        case "GETGAMESSUCCESS":
+            newState = action.games;
+            // TODO
+            return newState;
         default:
             return state;
     }

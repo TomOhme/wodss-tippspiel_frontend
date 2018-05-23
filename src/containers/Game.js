@@ -19,10 +19,10 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
 
     <div className="game">
         {
-            (game.name !== undefined)
+            (game.phaseName === "finals" || game.phaseName === "gameforthird")
                 ?
                 <h3 className="game-name">
-                    {translate(game.name)}
+                    {translate(game.phaseName)}
                 </h3>
                 :
                 null
