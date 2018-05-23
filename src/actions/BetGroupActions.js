@@ -102,7 +102,8 @@ export function leaveGroupOnServer(group) {
             })
             .then((users) => {
                 group.users = users;
-                dispatch(switchGroupSuccess(group, userId));
+                // TODO?
+                //dispatch(switchGroupSuccess(group, userId));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -165,9 +166,10 @@ export function createGroupOnServer(name, password) {
                 }
             })
             .then((response) => {
-                setTimeout(2000); // wait till server created group
-                dispatch(getGroupRankingFromServer()); // reload
-                //window.location.reload();
+                console.log(response);
+                //setTimeout(2000); // wait till server created group
+                dispatch(getGroupRankingFromServer()); // reload groups
+                dispatch(switchGroup(response)); // switch to this group
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -209,7 +211,7 @@ export function getGroupRankingFromServer() {
             })
             .then((groupRanking) => {
                 dispatch(getGroupRankingSuccess(groupRanking));
-                dispatch(switchGroup(state.betGroups.groups[0])); // switch currentgroup to first group
+                //dispatch(switchGroup(state.betGroups.groups[0]));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
