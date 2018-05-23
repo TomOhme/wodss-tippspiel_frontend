@@ -18,6 +18,9 @@ import {
 import {
     getGroupRankingFromServer
 } from './BetGroupActions';
+import {
+    getBetsForUser
+} from './BetActions';
 
 export function requestLogin(mail, password) {
 
@@ -62,7 +65,7 @@ export function requestLogin(mail, password) {
                 dispatch(push("/")) // change url to home
 
                 // load rankings, bets etc
-                // TODO bets
+                dispatch(getBetsForUser());
                 dispatch(getPlayerRankingFromServer());
                 dispatch(getGroupRankingFromServer());
 
@@ -99,19 +102,18 @@ export function startLogout() {
             headers: new Headers({
                 "X-Requested-With": "ok",
                 "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie,
-                // TODO
             })
         });
 
         fetch(request).then(response => {
                 if (response.ok) {
                     dispatch(showMessage("Logout success")); // TODO german with translate()
-                    return response.json()
+                    return;
                 } else {
                     throw new Error("Logout on server failed");
                 }
             })
-            .then((logoutData) => {
+            .then(() => {
                 dispatch(clientLogOut());
                 // TODO fix change url (problem with persist)
                 //dispatch(push("/")); // change url to home
