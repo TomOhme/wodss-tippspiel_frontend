@@ -95,7 +95,7 @@ const betReducer = (state = formatGames(initialGames), action) => {
             newState = formatGames(action.games);
             return newState;
         case "GETUSERBETSSUCCESS":
-            newState = formatBets(action.userbets, newState);
+            newState = addBetsToGames(action.userbets, newState);
             return newState;
         default:
             return state;
@@ -132,12 +132,33 @@ function formatGames(games) {
         }
     });
 
-    // TODO
     return newState;
 }
 
-function formatBets(userbets, newState) {
+function addBetsToGames(userbets, newState) {
+    // add all bets from server
+    // TODO refactor with gameid / bet.game_id => use own dict, with flat games, key is id
+    _.each(userbets, (bet) => {
+        _.each(newState, (phase) => {
+            _.each(phase, (game) => {
+                if (bet.game_id === game.id) {
+                    game.bet = bet;
+                }
+            })
+        })
+    })
 
+    // add empty bets for all other games
+    // TODO
+    _.each(newState, (phase) => {
+        _.each(phase, (game) => {
+            if (game.bet === undefined) {
+                // TODO
+            }
+        })
+    })
+
+    return newState;
 }
 
 export default betReducer;
