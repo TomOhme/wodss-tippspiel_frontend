@@ -1,5 +1,6 @@
 import _ from 'underscore';
 
+/*
 import A from '../data/A.json';
 import B from '../data/B.json';
 import C from '../data/C.json';
@@ -10,8 +11,10 @@ import G from '../data/G.json';
 import H from '../data/H.json';
 import ro16 from '../data/ro16.json';
 import ro8 from '../data/ro8.json';
-import semi from '../data/semi.json';
+import semifinals from '../data/semifinals.json';
 import finals from '../data/finals.json';
+*/
+import initialGames from '../data/games.json';
 
 const initialState = {
     /*
@@ -36,21 +39,23 @@ const initialState = {
             total: "5"
         },
     */
-    "A": A,
-    "B": B,
-    "C": C,
-    "D": D,
-    "E": E,
-    "F": F,
-    "G": G,
-    "H": H,
-    "ro16": ro16,
-    "ro8": ro8,
-    "semi": semi,
-    "finals": finals
+    /*
+     "A": A,
+     "B": B,
+     "C": C,
+     "D": D,
+     "E": E,
+     "F": F,
+     "G": G,
+     "H": H,
+     "ro16": ro16,
+     "ro8": ro8,
+     "semifinals": semifinals,
+     "finals": finals
+     */
 };
 
-const betReducer = (state = initialState, action) => {
+const betReducer = (state = formatGames(initialGames), action) => {
     var newState = Object.assign({}, state);
     var newGame;
 
@@ -87,12 +92,45 @@ const betReducer = (state = initialState, action) => {
 
             return newState;
         case "GETGAMESSUCCESS":
-            newState = action.games;
-            // TODO
+            newState = formatGames(action.games);
             return newState;
         default:
             return state;
     }
 };
+
+function formatGames(games) {
+    var newState = {};
+    newState.A = [];
+    newState.B = [];
+    newState.C = [];
+    newState.D = [];
+    newState.E = [];
+    newState.F = [];
+    newState.G = [];
+    newState.H = [];
+    newState.ro16 = [];
+    newState.ro8 = [];
+    newState.semifinals = [];
+    newState.finals = [];
+
+    _.each(games, (game) => {
+        game.saved = true;
+        game.finished = game.homeTeamGoals !== null;
+
+        // push games into correct arrays, e.g. A or ro16...
+        if (game.phaseName === "group") {
+            newState[game.tournamentgroup].push(game);
+        } // TODO maybe sort for date/time?
+        else if (game.phaseName === "gameforthird") {
+            newState["finals"].push(game);
+        } else {
+            newState[game.phaseName].push(game);
+        }
+    });
+
+    // TODO
+    return newState;
+}
 
 export default betReducer;

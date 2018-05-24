@@ -24,9 +24,15 @@ let Bets = ({ currentRound, bets, getGames }) => (
                 return <Game round={currentRound} game={game} key={game.id} />
            }) 
            */
-          _.each(bets, function(bet) {
-            return <Game round={currentRound} game={bet} key={homeTeamName + awayTeamName} />
-          })
+            /*
+              _.each(bets[currentRound], function (bet) {
+                  return <Game round={currentRound} game={bet} key={bet.homeTeamName + bet.awayTeamName} />
+              })
+              */
+            // TODO
+            Object.values(bets[currentRound]).map(bet => {
+                return <Game round={currentRound} game={bet} key={bet.homeTeamName + bet.awayTeamName} />
+            })
         }
     </div>
 );

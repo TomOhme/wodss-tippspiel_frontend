@@ -48,16 +48,16 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                 <Row>
                     <Col xs={4} className="" style={{ textAlign: "right", marginLeft: "3%" }}>
                         <span className="country">
-                            {translate(game.home.name)}
+                            {translate(game.homeTeamName)}
                         </span>
-                        <Image src={require('../img/' + game.home.name + '.png')} />
+                        <Image src={require('../img/' + game.homeTeamName + '.png')} />
                     </Col>
 
                     <Col xs={2} className="" style={{ marginTop: "5%" }}>
                         {/* TODO use separate component with own state! */}
                         <Form inline>
                             <FormControl
-                                value={game.home.bet}
+                                value={(game.bettedHomeTeamGoals !== undefined) ? game.bettedHomeTeamGoals : 0}
                                 disabled={!user.loggedIn || game.finished}
                                 onChange={(event) => dispatch(setScore(event, currentRound, "home", game.id))}
                                 type="number"
@@ -68,7 +68,7 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                                 :
                             </span>
                             <FormControl
-                                value={game.guest.bet}
+                                value={(game.bettedAwayTeamGoals !== undefined) ? game.bettedAwayTeamGoals : 0}
                                 disabled={!user.loggedIn || game.finished}
                                 onChange={(event) => dispatch(setScore(event, currentRound, "guest", game.id))}
                                 type="number"
@@ -79,9 +79,9 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                     </Col>
 
                     <Col xs={4} className="" style={{ textAlign: "left" }}>
-                        <Image src={require('../img/' + game.guest.name + '.png')} />
+                        <Image src={require('../img/' + game.awayTeamName + '.png')} />
                         <span className="country">
-                            {translate(game.guest.name)}
+                            {translate(game.awayTeamName)}
                         </span>
                     </Col>
                 </Row>
@@ -93,7 +93,7 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                         {game.time}
                     </Label>
                     <Label className="pull-right fix-pull">
-                        {translate(game.place)}
+                        {translate(game.locationName)}
                     </Label>
                     {
                         // only display results when game is finished
@@ -104,10 +104,10 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                                         {translate('winner')}: {translate(game.winner)}
                                     </Label>
                                     <Label>
-                                        {translate('goalshome')}: {game.homegoals}
+                                        {translate('goalshome')}: {game.homeTeamGoals}
                                     </Label>
                                     <Label>
-                                        {translate('goalsguest')}: {game.guestgoals}
+                                        {translate('goalsguest')}: {game.awayTeamGoals}
                                     </Label>
                                     <Label>
                                         {translate('goaldifference')}: {game.difference}
