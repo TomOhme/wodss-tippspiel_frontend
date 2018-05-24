@@ -94,6 +94,9 @@ const betReducer = (state = formatGames(initialGames), action) => {
         case "GETGAMESSUCCESS":
             newState = formatGames(action.games);
             return newState;
+        case "GETUSERBETSSUCCESS":
+            newState = formatBets(action.userbets, newState);
+            return newState;
         default:
             return state;
     }
@@ -131,6 +134,10 @@ function formatGames(games) {
 
     // TODO
     return newState;
+}
+
+function formatBets(userbets, newState) {
+
 }
 
 export default betReducer;

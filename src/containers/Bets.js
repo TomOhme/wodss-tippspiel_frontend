@@ -5,16 +5,16 @@ import _ from 'underscore';
 
 import Game from './Game';
 
-import { getGames } from '../actions/BetActions';
+import { getGames, getUserbets } from '../actions/BetActions';
 
 import {
     Button,
     Glyphicon
 } from 'react-bootstrap';
 
-let Bets = ({ currentRound, bets, getGames }) => (
+let Bets = ({ user, currentRound, bets, getGames }) => (
     <div>
-        <Button onClick={() => { getGames() }}>
+        <Button onClick={() => { (user.loggedIn) ? getUserbets() : getGames() }}>
             <Glyphicon glyph="refresh" />
         </Button>
 
@@ -29,7 +29,6 @@ let Bets = ({ currentRound, bets, getGames }) => (
                   return <Game round={currentRound} game={bet} key={bet.homeTeamName + bet.awayTeamName} />
               })
               */
-            // TODO
             Object.values(bets[currentRound]).map(bet => {
                 return <Game round={currentRound} game={bet} key={bet.homeTeamName + bet.awayTeamName} />
             })
@@ -38,6 +37,7 @@ let Bets = ({ currentRound, bets, getGames }) => (
 );
 
 const mapStateToProps = state => ({
+    user: state.user,
     currentRound: state.round.currentRound,
     bets: state.bets,
     translate: getTranslate(state.locale),

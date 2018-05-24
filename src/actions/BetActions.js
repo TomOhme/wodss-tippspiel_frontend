@@ -92,7 +92,7 @@ export function saveSuccess(round, id) {
     }
 }
 
-export function getBetsForUser() {
+export function getUserbets() {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "userbets";
 
@@ -119,15 +119,8 @@ export function getBetsForUser() {
                     throw new Error("Bet fetch on server failed");
                 }
             })
-            .then((response) => {
-                if (response === 404) {
-                    return; // no bets available, do nothing
-                }
-
-                response.forEach(element => {
-                    // TODO
-                    // is this an array or object? includes .bets?
-                });
+            .then((userbets) => {
+                dispatch(getUserbetsSuccess(userbets));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -138,6 +131,14 @@ export function getBetsForUser() {
             })
     }
 }
+
+export function getUserbetsSuccess(userbets) {
+    return {
+        type: "GETUSERBETSSUCCESS",
+        userbets
+    }
+}
+
 
 export function getGames() {
     var serverUrl = configuration.getValue("serverUrl");

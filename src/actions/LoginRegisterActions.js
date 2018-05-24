@@ -19,7 +19,8 @@ import {
     getGroupRankingFromServer
 } from './BetGroupActions';
 import {
-    getBetsForUser
+    getUserbets,
+    getGames
 } from './BetActions';
 
 export function requestLogin(mail, password) {
@@ -59,7 +60,8 @@ export function requestLogin(mail, password) {
                 dispatch(push("/")) // change url to home
 
                 // load rankings, bets etc
-                dispatch(getBetsForUser());
+                dispatch(getGames());
+                dispatch(getUserbets());
                 dispatch(getPlayerRankingFromServer());
                 dispatch(getGroupRankingFromServer());
 
