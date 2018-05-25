@@ -22,31 +22,32 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
             }
 
             newGame = _.findWhere(newState[action.round], {
-                id: action.id
+                game_id: action.id
             });
 
             if (action.team === 'home') {
-                newGame.bet.homeTeamGoals = newVal;
+                newGame.bet.bettedHomeTeamGoals = newVal;
             } else if (action.team === 'away') {
-                newGame.bet.awayTeamId = newVal;
+                newGame.bet.bettedAwayTeamGoals = newVal;
             } else {
                 return state; // wrong team
             }
+
+            console.log(newGame);
 
             newGame.saved = false;
 
             return newState;
         case 'SAVESUCCESS':
             // set saved to true when UPDATE was successful
-            newGame = _.findWhere(newState[action.round], {
-                id: action.id
-            });
+            newGame = newState.gamesById[action.id];
             newGame.saved = true;
 
             return newState;
         case "GETGAMESSUCCESS":
             newState = formatGames(action.games);
             newState = addEmptyBetsToGames(newState);
+
             return newState;
         case "GETUSERBETSSUCCESS":
             newState = addBetsToGames(action.userbets, newState);
@@ -71,6 +72,8 @@ function formatGames(games) {
     newState.semifinals = [];
     newState.finals = [];
 
+    newState.gamesById = {}
+
     _.each(games, (game) => {
         game.saved = true;
         game.finished = game.homeTeamGoals !== null;
@@ -84,6 +87,7 @@ function formatGames(games) {
         } else {
             newState[game.phaseName].push(game);
         }
+
     });
 
     return newState;
@@ -108,12 +112,13 @@ const betBase = {
 
 function addBetsToGames(userbets, newState) {
     // add all bets from server
-    // TODO refactor with gameid / bet.game_id => use own dict, with flat games, key is id
     _.each(userbets, (bet) => {
         _.each(newState, (phase) => {
             _.each(phase, (game) => {
                 if (bet.game_id === game.game_id) {
+                    // TODO other values
                     bet.betExistsOnServer = true;
+                    bet.game_id = game.game_id;
                     game.bet = bet;
                 }
             })

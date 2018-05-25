@@ -55,7 +55,6 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
 
                     <Col xs={2} className="" style={{ marginTop: "5%" }}>
                         {/* TODO use separate component with own state! */}
-                        {(game.bet === undefined) ? console.log(game) : null}
                         <Form inline>
                             <FormControl
                                 value={game.bet.bettedHomeTeamGoals}
