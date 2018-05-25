@@ -18,18 +18,8 @@ let Bets = ({ user, currentRound, bets, getGames }) => (
             <Glyphicon glyph="refresh" />
         </Button>
         {
-            /*
-           Object.values(bets[currentRound]).map(game => {
-                return <Game round={currentRound} game={game} key={game.id} />
-           }) 
-           */
-            /*
-              _.each(bets[currentRound], function (bet) {
-                  return <Game round={currentRound} game={bet} key={bet.homeTeamName + bet.awayTeamName} />
-              })
-              */
             Object.values(bets[currentRound]).map(game => {
-                return <Game round={currentRound} game={game} key={game.homeTeamName + game.awayTeamName} />
+                return <Game round={currentRound} game={game} key={game.game_id} />
             })
         }
     </div>

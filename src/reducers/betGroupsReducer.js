@@ -32,15 +32,9 @@ const betGroupsReducer = (state = initialState, action) => {
             // TODO
             console.log(action.group);
             newState.currentGroup = action.group;
-            /*
-            const userIds = _.map(action.group.user_ids, (user) => {
-                return user.id;
-            });
-            */
             newState.currentGroup.userIsMember = _.contains(action.group.user_ids, action.userId);
             return newState;
         case "GETGROUPRANKINGSUCCESS":
-            //console.log(action.groupRanking["0"]);
             var newGroupRanking = _.sortBy(action.groupRanking, "score");
             _.each(newGroupRanking, (group) => {
                 group.rank = _.indexOf(newGroupRanking, group) + 1;
@@ -50,8 +44,7 @@ const betGroupsReducer = (state = initialState, action) => {
             if (newState.groups.length === 0) {
                 newState.currentGroup = getDummyGroup();
             }
-            //const betGroupsData = action.betGroupsData;
-            //newState.groupNames = _.pluck(betGroupsData, "name");
+
             return newState;
         default:
             return state;

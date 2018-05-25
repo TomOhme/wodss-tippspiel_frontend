@@ -16,6 +16,7 @@ import BetResultsDialog from '../containers/BetResultsDialog';
 import BetSaveButton from '../containers/BetSaveButton';
 
 let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) => (
+    
 
     <div className="game">
         {
