@@ -17,6 +17,8 @@ let Bets = ({ user, currentRound, bets, getGames }) => (
         <Button onClick={() => { (user.loggedIn) ? getUserbets() : getGames() }}>
             <Glyphicon glyph="refresh" />
         </Button>
+        {console.log(bets)}
+        {console.log(currentRound)}
 
         {
             /*
@@ -29,8 +31,8 @@ let Bets = ({ user, currentRound, bets, getGames }) => (
                   return <Game round={currentRound} game={bet} key={bet.homeTeamName + bet.awayTeamName} />
               })
               */
-            Object.values(bets[currentRound]).map(bet => {
-                return <Game round={currentRound} game={bet} key={bet.homeTeamName + bet.awayTeamName} />
+            Object.values(bets[currentRound]).map(game => {
+                return <Game round={currentRound} game={game} key={game.homeTeamName + game.awayTeamName} />
             })
         }
     </div>

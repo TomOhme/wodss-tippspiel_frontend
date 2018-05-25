@@ -55,7 +55,13 @@ const initialState = {
      */
 };
 
-const betReducer = (state = formatGames(initialGames), action) => {
+function initializeGamesWithBets(initialGames) {
+    var state = formatGames(initialGames);
+    state = addBetsToGames([], state);
+    return state;
+}
+
+const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
     var newState = Object.assign({}, state);
     var newGame;
 
@@ -135,6 +141,21 @@ function formatGames(games) {
     return newState;
 }
 
+const betBase = {
+    id: 0,
+    user_id: 0,
+    username: "",
+    homeTeamId: 0,
+    awayTeamId: 0,
+    bettedHomeTeamGoals: 0,
+    bettedAwayTeamGoals: 0,
+    actualHomeTeamGoals: 0,
+    actualAwayTeamGoals: 0,
+    score: 0,
+    location: "",
+    phase: ""
+}
+
 function addBetsToGames(userbets, newState) {
     // add all bets from server
     // TODO refactor with gameid / bet.game_id => use own dict, with flat games, key is id
@@ -153,7 +174,7 @@ function addBetsToGames(userbets, newState) {
     _.each(newState, (phase) => {
         _.each(phase, (game) => {
             if (game.bet === undefined) {
-                // TODO
+                game.bet = Object.assign({}, betBase);
             }
         })
     })
