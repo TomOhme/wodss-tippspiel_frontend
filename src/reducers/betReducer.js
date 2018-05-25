@@ -1,59 +1,6 @@
 import _ from 'underscore';
 
-/*
-import A from '../data/A.json';
-import B from '../data/B.json';
-import C from '../data/C.json';
-import D from '../data/D.json';
-import E from '../data/E.json';
-import F from '../data/F.json';
-import G from '../data/G.json';
-import H from '../data/H.json';
-import ro16 from '../data/ro16.json';
-import ro8 from '../data/ro8.json';
-import semifinals from '../data/semifinals.json';
-import finals from '../data/finals.json';
-*/
 import initialGames from '../data/games.json';
-
-const initialState = {
-    /*
-        0: {
-            saved: true,
-            finished: true,
-            home: {
-                name: "swi",
-                bet: 3
-            },
-            guest: {
-                name: "ger",
-                bet: 4
-            },
-            date: "21.6.",
-            time: "20:00",
-            place: "kal",
-            winner: "swi",
-            homegoals: "3",
-            guestgoals: "1",
-            difference: "2",
-            total: "5"
-        },
-    */
-    /*
-     "A": A,
-     "B": B,
-     "C": C,
-     "D": D,
-     "E": E,
-     "F": F,
-     "G": G,
-     "H": H,
-     "ro16": ro16,
-     "ro8": ro8,
-     "semifinals": semifinals,
-     "finals": finals
-     */
-};
 
 function initializeGamesWithBets(initialGames) {
     var state = formatGames(initialGames);
@@ -79,9 +26,9 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
             });
 
             if (action.team === 'home') {
-                newGame.home.bet = newVal; // TODO
-            } else if (action.team === 'guest') {
-                newGame.guest.bet = newVal; // TODO
+                newGame.bet.homeTeamGoals = newVal;
+            } else if (action.team === 'away') {
+                newGame.bet.awayTeamId = newVal;
             } else {
                 return state; // wrong team
             }
@@ -99,6 +46,7 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
             return newState;
         case "GETGAMESSUCCESS":
             newState = formatGames(action.games);
+            newState = addEmptyBetsToGames(newState);
             return newState;
         case "GETUSERBETSSUCCESS":
             newState = addBetsToGames(action.userbets, newState);
@@ -142,11 +90,13 @@ function formatGames(games) {
 }
 
 const betBase = {
-    id: 0,
-    user_id: 0,
+    betExistsOnServer: false,
+    id: -1,
+    user_id: -1,
+    game_id: -1,
     username: "",
-    homeTeamId: 0,
-    awayTeamId: 0,
+    homeTeam_id: -1,
+    awayTeamId: -1,
     bettedHomeTeamGoals: 0,
     bettedAwayTeamGoals: 0,
     actualHomeTeamGoals: 0,
@@ -162,15 +112,22 @@ function addBetsToGames(userbets, newState) {
     _.each(userbets, (bet) => {
         _.each(newState, (phase) => {
             _.each(phase, (game) => {
-                if (bet.game_id === game.id) {
+                if (bet.game_id === game.game_id) {
+                    bet.betExistsOnServer = true;
                     game.bet = bet;
                 }
             })
         })
     })
 
+
     // add empty bets for all other games
-    // TODO
+    newState = addEmptyBetsToGames(newState);
+
+    return newState;
+}
+
+function addEmptyBetsToGames(newState) {
     _.each(newState, (phase) => {
         _.each(phase, (game) => {
             if (game.bet === undefined) {
@@ -178,7 +135,6 @@ function addBetsToGames(userbets, newState) {
             }
         })
     })
-
     return newState;
 }
 

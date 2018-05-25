@@ -55,11 +55,12 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
 
                     <Col xs={2} className="" style={{ marginTop: "5%" }}>
                         {/* TODO use separate component with own state! */}
+                        {(game.bet === undefined) ? console.log(game) : null}
                         <Form inline>
                             <FormControl
                                 value={game.bet.bettedHomeTeamGoals}
                                 disabled={!user.loggedIn || game.finished}
-                                onChange={(event) => dispatch(setScore(event, currentRound, "home", game.id))}
+                                onChange={(event) => dispatch(setScore(event, currentRound, "home", game.game_id))}
                                 type="number"
                                 style={{ width: 60 }}
                             >
@@ -70,7 +71,7 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                             <FormControl
                                 value={game.bet.bettedAwayTeamGoals}
                                 disabled={!user.loggedIn || game.finished}
-                                onChange={(event) => dispatch(setScore(event, currentRound, "guest", game.id))}
+                                onChange={(event) => dispatch(setScore(event, currentRound, "away", game.game_id))}
                                 type="number"
                                 style={{ width: 60 }}
                             >

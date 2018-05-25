@@ -20,13 +20,16 @@ export function setScore(event, round, team, id) {
     return {
         type: "SETSCORE",
         round: round,
-        team: team, // e.g. 'home' or 'guest'
+        team: team, // e.g. 'home' or 'away'
         id: id,
         event: event
     }
 };
 
 export function saveBetOnServer(event, round, game, betId) {
+
+    // TODO check bet.betExistsOnServer for PUT/POST
+
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "bet";
 
