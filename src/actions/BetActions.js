@@ -31,7 +31,7 @@ export function saveBetOnServer(event, round, game, betId) {
     // TODO check bet.betExistsOnServer for PUT/POST
 
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "bet";
+    var url = serverUrl + "bets";
 
     return (dispatch, getState) => {
         dispatch(isLoading(true));
@@ -40,14 +40,14 @@ export function saveBetOnServer(event, round, game, betId) {
         var request;
         var method;
 
-        if (betId === undefined) {
+        if (game.bet.betExistsOnServer) {
             // new bet
-            method = "POST";
+            method = "PUT";
+            url += "/";
+            url += game.bet.id;
         } else {
             // update bet
-            method = "PUT";
-            url += "?id=";
-            url += betId;
+            method = "POST";
         }
 
         request = new Request(url, {
@@ -60,11 +60,13 @@ export function saveBetOnServer(event, round, game, betId) {
                 "Content-Type": "application/json"
             }),
             body: JSON.stringify({
-                "id": game.id,
-                "home": game.home,
-                "guest": game.guest
+                "game_id": game.game_id,
+                "homeTeamGoals": game.bet.bettedHomeTeamGoals,
+                "awayTeamGoals": game.bet.bettedAwayTeamGoals
             })
         });
+
+        console.log(request);
 
         fetch(request).then(response => {
                 if (response.ok) {
@@ -75,7 +77,7 @@ export function saveBetOnServer(event, round, game, betId) {
                 }
             })
             .then((userData) => {
-                dispatch(saveSuccess(round, game.id));
+                dispatch(saveSuccess(round, game.game_id));
             })
             .catch((error) => {
                 dispatch(showError(error.message));

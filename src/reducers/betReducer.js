@@ -33,14 +33,17 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
                 return state; // wrong team
             }
 
-            console.log(newGame);
-
             newGame.saved = false;
 
             return newState;
         case 'SAVESUCCESS':
-            // set saved to true when UPDATE was successful
-            newGame = newState.gamesById[action.id];
+            // set saved to true when update on server was successful
+            newGame = _.findWhere(newState[action.round], {
+                game_id: action.id
+            });
+            console.log(newGame);
+            console.log(action.round);
+            console.log(action.id);
             newGame.saved = true;
 
             return newState;
