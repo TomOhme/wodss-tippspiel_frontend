@@ -54,6 +54,8 @@ export function joinGroupOnServer(group, password, userId) {
             credentials: "include",
             headers: new Headers({
                 "X-Requested-With": "ok",
+                "Origin": serverUrl,
+                "Content-Type": "application/json",
                 "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
             }),
             body: JSON.stringify({
