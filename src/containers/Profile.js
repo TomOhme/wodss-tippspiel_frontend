@@ -14,7 +14,7 @@ import {
 
 import ChangeProfileForm from './ChangeProfileForm';
 
-let Profile = ({ user, translate, resetPasswordOnServer }) => (
+let Profile = ({ user, translate, resetPasswordOnServer, deleteProfileOnServer }) => (
     <div className="container-small">
 
         {/* TODO show when user is not logged in, don't show data */}
@@ -93,7 +93,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         updateProfileOnServer: (newProfile) => dispatch(updateProfileOnServer(newProfile)),
-        resetPasswordOnServer: () => dispatch(resetPasswordOnServer())
+        resetPasswordOnServer: () => dispatch(resetPasswordOnServer()),
+        deleteProfileOnServer: () => dispatch(deleteProfileOnServer())
     }
 }
 

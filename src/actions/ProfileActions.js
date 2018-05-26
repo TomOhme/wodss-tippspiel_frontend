@@ -4,8 +4,10 @@ import {
 
 import {
     isLoading,
-    showError
+    showError,
+    showMessage
 } from './';
+import { clientLogOut } from './LoginRegisterActions';
 
 
 export function updateProfileOnServer(newProfile) {
@@ -94,7 +96,7 @@ export function deleteProfileOnServer() {
 
         const state = getState();
 
-        url += state.user.userId;
+        url += state.user.id;
 
         var request = new Request(url, {
             method: 'DELETE',
@@ -111,11 +113,13 @@ export function deleteProfileOnServer() {
                 if (response.ok) {
                     return response.json()
                 } else {
-                    throw new Error("Profile update failed");
+                    throw new Error("Delete profile failed");
                 }
             })
             .then((newProfile) => {
-                dispatch(updateProfileSuccess(newProfile));
+                dispatch(deleteProfileOnServerSuccess());
+                dispatch(clientLogOut());
+                dispatch(showMessage("Delete profile success"));
             })
             .catch((error) => {
                 dispatch(showError(error.message));

@@ -33,6 +33,8 @@ const betGroupsReducer = (state = initialState, action) => {
             console.log(action.group);
             newState.currentGroup = action.group;
             newState.currentGroup.userIsMember = _.contains(action.group.user_ids, action.userId);
+            newState.currentGroup = action.group;
+            console.log(_.contains(action.group.user_ids, action.userId));
             return newState;
         case "GETGROUPRANKINGSUCCESS":
             var newGroupRanking = _.sortBy(action.groupRanking, "score");
