@@ -16,21 +16,40 @@ class ChangeProfileForm extends React.Component {
         super(props);
 
         this.state = {
+            userId: props.user.id,
             newmail: props.user.email,
             newusername: props.user.name,
             reminders: props.user.reminders,
             dailyresults: props.user.dailyresults,
             password: "",
+            newpassword: "",
         };
 
         this.translate = props.translate;
-        this.changeProfileOnServer = props.changeProfileOnServer;
+        this.updateProfileOnServer = props.updateProfileOnServer;
     }
 
     handleChange = (e) => {
-        if (e.target.id === 'formMail') {
-            this.setState({ mail: e.target.value });
+        if (e.target.id === 'formName') {
+            this.setState({ newusername: e.target.value });
         }
+        if (e.target.id === 'formMail') {
+            this.setState({ newmail: e.target.value });
+        }
+        if (e.target.id === 'formNewPassword') {
+            this.setState({ newpassword: e.target.value });
+        }
+        if (e.target.id === 'formPassword') {
+            this.setState({ password: e.target.value });
+        }
+    }
+
+    toggleDailyResults = () => {
+            this.setState({ dailyresults: !this.state.dailyresults });
+    }
+
+    toggleReminders = () => {
+        this.setState({ reminders: !this.state.reminders });
     }
 
     render() {
@@ -44,7 +63,7 @@ class ChangeProfileForm extends React.Component {
                         <FormControl type="text"
                             placeholder={this.translate('username')}
                             autoFocus
-                            value={this.state.mail}
+                            value={this.state.newusername}
                             onChange={(e) => this.handleChange(e)} />
                     </Col>
                 </FormGroup>
@@ -57,7 +76,7 @@ class ChangeProfileForm extends React.Component {
                         <FormControl type="text"
                             placeholder={this.translate('mail')}
                             autoFocus
-                            value={this.state.mail}
+                            value={this.state.newmail}
                             onChange={(e) => this.handleChange(e)} />
                     </Col>
                 </FormGroup>
@@ -88,6 +107,19 @@ class ChangeProfileForm extends React.Component {
                     </Col>
                 </FormGroup>
 
+                <FormGroup controlId="formNewPassword">
+                    <Col componentClass={ControlLabel} md={2}>
+                        {this.translate('newpassword')}
+                    </Col>
+                    <Col md={5}>
+                        <FormControl type="password"
+                            placeholder={this.translate('password')}
+                            autoFocus
+                            value={this.state.newpassword}
+                            onChange={(e) => this.handleChange(e)} />
+                    </Col>
+                </FormGroup>
+
                 <br />
 
                 <FormGroup controlId="formPassword">
@@ -95,7 +127,7 @@ class ChangeProfileForm extends React.Component {
                         {this.translate('passwordforconfirm')}
                     </Col>
                     <Col md={5}>
-                        <FormControl type="text"
+                        <FormControl type="password"
                             placeholder={this.translate('password')}
                             autoFocus
                             value={this.state.mail}
@@ -108,7 +140,7 @@ class ChangeProfileForm extends React.Component {
                     <Col md={7} className="text-right">
                         <Button
                             bsStyle="blue"
-                            onClick={() => this.changeProfileOnServer(this.state.mail)}>
+                            onClick={() => this.updateProfileOnServer(this.state)}>
                             {this.translate("update")}
                         </Button>
                     </Col>

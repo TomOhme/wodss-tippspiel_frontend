@@ -7,14 +7,20 @@ import {
     showError,
     showMessage
 } from './';
-import { clientLogOut } from './LoginRegisterActions';
+import {
+    clientLogOut
+} from './LoginRegisterActions';
 
 
 export function updateProfileOnServer(newProfile) {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "users/" + newProfile.userId;
 
+    console.log("test1");
+
     return (dispatch, getState) => {
+
+        console.log("test2");
 
         dispatch(isLoading(true));
 
@@ -30,8 +36,8 @@ export function updateProfileOnServer(newProfile) {
                 "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
             }),
             body: JSON.stringify({
-                "name": newProfile.name,
-                "email": newProfile.mail,
+                "name": newProfile.newusername,
+                "email": newProfile.newmail,
                 "password": newProfile.password,
                 "newpassword": newProfile.newpassword,
                 "reminders": newProfile.reminders,
@@ -72,12 +78,6 @@ export function changeMailOnServerSuccess(mail) {
         newMail: mail
     }
 }
-
-export function resetPasswordOnServerSuccess() {
-    return {
-        type: "RESETPASSWORDONSERVERSUCCESS"
-    }
-};
 
 export function deleteProfileOnServerSuccess() {
     return {
