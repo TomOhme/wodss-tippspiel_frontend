@@ -30,8 +30,6 @@ const userReducer = (state = initialState, action, store) => {
             // TODO
             return state;
         case "RESETPASSWORDONSERVERSUCCESS":
-            console.log(action.type);
-            // TODO
             return state;
         case "LOGINSUCCESS":
             // update logged in
