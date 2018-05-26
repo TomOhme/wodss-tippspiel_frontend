@@ -4,9 +4,12 @@ import { getTranslate } from 'react-localize-redux';
 
 import _ from 'underscore';
 
+var BarChart = require("react-chartjs").Bar;
+
+
 let StatisticsChart = ({ statistics }) => (
     <div className="">
-        test
+        <BarChart data={statistics.data} options={statistics.chartOptions} width="500" height="250"/>
     </div>
 );
 
