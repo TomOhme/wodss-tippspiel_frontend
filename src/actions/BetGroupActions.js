@@ -14,6 +14,9 @@ export function switchGroup(group) {
     var url = serverUrl + "betgroups/" + group.id + "/users"
 
     return (dispatch, getState) => {
+
+        var state = getState();
+
         var request = new Request(url, {
             method: "GET",
             Origin: serverUrl,
@@ -35,7 +38,7 @@ export function switchGroup(group) {
             })
             .then((users) => {
                 group.users = users;
-                dispatch(switchGroupSuccess(group));
+                dispatch(switchGroupSuccess(group, state.user.id));
             })
             .catch((error) => {
                 dispatch(showError(error.message));

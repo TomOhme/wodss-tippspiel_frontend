@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { createGroupOnServer, leaveGroup, switchGroup, getGroupRankingFromServer, joinGroupOnServer } from '../actions/BetGroupActions';
+import { createGroupOnServer, leaveGroupOnServer, switchGroup, getGroupRankingFromServer, joinGroupOnServer } from '../actions/BetGroupActions';
 
 import {
     DropdownButton,
@@ -14,7 +14,7 @@ import {
 import CreateGroupDialog from './CreateGroupDialog';
 import JoinGroupPasswordDialog from './JoinGroupPasswordDialog';
 
-let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, createGroupOnServer, joinGroupOnServer, leaveGroup, switchGroup }) => (
+let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, createGroupOnServer, joinGroupOnServer, leaveGroupOnServer, switchGroup }) => (
     <div>
         <DropdownButton id={'groups'} title={translate('groups')}>
             {
@@ -31,6 +31,7 @@ let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, cre
             }
         </DropdownButton>
 
+        {console.log(betGroups.currentGroup)}
         {
             // only display join button when user is not member
             (!betGroups.currentGroup.userIsMember)
@@ -80,7 +81,7 @@ let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, cre
         {
             // only display leave button when user is member
             (betGroups.currentGroup.userIsMember) ? (
-                <Button className="button" bsStyle="red" onClick={leaveGroup}>
+                <Button className="button" bsStyle="red" onClick={() => leaveGroupOnServer(betGroups.currentGroup)}>
                     {translate('leavegroup')}
                 </Button>
             ) : null
@@ -99,7 +100,7 @@ const mapDispatchToProps = dispatch => {
         getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer()),
         createGroupOnServer: (name) => dispatch(createGroupOnServer(name)),
         joinGroupOnServer: (group, password, userId) => dispatch(joinGroupOnServer(group, password, userId)),
-        leaveGroup: () => dispatch(leaveGroup()),
+        leaveGroupOnServer: (group) => dispatch(leaveGroupOnServer(group)),
         switchGroup: (newGroup) => dispatch(switchGroup(newGroup))
     }
 }

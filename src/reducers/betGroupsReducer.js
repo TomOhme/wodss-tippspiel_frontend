@@ -20,7 +20,7 @@ const betGroupsReducer = (state = initialState, action) => {
             console.log(action.type);
             // TODO
             return state;
-        case "LEAVEGROUP":
+        case "LEAVEGROUPSUCCESS":
             console.log(action.type);
             // TODO
             return state;
@@ -30,6 +30,8 @@ const betGroupsReducer = (state = initialState, action) => {
             return state;
         case "SWITCHGROUPSUCCESS":
             newState.currentGroup = action.group;
+            console.log(action.group.user_ids);
+            console.log(action.userId);
             newState.currentGroup.userIsMember = _.contains(action.group.user_ids, action.userId);
 
             var users = action.group.users;
