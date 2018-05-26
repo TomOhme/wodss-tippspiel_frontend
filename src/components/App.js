@@ -9,54 +9,61 @@ import Loading from './Loading';
 import StatusBar from './StatusBar';
 import { getPlayerRankingFromServer } from '../actions/PlayerRankingActions';
 import { getGroupRankingFromServer } from '../actions/BetGroupActions';
+import { getGames } from '../actions/BetActions';
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
+    constructor(props) {
+        super(props);
+        this.props = props;
 
-  componentDidMount() {
-    fetch('application.json').then(response => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response.json();
-    })
-      .then(file => {
-        configuration.setValue('serverUrl', file.url);
-      })
-      .catch(ex => {
-        console.log(ex);
-      });
+        this.getGames = props.getGames;
+        console.log(this.getGames);
+    }
 
-    // load general data
-    // TODO load bets
-    getPlayerRankingFromServer();
-    getGroupRankingFromServer();
-  }
+    componentDidMount() {
+        fetch('application.json').then(response => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response.json();
+        })
+            .then(file => {
+                configuration.setValue('serverUrl', file.url);
+            })
+            .then(() => {
+                // load general data
+                console.log("test");
+                this.props.getGames();
+                this.props.getPlayerRankingFromServer();
+                this.props.getGroupRankingFromServer();
+            })
+            .catch(ex => {
+                console.log(ex);
+            })
+    }
 
-  render() {
-    return <div className="container">
-      <Header />
-      <StatusBar />
-      {
-        (this.props.isLoading) ? (<Loading />) : (<Main />)
-      }
-      <Footer />
-    </div>
-  }
+    render() {
+        return <div className="container">
+            <Header />
+            <StatusBar />
+            {
+                (this.props.isLoading) ? (<Loading />) : (<Main />)
+            }
+            <Footer />
+        </div>
+    }
 
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.isLoading
+    isLoading: state.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-  getPlayerRankingFromServer: () => dispatch(getPlayerRankingFromServer()),
-  getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer())
+    getPlayerRankingFromServer: () => dispatch(getPlayerRankingFromServer()),
+    getGroupRankingFromServer: () => dispatch(getGroupRankingFromServer()),
+    getGames: () => dispatch(getGames())
 });
 
 App = connect(mapStateToProps, mapDispatchToProps)(App)

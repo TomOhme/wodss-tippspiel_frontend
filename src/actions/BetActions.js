@@ -148,6 +148,7 @@ export function getUserbetsSuccess(userbets) {
 
 
 export function getGames() {
+    console.log("testgetgames");
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "games";
 
@@ -242,11 +243,5 @@ export function getBetStatisticsSuccess(betStatistics, game, labels) {
         betStatistics,
         game,
         labels
-    }
-}
-
-export function setChartLoading() {
-    return {
-        type: "SETCHARTLOADING"
     }
 }

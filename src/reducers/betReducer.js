@@ -1,6 +1,7 @@
 import _ from 'underscore';
 
-import initialGames from '../data/games.json';
+//import initialGames from '../data/games.json';
+var initialGames = {}
 
 function initializeGamesWithBets(initialGames) {
     var state = formatGames(initialGames);

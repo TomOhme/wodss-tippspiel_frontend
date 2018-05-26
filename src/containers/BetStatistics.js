@@ -8,14 +8,14 @@ import {
     Button,
     Modal
 } from 'react-bootstrap';
-import { getBetStatistics, setChartLoading } from '../actions/BetActions';
+import { getBetStatistics } from '../actions/BetActions';
 import { stat } from 'fs';
 
 import StatisticsChart from './StatisticsChart';
 
 class BetStatistics extends React.Component {
 
-    constructor({ props, game, translate, getBetStatistics, setChartLoading, statistics }) {
+    constructor({ props, game, translate, getBetStatistics, statistics }) {
         super(props);
 
         this.state = {
@@ -26,7 +26,6 @@ class BetStatistics extends React.Component {
         this.getBetStatistics = getBetStatistics;
         this.translate = translate;
         this.statistics = statistics;
-        this.setChartLoading = setChartLoading;
     }
 
     render() {
@@ -48,14 +47,12 @@ class BetStatistics extends React.Component {
     }
 
     open = () => {
-        this.setChartLoading();
         this.getBetStatistics(this.game);
 
         this.setState({ showModal: true });
     }
 
     close = () => {
-        this.setChartLoading();
         this.setState({ showModal: false });
     }
 };
@@ -66,7 +63,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getBetStatistics: (game) => dispatch(getBetStatistics(game)),
-    setChartLoading: () => dispatch(setChartLoading()),
 });
 
 BetStatistics = connect(mapStateToProps, mapDispatchToProps)(BetStatistics)

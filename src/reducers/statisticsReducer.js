@@ -1,30 +1,18 @@
 import _ from 'underscore';
 
-const initialState = {
-    data: {
-        labels: ["1"],
-        datasets: [{
-                label: "My First dataset",
-                fillColor: "rgba(0,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65]
-            }
-        ]
-    },
-    chartOptions: {},
-    chartReady: false
-};
+const initialState = {};
+
+const homeWinFillColor = "rgba(100,100,255,0.5)";
+const drawFillColor = "rgba(255,255,100,0.5)";
+const homeLoseFillColor = "rgba(100,255,100,0.5)";
+const baseColor = "rgba(200,200,200,1)";
+
 
 const statisticsReducer = (state = initialState, action) => {
     var newState = Object.assign({}, state);
 
     switch (action.type) {
         case "SETCHARTLOADING":
-            newState.chartReady = false;
             return newState;
         case "GETBETSTATISTICSSUCCESS":
 
@@ -36,11 +24,6 @@ const statisticsReducer = (state = initialState, action) => {
             stats.homeWin = 123;
             stats.draw = 54;
             stats.homeLose = 96;
-
-            const homeWinFillColor = "rgba(100,100,255,0.5)";
-            const drawFillColor = "rgba(255,255,100,0.5)";
-            const homeLoseFillColor = "rgba(100,255,100,0.5)";
-            const baseColor = "rgba(200,200,200,1)";
 
             console.log(labels);
 
@@ -83,7 +66,6 @@ const statisticsReducer = (state = initialState, action) => {
 
             newState.data = data;
             newState.chartOptions = chartOptions;
-            newState.chartReady = true;
 
             return newState;
         default:
