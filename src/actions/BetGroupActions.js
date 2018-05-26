@@ -4,7 +4,8 @@ import {
 
 import {
     isLoading,
-    showError
+    showError,
+    showMessage
 } from './'
 
 
@@ -103,10 +104,10 @@ export function leaveGroupOnServer(group) {
                     throw new Error("Leave group failed");
                 }
             })
-            .then((users) => {
-                group.users = users;
-                // TODO?
-                //dispatch(switchGroupSuccess(group, userId));
+            .then((response) => {
+                showMessage("Leave group success");
+                dispatch(getGroupRankingFromServer()); // reload groups
+                dispatch(switchGroup(group));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -125,13 +126,6 @@ export function switchGroupSuccess(group, userId) {
 export function joinGroupSuccess(group) {
     return (dispatch) => {
         dispatch(switchGroup(group));
-    }
-};
-
-export function leaveGroup(groupName) {
-    return {
-        type: "LEAVEGROUP",
-        groupName: groupName
     }
 };
 

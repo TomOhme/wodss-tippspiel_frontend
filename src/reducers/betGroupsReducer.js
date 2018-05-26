@@ -20,10 +20,6 @@ const betGroupsReducer = (state = initialState, action) => {
             console.log(action.type);
             // TODO
             return state;
-        case "LEAVEGROUPSUCCESS":
-            console.log(action.type);
-            // TODO
-            return state;
         case "CREATEGROUPONSERVER":
             console.log(action.type);
             // TODO
@@ -36,7 +32,7 @@ const betGroupsReducer = (state = initialState, action) => {
 
             var users = action.group.users;
 
-            users = _.sortBy(users, "score")
+            users = _.sortBy(users, "score");
 
             _.each(newState.currentGroup.users, (user) => {
                 user.rank = _.indexOf(users, user) + 1;
