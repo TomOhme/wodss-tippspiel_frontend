@@ -67,6 +67,10 @@ class JoinGroupPasswordDialog extends React.Component {
         if (e.target.id === 'formPassword') {
             this.setState({ password: e.target.value });
         }
+
+        console.log(this.props.group.id);
+        console.log(this.props.group.name);
+
     }
 
     close = () => {

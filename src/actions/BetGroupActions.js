@@ -55,12 +55,10 @@ export function joinGroupOnServer(group, password, userId) {
             headers: new Headers({
                 "X-Requested-With": "ok",
                 "Origin": serverUrl,
-                "Content-Type": "application/json",
+                "Content-Type": "text/plain",
                 "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
             }),
-            body: JSON.stringify({
-                "password": password
-            })
+            body: password
         });
 
         fetch(request).then(response => {
@@ -156,7 +154,7 @@ export function createGroupOnServer(name, password) {
             }),
             body: JSON.stringify({
                 "name": name,
-                "password": password 
+                "password": password
             })
         });
 
@@ -168,7 +166,6 @@ export function createGroupOnServer(name, password) {
                 }
             })
             .then((response) => {
-                console.log(response);
                 //setTimeout(2000); // wait till server created group
                 dispatch(getGroupRankingFromServer()); // reload groups
                 dispatch(switchGroup(response)); // switch to this group

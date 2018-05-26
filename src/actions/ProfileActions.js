@@ -78,8 +78,51 @@ export function resetPasswordOnServer(name) {
     }
 };
 
-export function deleteProfileOnServer() {
+export function deleteProfileOnServerSuccess() {
     return {
         type: "DELETEPROFILEONSERVERSUCCESS",
+    }
+};
+
+export function deleteProfileOnServer() {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "user/";
+
+    return (dispatch, getState) => {
+
+        dispatch(isLoading(true));
+
+        const state = getState();
+
+        url += state.user.userId;
+
+        var request = new Request(url, {
+            method: 'DELETE',
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "Content-Type": "application/json",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
+            })
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error("Profile update failed");
+                }
+            })
+            .then((newProfile) => {
+                dispatch(updateProfileSuccess(newProfile));
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
     }
 };
