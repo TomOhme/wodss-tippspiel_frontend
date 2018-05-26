@@ -32,9 +32,10 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
             <Grid>
                 <Row>
                     {
-                        (game.started)
+                        //(game.started && user.loggedIn) // TODO enable
+                        (true)
                             ?
-                            <BetStatistics translate={translate} />
+                            <BetStatistics game={game} translate={translate} />
                             :
                             null
                     }

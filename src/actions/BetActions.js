@@ -189,3 +189,42 @@ function getGamesSuccess(games) {
         games
     }
 }
+
+export function getBetStatistics(id) {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "games/bets/" + id;
+
+    return (dispatch, getState) => {
+
+        var request = new Request(url, {
+            method: "GET",
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
+            }),
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Bet fetch on server failed");
+                }
+            })
+            .then((betStatistics) => {
+                dispatch(getBetStatisticsSuccess(betStatistics));
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+    }
+}
+
+export function getBetStatisticsSuccess(betStatistics) {
+    return {
+        type: "GETBETSTATISTICSSUCCESS",
+        betStatistics
+    }
+}

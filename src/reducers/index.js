@@ -10,6 +10,7 @@ import { routerReducer } from 'react-router-redux'
 import storage from 'redux-persist/lib/storage'
 import { isLoadingReducer } from './isLoadingReducer';
 import { notificationReducer } from './notificationReducer';
+import statisticsReducer from './statisticsReducer';
 
 const appReducer = combineReducers({
     round: betRoundReducer,
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
     playerScores: playerScoreBoardReducer,
     groupScores: groupScoreBoardReducer,
     user: userReducer,
+    statistics: statisticsReducer,
     locale: localeReducer,
     router: routerReducer,
     isLoading: isLoadingReducer,
