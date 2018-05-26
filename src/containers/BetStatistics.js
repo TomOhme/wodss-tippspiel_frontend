@@ -1,7 +1,5 @@
 import React from 'react'
 
-import _ from 'underscore';
-
 import { connect } from 'react-redux';
 
 import {
@@ -9,7 +7,6 @@ import {
     Modal
 } from 'react-bootstrap';
 import { getBetStatistics } from '../actions/BetActions';
-import { stat } from 'fs';
 
 import StatisticsChart from './StatisticsChart';
 

@@ -32,8 +32,6 @@ export function requestLogin(mail, password) {
 
         dispatch(isLoading(true));
 
-        const state = getState();
-
         var request = new Request(url, {
             method: 'POST',
             Origin: serverUrl,

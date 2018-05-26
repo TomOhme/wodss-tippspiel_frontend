@@ -16,15 +16,9 @@ export function updateProfileOnServer(newProfile) {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "users/" + newProfile.userId;
 
-    console.log("test1");
-
     return (dispatch, getState) => {
 
-        console.log("test2");
-
         dispatch(isLoading(true));
-
-        const state = getState();
 
         var request = new Request(url, {
             method: 'PUT',

@@ -16,9 +16,6 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-
-        this.getGames = props.getGames;
-        console.log(this.getGames);
     }
 
     componentDidMount() {
@@ -33,7 +30,6 @@ class App extends React.Component {
             })
             .then(() => {
                 // load general data
-                console.log("test");
                 this.props.getGames();
                 this.props.getPlayerRankingFromServer();
                 this.props.getGroupRankingFromServer();

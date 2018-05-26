@@ -1,12 +1,9 @@
-import _ from 'underscore';
-
 const initialState = {};
 
 const homeWinFillColor = "rgba(100,100,255,0.5)";
 const drawFillColor = "rgba(255,255,100,0.5)";
 const homeLoseFillColor = "rgba(100,255,100,0.5)";
 const baseColor = "rgba(200,200,200,1)";
-
 
 const statisticsReducer = (state = initialState, action) => {
     var newState = Object.assign({}, state);
@@ -15,17 +12,16 @@ const statisticsReducer = (state = initialState, action) => {
         case "SETCHARTLOADING":
             return newState;
         case "GETBETSTATISTICSSUCCESS":
-
             var stats = action.betStatistics;
-            var game = action.game;
+            //var game = action.game;
             var labels = action.labels;
 
             // TODO delete temp
+            /*
             stats.homeWin = 123;
             stats.draw = 54;
             stats.homeLose = 96;
-
-            console.log(labels);
+            */
 
             var data = {
                 labels: [labels.gamename],

@@ -65,9 +65,9 @@ let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, cre
                         ?
                         betGroups.currentGroup.users.map(user => {
                             return <tr key={user.id}>
-                                <td>{user.id}</td>
+                                <td>{user.rank}</td>
                                 <td>{user.name}</td>
-                                <td>{user.points}</td>
+                                <td>{user.score}</td>
                                 {/*<td><Button><Glyphicon glyph="user" /></Button></td>*/}
                             </tr>
                         })

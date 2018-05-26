@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
 import { getPlayerRankingFromServer } from '../actions/PlayerRankingActions';
-import _ from 'underscore';
 
 import {
     Form,

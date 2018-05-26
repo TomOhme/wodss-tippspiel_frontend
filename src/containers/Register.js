@@ -75,7 +75,7 @@ class Register extends React.Component {
     }
 
     password10Chars() {
-        return (this.state.password1.length == 0 || this.state.password1.length >= 10);
+        return (this.state.password1.length === 0 || this.state.password1.length >= 10);
     }
 
     toggleReminders() {

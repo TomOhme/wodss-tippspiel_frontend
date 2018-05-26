@@ -1,8 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-
-import _ from 'underscore';
 
 import { Bar as BarChart } from "react-chartjs";
 

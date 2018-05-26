@@ -30,14 +30,11 @@ export function setScore(event, round, team, id) {
 
 export function saveBetOnServer(event, round, game, betId) {
 
-    // TODO check bet.betExistsOnServer for PUT/POST
-
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "bets";
 
     return (dispatch, getState) => {
         dispatch(isLoading(true));
-        const state = getState();
 
         var request;
         var method;
@@ -105,7 +102,6 @@ export function getUserbets() {
 
     return (dispatch, getState) => {
         dispatch(isLoading(true));
-        const state = getState();
 
         var request = new Request(url, {
             method: "GET",
@@ -148,13 +144,11 @@ export function getUserbetsSuccess(userbets) {
 
 
 export function getGames() {
-    console.log("testgetgames");
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "games";
 
     return (dispatch, getState) => {
         dispatch(isLoading(true));
-        const state = getState();
 
         var request = new Request(url, {
             method: "GET",

@@ -3,7 +3,6 @@ import {
 } from '../Configuration';
 
 import {
-    isLoading,
     showError
 } from './'
 
