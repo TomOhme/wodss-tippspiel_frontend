@@ -2,6 +2,8 @@ import {
     configuration
 } from '../Configuration';
 
+import { getTranslate } from 'react-localize-redux';
+
 import {
     isLoading,
     showError,
@@ -190,9 +192,9 @@ function getGamesSuccess(games) {
     }
 }
 
-export function getBetStatistics(id) {
+export function getBetStatistics(game) {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "games/bets/" + id;
+    var url = serverUrl + "games/bets/" + game.game_id;
 
     return (dispatch, getState) => {
 
@@ -214,7 +216,19 @@ export function getBetStatistics(id) {
                 }
             })
             .then((betStatistics) => {
-                dispatch(getBetStatisticsSuccess(betStatistics));
+                var state = getState();
+                var translate = getTranslate(state.locale);
+
+                var home = translate(game.homeTeamName);
+                var away = translate(game.awayTeamName);
+
+                var labels = {
+                    gamename: home + " : " + away,
+                    home: "Sieg " + home,
+                    draw: translate("draw"),
+                    away: "Sieg " + away
+                }
+                dispatch(getBetStatisticsSuccess(betStatistics, game, labels));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -222,9 +236,17 @@ export function getBetStatistics(id) {
     }
 }
 
-export function getBetStatisticsSuccess(betStatistics) {
+export function getBetStatisticsSuccess(betStatistics, game, labels) {
     return {
         type: "GETBETSTATISTICSSUCCESS",
-        betStatistics
+        betStatistics,
+        game,
+        labels
+    }
+}
+
+export function setChartLoading() {
+    return {
+        type: "SETCHARTLOADING"
     }
 }

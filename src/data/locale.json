@@ -45,6 +45,7 @@
 
     "betstatistics": ["Tippstatistik"],
     "winner": ["Sieger"],
+    "draw": ["Unentschieden"],
     "goalshome": ["Tore Heim"],
     "goalsguest": ["Tore Gast"],
     "goaldifference": ["Tordifferenz"],

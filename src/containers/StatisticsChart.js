@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTranslate } from 'react-localize-redux';
+import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 
 import _ from 'underscore';
 
-var BarChart = require("react-chartjs").Bar;
-
+import { Bar as BarChart } from "react-chartjs";
 
 let StatisticsChart = ({ statistics }) => (
     <div className="">
-        <BarChart data={statistics.data} options={statistics.chartOptions} width="500" height="250"/>
+        <BarChart data={statistics.data} redraw options={statistics.chartOptions} width="600" height="350" />
     </div>
 );
+
 
 const mapStateToProps = state => ({
     statistics: state.statistics

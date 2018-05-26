@@ -211,7 +211,7 @@ export function registerSuccess(mail, password) {
 
 export function resetPasswordOnServer(email) {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "users/passwordreset";
+    var url = serverUrl + "users/passwordReset";
 
     return (dispatch) => {
 
