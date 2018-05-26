@@ -23,6 +23,7 @@
     "passwordforconfirm": ["Passwort für Bestätigung"],
     "resetpassword": ["Passwort zurücksetzen"],
     "passwordnomatch": ["Passwörter stimmen nicht überein."],
+    "password10chars": ["Passwort muss mindestens 10 Zeichen enthalten."],
     "username": ["Benutzername"],
     "newusername": ["Neuer Benutzername"],
     "newpassword": ["Neues Passwort"],

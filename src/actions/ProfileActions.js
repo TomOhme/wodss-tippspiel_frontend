@@ -88,7 +88,7 @@ export function deleteProfileOnServerSuccess() {
 
 export function deleteProfileOnServer() {
     var serverUrl = configuration.getValue("serverUrl");
-    var url = serverUrl + "user/";
+    var url = serverUrl + "users/";
 
     return (dispatch, getState) => {
 
@@ -104,7 +104,6 @@ export function deleteProfileOnServer() {
             credentials: "include",
             headers: new Headers({
                 "X-Requested-With": "ok",
-                "Content-Type": "application/json",
                 "cookie": "BettingGame_SchranerOhmeZumbrunn_JSESSIONID=" + document.cookie
             })
         });

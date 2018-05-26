@@ -60,10 +60,9 @@ class Register extends React.Component {
         // check if register possible
         if (this.state.mail.length > 0
             && this.state.username.length > 0
-            && this.state.password1.length > 0
-            && this.state.password2.length > 0
+            && this.state.password1.length >= 10
+            && this.state.password2.length >= 10
             && this.passwordsMatch()) {
-                // TODO password at least 10 chars
             return true;
         }
         else {
@@ -73,6 +72,10 @@ class Register extends React.Component {
 
     passwordsMatch() {
         return this.state.password1 === this.state.password2;
+    }
+
+    password10Chars() {
+        return (this.state.password1.length == 0 || this.state.password1.length >= 10);
     }
 
     toggleReminders() {
@@ -172,6 +175,12 @@ class Register extends React.Component {
                     </Col>
                 </FormGroup>
 
+                <Row>
+                    <Alert bsStyle="danger"
+                        hidden={this.password10Chars()}>
+                        {this.translate("password10chars")}
+                    </Alert>
+                </Row>
                 <Row>
                     <Alert bsStyle="danger"
                         hidden={this.passwordsMatch()}>
