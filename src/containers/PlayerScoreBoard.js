@@ -12,6 +12,7 @@ import {
     Pagination,
     Grid,
     Row,
+    Col,
     Glyphicon
 } from 'react-bootstrap';
 
@@ -27,15 +28,19 @@ for (let number = 1; number <= 10; number++) {
 let PlayerScoreBoard = ({ playerScores, translate, getPlayerRankingFromServer }) => (
     <div>
         <Grid>
-            <Row className="">
+            <Row>
+                <Col xs={2} md={2} lg={2}>
                 <Button className="button" onClick={() => getPlayerRankingFromServer()}>
                     <Glyphicon glyph="refresh" />
                 </Button>
+                </Col>
 
+                <Col smOffset={7} xsOffset={7} mdOffset={8} lgOffset={8}>
                 <Form inline>
                     <FormControl type="text" placeholder={translate('name')}></FormControl>
                     <Button type="submit">{translate('search')}</Button>
                 </Form>
+                </Col>
             </Row>
 
             <br />
