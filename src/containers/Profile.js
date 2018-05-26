@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { updateProfileOnServer, deleteProfileOnServer, resetPasswordOnServer } from '../actions/ProfileActions';
+import { updateProfileOnServer, deleteProfileOnServer } from '../actions/ProfileActions';
 import _ from 'underscore';
 
 import {
@@ -14,7 +14,7 @@ import {
 
 import ChangeProfileForm from './ChangeProfileForm';
 
-let Profile = ({ user, translate, resetPasswordOnServer, deleteProfileOnServer }) => (
+let Profile = ({ user, translate, deleteProfileOnServer }) => (
     <div className="container-small">
 
         {/* TODO show when user is not logged in, don't show data */}
@@ -48,22 +48,6 @@ let Profile = ({ user, translate, resetPasswordOnServer, deleteProfileOnServer }
                 </Panel.Body>
             </Panel>
 
-            {/* Reset Password */}
-            <Panel eventKey="2" bsStyle="custom">
-                <Panel.Heading>
-                    <Panel.Title toggle>
-                        {translate("resetpassword")}
-                    </Panel.Title>
-                </Panel.Heading>
-                <Panel.Body collapsible>
-                    <Button
-                        onClick={() => resetPasswordOnServer()}
-                        bsStyle="blue">
-                        {translate("resetpassword")}
-                    </Button>
-                </Panel.Body>
-            </Panel>
-
             {/* Delete profile */}
             <Panel eventKey="3" bsStyle="custom">
                 <Panel.Heading>
@@ -93,7 +77,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         updateProfileOnServer: (newProfile) => dispatch(updateProfileOnServer(newProfile)),
-        resetPasswordOnServer: () => dispatch(resetPasswordOnServer()),
         deleteProfileOnServer: () => dispatch(deleteProfileOnServer())
     }
 }

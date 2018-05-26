@@ -198,6 +198,7 @@ class Register extends React.Component {
                         </Button>
                     </Row>
                 </FormGroup>
+
             </Form>
         </div>
     }

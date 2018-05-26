@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { onMailChange, onPasswordChange, requestLogin, switchToRegister } from '../actions/LoginRegisterActions';
+import { onMailChange, onPasswordChange, resetPasswordOnServer, requestLogin, switchToRegister } from '../actions/LoginRegisterActions';
 import { Link } from 'react-router-dom'
 
 import {
@@ -28,6 +28,7 @@ class Login extends React.Component {
         this.translate = props.translate;
         this.user = props.user;
         this.requestLogin = props.requestLogin;
+        this.resetPasswordOnServer = this.props.resetPasswordOnServer;
     }
 
     onMailChange(event) {
@@ -97,8 +98,20 @@ class Login extends React.Component {
                                 {this.translate("register")}
                             </Link>
                         </Button>
+                        <Button
+                            onClick={() => this.resetPasswordOnServer(this.state.mail)}
+                            disabled={!this.state.mail.length > 0}
+                            bsStyle="link">
+                            {this.translate("resetpassword")}
+                        </Button>
                     </Row>
                 </FormGroup>
+
+                <FormGroup>
+                    <Row mdpush={10} md={2} className="text-right">
+                    </Row>
+                </FormGroup>
+
             </Form>
         </div>
     }
@@ -112,6 +125,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         requestLogin: (mail, password) => dispatch(requestLogin(mail, password)),
+        resetPasswordOnServer: (email) => dispatch(resetPasswordOnServer(email)),
         switchToRegister: () => dispatch(switchToRegister())
     }
 }

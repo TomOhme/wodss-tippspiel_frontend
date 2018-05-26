@@ -73,10 +73,9 @@ export function changeMailOnServerSuccess(mail) {
     }
 }
 
-export function resetPasswordOnServer(name) {
+export function resetPasswordOnServerSuccess() {
     return {
-        type: "RESETPASSWORDONSERVERSUCCESS",
-        name: name
+        type: "RESETPASSWORDONSERVERSUCCESS"
     }
 };
 

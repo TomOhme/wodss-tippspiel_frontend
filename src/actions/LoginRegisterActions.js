@@ -208,3 +208,49 @@ export function registerSuccess(mail, password) {
         dispatch(requestLogin(mail, password));
     }
 }
+
+export function resetPasswordOnServer(email) {
+    var serverUrl = configuration.getValue("serverUrl");
+    var url = serverUrl + "users/passwordreset";
+
+    return (dispatch) => {
+
+        dispatch(isLoading(true));
+
+        var request = new Request(url, {
+            method: 'PUT',
+            Origin: serverUrl,
+            credentials: "include",
+            headers: new Headers({
+                "X-Requested-With": "ok",
+                "Content-Type": "text/plain"
+            }),
+            body: email
+        });
+
+        fetch(request).then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error("Password reset failed");
+                }
+            })
+            .then((response) => {
+                dispatch(resetPasswordOnServerSuccess());
+                dispatch(showMessage("Password reset success"));
+            })
+            .catch((error) => {
+                dispatch(showError(error.message));
+            })
+            .finally(() => {
+                // disable spinner regardless
+                dispatch(isLoading(false));
+            })
+    }
+};
+
+export function resetPasswordOnServerSuccess() {
+    return {
+        type: "RESETPASSWORDONSERVERSUCCESS"
+    }
+};
