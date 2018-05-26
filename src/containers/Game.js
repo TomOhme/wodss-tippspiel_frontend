@@ -12,7 +12,7 @@ import {
     Form,
     FormControl
 } from 'react-bootstrap';
-import BetResultsDialog from '../containers/BetResultsDialog';
+import BetStatistics from '../containers/BetStatistics';
 import BetSaveButton from '../containers/BetSaveButton';
 
 let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) => (
@@ -32,9 +32,9 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
             <Grid>
                 <Row>
                     {
-                        (game.finished)
+                        (game.started)
                             ?
-                            <BetResultsDialog translate={translate} />
+                            <BetStatistics translate={translate} />
                             :
                             null
                     }

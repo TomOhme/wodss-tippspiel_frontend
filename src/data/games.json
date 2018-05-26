@@ -1,5 +1,6 @@
 [
     {
+        "started": true,
         "game_id": 8,
         "homeTeam_id": 6,
         "awayTeam_id": 7,
@@ -14,6 +15,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 12,
         "homeTeam_id": 10,
         "awayTeam_id": 11,
@@ -28,6 +30,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 14,
         "homeTeam_id": 6,
         "awayTeam_id": 10,
@@ -42,6 +45,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 16,
         "homeTeam_id": 11,
         "awayTeam_id": 7,
@@ -56,6 +60,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 18,
         "homeTeam_id": 11,
         "awayTeam_id": 6,
@@ -70,6 +75,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 20,
         "homeTeam_id": 7,
         "awayTeam_id": 10,
@@ -84,6 +90,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 24,
         "homeTeam_id": 22,
         "awayTeam_id": 23,
@@ -98,6 +105,7 @@
         "tournamentgroup": "B"
     },
     {
+        "started": false,
         "game_id": 28,
         "homeTeam_id": 26,
         "awayTeam_id": 27,
@@ -112,6 +120,7 @@
         "tournamentgroup": "B"
     },
     {
+        "started": false,
         "game_id": 29,
         "homeTeam_id": 26,
         "awayTeam_id": 22,
@@ -126,6 +135,7 @@
         "tournamentgroup": "B"
     },
     {
+        "started": false,
         "game_id": 31,
         "homeTeam_id": 23,
         "awayTeam_id": 27,
@@ -140,6 +150,7 @@
         "tournamentgroup": "B"
     },
     {
+        "started": false,
         "game_id": 33,
         "homeTeam_id": 23,
         "awayTeam_id": 26,
@@ -154,6 +165,7 @@
         "tournamentgroup": "B"
     },
     {
+        "started": false,
         "game_id": 35,
         "homeTeam_id": 27,
         "awayTeam_id": 22,
@@ -168,6 +180,7 @@
         "tournamentgroup": "B"
     },
     {
+        "started": false,
         "game_id": 39,
         "homeTeam_id": 37,
         "awayTeam_id": 38,
@@ -182,6 +195,7 @@
         "tournamentgroup": "C"
     },
     {
+        "started": false,
         "game_id": 42,
         "homeTeam_id": 40,
         "awayTeam_id": 41,
@@ -196,6 +210,7 @@
         "tournamentgroup": "C"
     },
     {
+        "started": false,
         "game_id": 43,
         "homeTeam_id": 41,
         "awayTeam_id": 38,
@@ -210,6 +225,7 @@
         "tournamentgroup": "C"
     },
     {
+        "started": false,
         "game_id": 44,
         "homeTeam_id": 37,
         "awayTeam_id": 40,
@@ -224,6 +240,7 @@
         "tournamentgroup": "C"
     },
     {
+        "started": false,
         "game_id": 45,
         "homeTeam_id": 41,
         "awayTeam_id": 37,
@@ -238,6 +255,7 @@
         "tournamentgroup": "C"
     },
     {
+        "started": false,
         "game_id": 46,
         "homeTeam_id": 38,
         "awayTeam_id": 40,
@@ -252,6 +270,7 @@
         "tournamentgroup": "C"
     },
     {
+        "started": false,
         "game_id": 50,
         "homeTeam_id": 48,
         "awayTeam_id": 49,
@@ -266,6 +285,7 @@
         "tournamentgroup": "D"
     },
     {
+        "started": false,
         "game_id": 53,
         "homeTeam_id": 51,
         "awayTeam_id": 52,
@@ -280,6 +300,7 @@
         "tournamentgroup": "D"
     },
     {
+        "started": false,
         "game_id": 55,
         "homeTeam_id": 48,
         "awayTeam_id": 51,
@@ -294,6 +315,7 @@
         "tournamentgroup": "D"
     },
     {
+        "started": false,
         "game_id": 56,
         "homeTeam_id": 52,
         "awayTeam_id": 49,
@@ -308,6 +330,7 @@
         "tournamentgroup": "D"
     },
     {
+        "started": false,
         "game_id": 57,
         "homeTeam_id": 52,
         "awayTeam_id": 48,
@@ -322,6 +345,7 @@
         "tournamentgroup": "D"
     },
     {
+        "started": false,
         "game_id": 58,
         "homeTeam_id": 49,
         "awayTeam_id": 51,
@@ -336,6 +360,7 @@
         "tournamentgroup": "D"
     },
     {
+        "started": false,
         "game_id": 62,
         "homeTeam_id": 60,
         "awayTeam_id": 61,
@@ -350,6 +375,7 @@
         "tournamentgroup": "E"
     },
     {
+        "started": false,
         "game_id": 65,
         "homeTeam_id": 63,
         "awayTeam_id": 64,
@@ -364,6 +390,7 @@
         "tournamentgroup": "E"
     },
     {
+        "started": false,
         "game_id": 66,
         "homeTeam_id": 63,
         "awayTeam_id": 60,
@@ -378,6 +405,7 @@
         "tournamentgroup": "E"
     },
     {
+        "started": false,
         "game_id": 67,
         "homeTeam_id": 61,
         "awayTeam_id": 64,
@@ -392,6 +420,7 @@
         "tournamentgroup": "E"
     },
     {
+        "started": false,
         "game_id": 68,
         "homeTeam_id": 61,
         "awayTeam_id": 63,
@@ -406,6 +435,7 @@
         "tournamentgroup": "E"
     },
     {
+        "started": false,
         "game_id": 69,
         "homeTeam_id": 64,
         "awayTeam_id": 60,
@@ -420,6 +450,7 @@
         "tournamentgroup": "E"
     },
     {
+        "started": false,
         "game_id": 73,
         "homeTeam_id": 71,
         "awayTeam_id": 72,
@@ -434,6 +465,7 @@
         "tournamentgroup": "F"
     },
     {
+        "started": false,
         "game_id": 76,
         "homeTeam_id": 74,
         "awayTeam_id": 75,
@@ -448,6 +480,7 @@
         "tournamentgroup": "F"
     },
     {
+        "started": false,
         "game_id": 77,
         "homeTeam_id": 75,
         "awayTeam_id": 72,
@@ -462,6 +495,7 @@
         "tournamentgroup": "F"
     },
     {
+        "started": false,
         "game_id": 78,
         "homeTeam_id": 71,
         "awayTeam_id": 74,
@@ -476,6 +510,7 @@
         "tournamentgroup": "F"
     },
     {
+        "started": false,
         "game_id": 79,
         "homeTeam_id": 75,
         "awayTeam_id": 71,
@@ -490,6 +525,7 @@
         "tournamentgroup": "F"
     },
     {
+        "started": false,
         "game_id": 80,
         "homeTeam_id": 72,
         "awayTeam_id": 74,
@@ -504,6 +540,7 @@
         "tournamentgroup": "F"
     },
     {
+        "started": false,
         "game_id": 84,
         "homeTeam_id": 82,
         "awayTeam_id": 83,
@@ -518,6 +555,7 @@
         "tournamentgroup": "G"
     },
     {
+        "started": false,
         "game_id": 87,
         "homeTeam_id": 85,
         "awayTeam_id": 86,
@@ -532,6 +570,7 @@
         "tournamentgroup": "G"
     },
     {
+        "started": false,
         "game_id": 88,
         "homeTeam_id": 82,
         "awayTeam_id": 85,
@@ -546,6 +585,7 @@
         "tournamentgroup": "G"
     },
     {
+        "started": false,
         "game_id": 89,
         "homeTeam_id": 86,
         "awayTeam_id": 83,
@@ -560,6 +600,7 @@
         "tournamentgroup": "G"
     },
     {
+        "started": false,
         "game_id": 90,
         "homeTeam_id": 86,
         "awayTeam_id": 82,
@@ -574,6 +615,7 @@
         "tournamentgroup": "G"
     },
     {
+        "started": false,
         "game_id": 91,
         "homeTeam_id": 83,
         "awayTeam_id": 85,
@@ -588,6 +630,7 @@
         "tournamentgroup": "G"
     },
     {
+        "started": false,
         "game_id": 95,
         "homeTeam_id": 93,
         "awayTeam_id": 94,
@@ -602,6 +645,7 @@
         "tournamentgroup": "H"
     },
     {
+        "started": false,
         "game_id": 98,
         "homeTeam_id": 96,
         "awayTeam_id": 97,
@@ -616,6 +660,7 @@
         "tournamentgroup": "H"
     },
     {
+        "started": false,
         "game_id": 99,
         "homeTeam_id": 94,
         "awayTeam_id": 97,
@@ -630,6 +675,7 @@
         "tournamentgroup": "H"
     },
     {
+        "started": false,
         "game_id": 100,
         "homeTeam_id": 96,
         "awayTeam_id": 93,
@@ -644,6 +690,7 @@
         "tournamentgroup": "H"
     },
     {
+        "started": false,
         "game_id": 101,
         "homeTeam_id": 94,
         "awayTeam_id": 96,
@@ -658,6 +705,7 @@
         "tournamentgroup": "H"
     },
     {
+        "started": false,
         "game_id": 104,
         "homeTeam_id": 97,
         "awayTeam_id": 93,
@@ -672,6 +720,7 @@
         "tournamentgroup": "H"
     },
     {
+        "started": false,
         "game_id": 107,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -686,6 +735,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 108,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -700,6 +750,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 109,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -714,6 +765,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 110,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -728,6 +780,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 111,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -742,6 +795,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 112,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -756,6 +810,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 113,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -770,6 +825,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 114,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -784,6 +840,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 116,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -798,6 +855,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 117,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -812,6 +870,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 118,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -826,6 +885,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 119,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -840,6 +900,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 121,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -854,6 +915,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 122,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -868,6 +930,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 124,
         "homeTeam_id": 106,
         "awayTeam_id": 106,
@@ -882,6 +945,7 @@
         "tournamentgroup": "A"
     },
     {
+        "started": false,
         "game_id": 127,
         "homeTeam_id": 106,
         "awayTeam_id": 106,

@@ -43,7 +43,7 @@
     "gameforthird": ["Spiel um Platz 3"],
     "finals": ["Finale"],
 
-    "betresults": ["Tippresultate"],
+    "betstatistics": ["Tippstatistik"],
     "winner": ["Sieger"],
     "goalshome": ["Tore Heim"],
     "goalsguest": ["Tore Gast"],
