@@ -63,7 +63,7 @@ export function joinGroupOnServer(group, password, userId) {
 
         fetch(request).then(response => {
                 if (response.ok) {
-                    return response.json()
+                    return response.text;
                 } else {
                     throw new Error("Join group failed");
                 }

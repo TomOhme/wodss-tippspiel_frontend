@@ -230,7 +230,7 @@ export function resetPasswordOnServer(email) {
 
         fetch(request).then(response => {
                 if (response.ok) {
-                    return response.json()
+                    return response.text;
                 } else {
                     throw new Error("Password reset failed");
                 }
