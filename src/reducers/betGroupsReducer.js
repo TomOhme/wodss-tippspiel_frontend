@@ -31,14 +31,14 @@ const betGroupsReducer = (state = initialState, action) => {
         case "SWITCHGROUPSUCCESS":
             newState.currentGroup = action.group;
             newState.currentGroup.userIsMember = _.contains(action.group.user_ids, action.userId);
-            newState.currentGroup = action.group;
 
-            console.log(newState.currentGroup);
-            /* TODO
-            _.each(newState.currentGroup.user_ids, () => {
-                group.rank = _.indexOf(newGroupRanking, group) + 1;
+            var users = action.group.users;
+
+            users = _.sortBy(users, "score")
+
+            _.each(newState.currentGroup.users, (user) => {
+                user.rank = _.indexOf(users, user) + 1;
             });
-            */
 
             console.log(_.contains(action.group.user_ids, action.userId));
             return newState;

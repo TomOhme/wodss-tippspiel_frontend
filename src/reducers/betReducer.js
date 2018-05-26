@@ -42,9 +42,6 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
             newGame = _.findWhere(newState[action.round], {
                 game_id: action.id
             });
-            console.log(newGame);
-            console.log(action.round);
-            console.log(action.id);
             newGame.saved = true;
 
             return newState;
@@ -85,7 +82,7 @@ function formatGames(games) {
         // push games into correct arrays, e.g. A or ro16...
         if (game.phaseName === "group") {
             newState[game.tournamentgroup].push(game);
-        } // TODO maybe sort for date/time?
+        }
         else if (game.phaseName === "gameforthird") {
             newState["finals"].push(game);
         } else {
