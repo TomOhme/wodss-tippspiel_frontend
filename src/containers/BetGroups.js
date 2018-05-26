@@ -56,7 +56,7 @@ let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, cre
                     <th>#</th>
                     <th>{translate('player')}</th>
                     <th>{translate('points')}</th>
-                    <th>{translate('showbets')}</th>
+                    {/*<th>{translate('showbets')}</th>*/}
                 </tr>
             </thead>
             <tbody>
@@ -68,7 +68,7 @@ let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, cre
                                 <td>{user.id}</td>
                                 <td>{user.name}</td>
                                 <td>{user.points}</td>
-                                <td><Button><Glyphicon glyph="user" /></Button></td>
+                                {/*<td><Button><Glyphicon glyph="user" /></Button></td>*/}
                             </tr>
                         })
                         :
