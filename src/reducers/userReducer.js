@@ -41,6 +41,8 @@ const userReducer = (state = initialState, action, store) => {
             newState.betGroup = data.betGroup;
             newState.name = data.name;
             newState.email = data.email;
+            newState.reminders = data.reminders;
+            newState.dailyresults = data.dailyresults;
 
             // flatten roles to strings of role name
             newState.roles = _.map(data.roles, function (role) {
