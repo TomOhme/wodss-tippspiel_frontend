@@ -38,6 +38,17 @@ const betGroupsReducer = (state = initialState, action) => {
             _.each(newGroupRanking, (group) => {
                 group.rank = _.indexOf(newGroupRanking, group) + 1;
             });
+
+            // equalize rank when groups have same scores
+            for (var i = 0; i < newGroupRanking.length; i++) {
+                var firstGroup = newGroupRanking[i]
+                var secondGroup = newGroupRanking[i+1]
+                if (firstGroup !== undefined 
+                    && firstGroup.score === secondGroup.score) {
+                    secondGroup.rank = firstGroup.rank;
+                }
+            }
+
             newState.groups = newGroupRanking;
 
             if (newState.groups.length === 0) {
