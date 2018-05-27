@@ -48,7 +48,10 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
         case "GETGAMESSUCCESS":
             newState = formatGames(action.games);
             newState = addEmptyBetsToGames(newState);
-
+            return newState;
+        case "ADDEMPTYBETSTOGAMES":
+            console.log(action.type);
+            newState = addEmptyBetsToGames(newState);
             return newState;
         case "GETUSERBETSSUCCESS":
             newState = addBetsToGames(action.userbets, newState);

@@ -16,7 +16,7 @@ const statisticsReducer = (state = initialState, action) => {
             //var game = action.game;
             var labels = action.labels;
 
-            // TODO delete temp
+            // temporary statistics for demo
             /*
             stats.homeWin = 123;
             stats.draw = 54;

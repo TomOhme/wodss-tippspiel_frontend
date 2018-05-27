@@ -169,6 +169,15 @@ export function getGames() {
             })
             .then((games) => {
                 dispatch(getGamesSuccess(games));
+
+                var state = getState();
+                console.log("test");
+                if (state.user.loggedIn) {
+                    dispatch(getUserbets());
+                }
+                else {
+                    dispatch(addEmptyBetsToGames());
+                }
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -184,6 +193,12 @@ function getGamesSuccess(games) {
     return {
         type: "GETGAMESSUCCESS",
         games
+    }
+}
+
+function addEmptyBetsToGames() {
+    return {
+        type: "ADDEMPTYBETSTOGAMES"
     }
 }
 

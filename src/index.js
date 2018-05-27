@@ -5,15 +5,21 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import App from './components/site/App'
 import appReducer from './reducers';
 import './index.css';
+
 import { initialize } from 'react-localize-redux';
 import { addTranslation } from 'react-localize-redux';
+import localejson from "./data/locale.json";
+
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk';
+
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+
 import _ from 'underscore';
+
 
 // REDUX-PERSIST
 const persistConfig = {
@@ -42,7 +48,6 @@ const languages = [
 ]
 store.dispatch(initialize(languages, { defaultLanguage: 'de' }));
 
-const localejson = require('./data/locale.json');
 store.dispatch(addTranslation(localejson));
 
 // FOR DEVELOPMENT TESTS

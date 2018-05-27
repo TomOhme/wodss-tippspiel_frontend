@@ -32,8 +32,8 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
             <Grid>
                 <Row>
                     {
-                        //(game.started && user.loggedIn) // TODO enable
-                        (true)
+                        //(game.started && user.loggedIn)
+                        (true) // for demo purposes
                             ?
                             <BetStatistics game={game} translate={translate} />
                             :
@@ -99,12 +99,16 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                     </Label>
                     {
                         // only display results when game is finished
-                        (game.finished === true) ?
+                        //(game.finished === true) 
+                        (true) // for demo purposes
+                        ?
                             (
                                 <div className="finished-labels">
+                                {/*
                                     <Label>
                                         {translate('winner')}: {translate(game.winner)}
                                     </Label>
+                                */}
                                     <Label>
                                         {translate('goalshome')}: {game.homeTeamGoals}
                                     </Label>
@@ -112,12 +116,9 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                                         {translate('goalsguest')}: {game.awayTeamGoals}
                                     </Label>
                                     <Label>
-                                        {translate('goaldifference')}: {game.difference}
-                                    </Label>
-                                    <Label>
                                         {translate('total')}: {game.total}
-                                        max-width        </Label>
-                                    max-width    </div>
+                                    </Label>
+                                </div>
                             )
                             : null
                     }
