@@ -7,8 +7,7 @@ const playerScoreBoardReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case "GETPLAYERRANKINGSUCCESS":
-            var newPlayerRanking = action.playerRanking;
-
+            var newPlayerRanking = _.sortBy(action.playerRanking, "score");
             _.each(newPlayerRanking, (player) => {
                 player.rank = _.indexOf(newPlayerRanking, player) + 1;
             });

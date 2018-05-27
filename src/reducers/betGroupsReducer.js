@@ -43,7 +43,7 @@ const betGroupsReducer = (state = initialState, action) => {
             for (var i = 0; i < newGroupRanking.length; i++) {
                 var firstGroup = newGroupRanking[i]
                 var secondGroup = newGroupRanking[i+1]
-                if (firstGroup !== undefined 
+                if (secondGroup !== undefined 
                     && firstGroup.score === secondGroup.score) {
                     secondGroup.rank = firstGroup.rank;
                 }
