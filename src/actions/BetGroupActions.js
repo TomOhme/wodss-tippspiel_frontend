@@ -55,6 +55,11 @@ export function joinGroupOnServer(group, password, userId) {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "betgroupmemberships/" + group.id;
 
+    if (password.length === 0) {
+        //no password supplied, but fetch needs one for a correct request body
+        password = " ";
+    }
+
     return (dispatch, getState) => {
         var request = new Request(url, {
             method: "POST",
