@@ -45,7 +45,7 @@ class ChangeProfileForm extends React.Component {
     }
 
     toggleDailyResults = () => {
-            this.setState({ dailyresults: !this.state.dailyResults });
+        this.setState({ dailyResults: !this.state.dailyResults });
     }
 
     toggleReminders = () => {
