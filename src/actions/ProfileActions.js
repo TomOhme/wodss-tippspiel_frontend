@@ -7,9 +7,14 @@ import {
     showError,
     showMessage
 } from './';
+
 import {
     clientLogOut
 } from './LoginRegisterActions';
+
+import {
+    getTranslate
+} from 'react-localize-redux';
 
 
 export function updateProfileOnServer(newProfile) {
@@ -111,7 +116,8 @@ export function deleteProfileOnServer() {
             .then((newProfile) => {
                 dispatch(deleteProfileOnServerSuccess());
                 dispatch(clientLogOut());
-                dispatch(showMessage("Delete profile success"));
+                var translate = getTranslate(state.locale);
+                dispatch(showMessage(translate("deleteprofilesuccess")));
             })
             .catch((error) => {
                 dispatch(showError(error.message));

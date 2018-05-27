@@ -4,9 +4,7 @@ import { getTranslate } from 'react-localize-redux';
 import { getPlayerRankingFromServer } from '../../actions/PlayerRankingActions';
 
 import {
-    Form,
     Button,
-    FormControl,
     Table,
     Pagination,
     Grid,

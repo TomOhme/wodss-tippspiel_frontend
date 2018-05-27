@@ -8,6 +8,10 @@ import {
     showMessage
 } from './'
 
+import {
+    getTranslate
+} from 'react-localize-redux';
+
 
 export function switchGroup(group) {
 
@@ -105,7 +109,8 @@ export function leaveGroupOnServer(group) {
                 }
             })
             .then((response) => {
-                showMessage("Leave group success");
+                var translate = getTranslate(getState().locale);
+                dispatch(showMessage(translate("leavegroupsuccess")));
                 dispatch(getGroupRankingFromServer()); // reload groups
                 dispatch(switchGroup(group));
             })

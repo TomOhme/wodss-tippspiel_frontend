@@ -4,9 +4,7 @@ import { getTranslate } from 'react-localize-redux';
 import { getGroupRankingFromServer } from '../../actions/BetGroupActions';
 
 import {
-    Form,
     Button,
-    FormControl,
     Table,
     Grid,
     Row,

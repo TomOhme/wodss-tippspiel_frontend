@@ -15,13 +15,20 @@ import {
 import {
     getPlayerRankingFromServer
 } from './PlayerRankingActions';
+
 import {
     getGroupRankingFromServer
 } from './BetGroupActions';
+
 import {
     getUserbets,
     getGames
 } from './BetActions';
+
+import {
+    getTranslate
+} from 'react-localize-redux';
+
 
 export function requestLogin(mail, password) {
 
@@ -85,7 +92,7 @@ export function startLogout() {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "logout";
 
-    return (dispatch) => {
+    return (dispatch, getState) => {
 
         dispatch(isLoading(true));
 
@@ -101,7 +108,8 @@ export function startLogout() {
 
         fetch(request).then(response => {
                 if (response.ok) {
-                    dispatch(showMessage("Logout success")); // TODO german with translate()
+                    var translate = getTranslate(getState().locale);
+                    dispatch(showMessage(translate("logoutsuccess")));
                     return;
                 } else {
                     throw new Error("Logout on server failed");
@@ -211,7 +219,7 @@ export function resetPasswordOnServer(email) {
     var serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "users/passwordReset";
 
-    return (dispatch) => {
+    return (dispatch, getState) => {
 
         dispatch(isLoading(true));
 
@@ -235,7 +243,8 @@ export function resetPasswordOnServer(email) {
             })
             .then((response) => {
                 dispatch(resetPasswordOnServerSuccess());
-                dispatch(showMessage("Password reset success"));
+                var translate = getTranslate(getState().locale);
+                dispatch(showMessage(translate("passwordresetsuccess")));
             })
             .catch((error) => {
                 dispatch(showError(error.message));

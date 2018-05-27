@@ -64,6 +64,12 @@
     "leavegroup": ["Gruppe verlassen"],
     "showbets": ["Tipps ansehen"],
 
+    "betupdatesuccess": ["Wette aktualisiert"],
+    "leavegroupsuccess": ["Gruppe erfolgreich verlassen"],
+    "passwordresetsuccess": ["Passwort zurückgesetzt"],
+    "logoutsuccess": ["Ausgeloggt"],
+    "deleteprofilesuccess": ["Benutzer erfolgreich gelöscht"],
+
     "create": ["Erstellen"],
 
     "jek": ["Jekaterinburg"],

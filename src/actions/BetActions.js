@@ -65,11 +65,10 @@ export function saveBetOnServer(event, round, game, betId) {
             })
         });
 
-        console.log(request);
-
         fetch(request).then(response => {
                 if (response.ok) {
-                    dispatch(showMessage("Bet update success")); // TODO german with translate()
+                    var translate = getTranslate(getState().locale);
+                    dispatch(showMessage(translate("betupdatesuccess")));
                     return response.json()
                 } else {
                     throw new Error("Bet update on server failed");
@@ -225,8 +224,7 @@ export function getBetStatistics(game) {
                 }
             })
             .then((betStatistics) => {
-                var state = getState();
-                var translate = getTranslate(state.locale);
+                var translate = getTranslate(getState().locale);
 
                 var home = translate(game.homeTeamName);
                 var away = translate(game.awayTeamName);
