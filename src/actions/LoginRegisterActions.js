@@ -162,7 +162,7 @@ export function requestRegister(state) {
     const mail = state.mail;
     const password = state.password1;
     const reminders = state.reminders;
-    const dailyresults = state.dailyresults;
+    const dailyResults = state.dailyResults;
 
     const serverUrl = configuration.getValue("serverUrl");
     var url = serverUrl + "users";
@@ -184,7 +184,7 @@ export function requestRegister(state) {
                 "email": mail,
                 "password": password,
                 "reminders": reminders,
-                "dailyresults": dailyresults
+                "dailyResults": dailyResults
             })
         });
 

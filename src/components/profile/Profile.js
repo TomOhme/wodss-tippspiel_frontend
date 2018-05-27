@@ -28,7 +28,7 @@ let Profile = ({ user, translate, deleteProfileOnServer }) => (
             </ListGroupItem>
 
             <ListGroupItem>
-            {translate("dailyresults")}: {(user.dailyResults) ? (translate("on")) : (translate("off"))}
+            {translate("dailyResults")}: {(user.dailyResults) ? (translate("on")) : (translate("off"))}
             </ListGroupItem>
 
         </ListGroup>

@@ -30,7 +30,7 @@
     "newpassword": ["Neues Passwort"],
     "newmail": ["Neue Mail-Adresse"],
     "reminders": ["Erinnerungen"],
-    "dailyresults": ["Tägliche Resultate"],
+    "dailyResults": ["Tägliche Resultate"],
     "roles": ["Rollen"],
     "ROLE_USER": ["Benutzer"],
     "ROLE_ADMIN": ["Administrator"],

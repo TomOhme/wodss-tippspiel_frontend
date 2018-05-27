@@ -20,7 +20,7 @@ class ChangeProfileForm extends React.Component {
             newmail: props.user.email,
             newusername: props.user.name,
             reminders: props.user.reminders,
-            dailyresults: props.user.dailyresults,
+            dailyResults: props.user.dailyResults,
             password: "",
             newpassword: "",
         };
@@ -45,7 +45,7 @@ class ChangeProfileForm extends React.Component {
     }
 
     toggleDailyResults = () => {
-            this.setState({ dailyresults: !this.state.dailyresults });
+            this.setState({ dailyresults: !this.state.dailyResults });
     }
 
     toggleReminders = () => {
@@ -96,13 +96,13 @@ class ChangeProfileForm extends React.Component {
 
                 <FormGroup controlId="formDailyResults">
                     <Col componentClass={ControlLabel} sm={2}>
-                        {this.translate("dailyresults")}
+                        {this.translate("dailyResults")}
                     </Col>
                     <Col sm={10}>
                         <Checkbox
-                            placeholder={this.translate('dailyresults')}
+                            placeholder={this.translate('dailyResults')}
                             autoFocus
-                            checked={this.state.dailyresults}
+                            checked={this.state.dailyResults}
                             onChange={() => this.toggleDailyResults()} />
                     </Col>
                 </FormGroup>

@@ -40,7 +40,7 @@ export function updateProfileOnServer(newProfile) {
                 "password": newProfile.password,
                 "newpassword": newProfile.newpassword,
                 "reminders": newProfile.reminders,
-                "dailyresults": newProfile.dailyresults
+                "dailyResults": newProfile.dailyresults
             })
         });
 
@@ -116,7 +116,7 @@ export function deleteProfileOnServer() {
             .then((newProfile) => {
                 dispatch(deleteProfileOnServerSuccess());
                 dispatch(clientLogOut());
-                var translate = getTranslate(state.locale);
+                var translate = getTranslate(getState().locale);
                 dispatch(showMessage(translate("deleteprofilesuccess")));
             })
             .catch((error) => {

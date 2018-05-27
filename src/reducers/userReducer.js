@@ -8,7 +8,7 @@ const initialState = {
     betGroup: [],
     name: "",
     email: "",
-    dailyresults: false,
+    dailyResults: false,
     reminders: false,
     loginPossible: false,
     activeScreen: "login",
@@ -23,7 +23,7 @@ const userReducer = (state = initialState, action, store) => {
             newState.name = newProfile.name;
             newState.email = newProfile.email;
             newState.reminders = newProfile.reminders;
-            newState.dailyresults = newProfile.dailyresults;
+            newState.dailyResults = newProfile.dailyResults;
             return newState;
         case "DELETEPROFILEONSERVERSUCCESS":
             return state;
@@ -42,7 +42,7 @@ const userReducer = (state = initialState, action, store) => {
             newState.name = data.name;
             newState.email = data.email;
             newState.reminders = data.reminders;
-            newState.dailyresults = data.dailyresults;
+            newState.dailyResults = data.dailyResults;
 
             // flatten roles to strings of role name
             newState.roles = _.map(data.roles, function (role) {
