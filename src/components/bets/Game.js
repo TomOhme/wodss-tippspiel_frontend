@@ -59,7 +59,7 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                         {/* TODO use separate component with own state! */}
                         <Form inline>
                             <FormControl
-                                value={game.bet.bettedHomeTeamGoals}
+                                value={(user.loggedIn) ? game.bet.bettedHomeTeamGoals : null}
                                 disabled={!user.loggedIn || game.finished}
                                 onChange={(event) => dispatch(setScore(event, currentRound, "home", game.game_id))}
                                 type="number"
@@ -70,7 +70,7 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                                 :
                             </span>
                             <FormControl
-                                value={game.bet.bettedAwayTeamGoals}
+                                value={(user.loggedIn) ? game.bet.bettedAwayTeamGoals : null}
                                 disabled={!user.loggedIn || game.finished}
                                 onChange={(event) => dispatch(setScore(event, currentRound, "away", game.game_id))}
                                 type="number"
