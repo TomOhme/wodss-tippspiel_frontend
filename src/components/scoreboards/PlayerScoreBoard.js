@@ -29,17 +29,19 @@ let PlayerScoreBoard = ({ playerScores, translate, getPlayerRankingFromServer })
         <Grid>
             <Row>
                 <Col xs={2} md={2} lg={2}>
-                <Button className="button" onClick={() => getPlayerRankingFromServer()}>
-                    <Glyphicon glyph="refresh" />
-                </Button>
+                    <Button className="button" onClick={() => getPlayerRankingFromServer()}>
+                        <Glyphicon glyph="refresh" />
+                    </Button>
                 </Col>
 
+                {/*
                 <Col smOffset={7} xsOffset={7} mdOffset={8} lgOffset={8}>
                 <Form inline>
                     <FormControl type="text" placeholder={translate('name')}></FormControl>
                     <Button type="submit">{translate('search')}</Button>
                 </Form>
                 </Col>
+                */}
             </Row>
 
             <br />
@@ -65,9 +67,11 @@ let PlayerScoreBoard = ({ playerScores, translate, getPlayerRankingFromServer })
                 </tbody>
             </Table>
 
+            {/*
             <Row className="text-center">
                 <Pagination>{items}</Pagination>
             </Row>
+            */}
         </Grid>
     </div>
 );

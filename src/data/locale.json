@@ -17,6 +17,7 @@
     "deleteprofile": ["Profil löschen"],
     "change": ["Ändern"],
     "mail": ["Mail-Adresse"],
+    "score": ["Punkte"],
     "password": ["Passwort"],
     "passwordagain": ["Passwort erneut eingeben"],
     "passwordoptional": ["Passwort (optional)"],

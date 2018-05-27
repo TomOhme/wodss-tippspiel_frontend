@@ -16,7 +16,7 @@ import {
 } from 'react-bootstrap';
 
 let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) => (
-    
+
 
     <div className="game">
         {
@@ -32,8 +32,8 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
             <Grid>
                 <Row>
                     {
-                        //(game.started && user.loggedIn)
-                        (true) // for demo purposes
+                        (game.started && user.loggedIn)
+                        //(true) // for demo purposes
                             ?
                             <BetStatistics game={game} translate={translate} />
                             :
@@ -99,25 +99,27 @@ let Game = ({ user, currentRound, game, dispatch, translate, currentLanguage }) 
                     </Label>
                     {
                         // only display results when game is finished
-                        //(game.finished === true) 
-                        (true) // for demo purposes
-                        ?
+                        (game.finished === true)
+                            //(true) // for demo purposes
+                            ?
                             (
                                 <div className="finished-labels">
-                                {/*
-                                    <Label>
-                                        {translate('winner')}: {translate(game.winner)}
-                                    </Label>
-                                */}
                                     <Label>
                                         {translate('goalshome')}: {game.homeTeamGoals}
                                     </Label>
                                     <Label>
                                         {translate('goalsguest')}: {game.awayTeamGoals}
                                     </Label>
-                                    <Label>
-                                        {translate('total')}: {game.total}
-                                    </Label>
+                                    {
+                                        (user.loggedIn)
+                                        //(true) // for demo
+                                            ?
+                                            <Label>
+                                                {translate('score')}: {game.bet.score}
+                                            </Label>
+                                            :
+                                            null
+                                    }
                                 </div>
                             )
                             : null

@@ -12,7 +12,7 @@ import {
 
 let Bets = ({ user, currentRound, bets, getGames }) => (
     <div>
-        <Button onClick={() => { (user.loggedIn) ? getUserbets() : getGames() }}>
+        <Button className="refresh-button" onClick={() => { (user.loggedIn) ? getUserbets() : getGames() }}>
             <Glyphicon glyph="refresh" />
         </Button>
         {

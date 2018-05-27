@@ -1,6 +1,7 @@
 [
     {
         "started": true,
+        "finished": true,
         "game_id": 8,
         "homeTeam_id": 6,
         "awayTeam_id": 7,
@@ -8,11 +9,16 @@
         "awayTeamName": "sau",
         "locationName": "mos",
         "phaseName": "group",
-        "homeTeamGoals": null,
-        "awayTeamGoals": null,
+        "homeTeamGoals": 0,
+        "awayTeamGoals": 3,
         "date": "2018-06-14",
         "time": "18:00",
-        "tournamentgroup": "A"
+        "tournamentgroup": "A",
+        "bet": {
+            "bettedHomeTeamGoals": 5,
+            "bettedAwayTeamGoals": 1,
+            "score": 0
+        }
     },
     {
         "started": false,

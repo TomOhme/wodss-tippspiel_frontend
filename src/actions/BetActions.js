@@ -171,7 +171,6 @@ export function getGames() {
                 dispatch(getGamesSuccess(games));
 
                 var state = getState();
-                console.log("test");
                 if (state.user.loggedIn) {
                     dispatch(getUserbets());
                 }

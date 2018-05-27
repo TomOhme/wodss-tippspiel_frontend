@@ -23,12 +23,15 @@ let GroupScoreBoard = ({ getGroupRankingFromServer, betGroups, translate }) => (
                         <Glyphicon glyph="refresh" />
                     </Button>
                 </Col>
+
+                {/*
                 <Col smOffset={7} xsOffset={7} mdOffset={8} lgOffset={8}>
                     <Form minLength="16" inline>
                         <FormControl minLength="16" inline type="text" placeholder={translate('name')}></FormControl>
                         <Button inline type="submit">{translate('search')}</Button>
                     </Form>
                 </Col>
+                */}
             </Row>
 
             <br />

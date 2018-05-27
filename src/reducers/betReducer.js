@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-//import initialGames from '../data/games.json';
+//import initialGames from '../data/games.json'; // for demo
 var initialGames = {}
 
 function initializeGamesWithBets(initialGames) {
@@ -50,7 +50,6 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
             newState = addEmptyBetsToGames(newState);
             return newState;
         case "ADDEMPTYBETSTOGAMES":
-            console.log(action.type);
             newState = addEmptyBetsToGames(newState);
             return newState;
         case "GETUSERBETSSUCCESS":
@@ -120,7 +119,6 @@ function addBetsToGames(userbets, newState) {
         _.each(newState, (phase) => {
             _.each(phase, (game) => {
                 if (bet.game_id === game.game_id) {
-                    // TODO other values
                     bet.betExistsOnServer = true;
                     bet.game_id = game.game_id;
                     game.bet = bet;
@@ -128,7 +126,6 @@ function addBetsToGames(userbets, newState) {
             })
         })
     })
-
 
     // add empty bets for all other games
     newState = addEmptyBetsToGames(newState);

@@ -27,9 +27,9 @@ const userReducer = (state = initialState, action, store) => {
             return newState;
         case "DELETEPROFILEONSERVERSUCCESS":
             console.log(action.type);
-            // TODO
             return state;
         case "RESETPASSWORDONSERVERSUCCESS":
+            console.log(action.type);
             return state;
         case "LOGINSUCCESS":
             // update logged in

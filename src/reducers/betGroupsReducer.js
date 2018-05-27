@@ -18,11 +18,9 @@ const betGroupsReducer = (state = initialState, action) => {
     switch (action.type) {
         case "JOINGROUPSUCCESS":
             console.log(action.type);
-            // TODO
             return state;
         case "CREATEGROUPONSERVER":
             console.log(action.type);
-            // TODO
             return state;
         case "SWITCHGROUPSUCCESS":
             newState.currentGroup = action.group;
