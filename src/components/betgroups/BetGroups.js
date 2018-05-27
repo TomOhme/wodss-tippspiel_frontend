@@ -31,7 +31,6 @@ let BetGroups = ({ betGroups, user, translate, showJoinModal, hideJoinModal, cre
             }
         </DropdownButton>
 
-        {console.log(betGroups.currentGroup)}
         {
             // only display join button when user is not member
             (!betGroups.currentGroup.userIsMember)

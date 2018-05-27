@@ -74,8 +74,6 @@ class JoinGroupPasswordDialog extends React.Component {
     }
 
     submit = () => {
-        console.log(this.props.group);
-        console.log(this.props.password);
         this.props.joinGroupOnServer(this.props.group, this.state.password, this.props.userId);
         this.setState({ showModal: false, password: '' });
     }

@@ -17,15 +17,11 @@ const betGroupsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case "JOINGROUPSUCCESS":
-            console.log(action.type);
             return state;
         case "CREATEGROUPONSERVER":
-            console.log(action.type);
             return state;
         case "SWITCHGROUPSUCCESS":
             newState.currentGroup = action.group;
-            console.log(action.group.user_ids);
-            console.log(action.userId);
             newState.currentGroup.userIsMember = _.contains(action.group.user_ids, action.userId);
 
             var users = action.group.users;
@@ -36,7 +32,6 @@ const betGroupsReducer = (state = initialState, action) => {
                 user.rank = _.indexOf(users, user) + 1;
             });
 
-            console.log(_.contains(action.group.user_ids, action.userId));
             return newState;
         case "GETGROUPRANKINGSUCCESS":
             var newGroupRanking = _.sortBy(action.groupRanking, "score");
