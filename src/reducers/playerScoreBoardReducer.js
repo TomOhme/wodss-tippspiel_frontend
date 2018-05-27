@@ -14,7 +14,7 @@ const playerScoreBoardReducer = (state = initialState, action) => {
             });
 
             // equalize rank when users have same scores
-            for (var i = 0; i < newPlayerRanking, i++;) {
+            for (var i = 0; i < newPlayerRanking.length, i++;) {
                 var firstPlayer = newPlayerRanking[i]
                 var secondPlayer = newPlayerRanking[i+1]
                 if (secondPlayer != undefined 
