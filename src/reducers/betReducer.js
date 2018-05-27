@@ -35,6 +35,7 @@ const betReducer = (state = initializeGamesWithBets(initialGames), action) => {
             }
 
             newGame.saved = false;
+            newGame.bet.betExistsOnServer = true;
 
             return newState;
         case 'SAVESUCCESS':
