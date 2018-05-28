@@ -27,6 +27,7 @@ class ChangeProfileForm extends React.Component {
 
         this.translate = props.translate;
         this.updateProfileOnServer = props.updateProfileOnServer;
+        console.log(this.updateProfileOnServer);
     }
 
     handleChange = (e) => {

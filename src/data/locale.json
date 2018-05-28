@@ -21,7 +21,7 @@
     "password": ["Passwort"],
     "passwordagain": ["Passwort erneut eingeben"],
     "passwordoptional": ["Passwort (optional)"],
-    "passwordforconfirm": ["Passwort für Bestätigung"],
+    "passwordforconfirm": ["Neues Passwort bestätigen"],
     "resetpassword": ["Passwort zurücksetzen"],
     "passwordnomatch": ["Passwörter stimmen nicht überein."],
     "password10chars": ["Passwort muss mindestens 10 Zeichen enthalten."],
