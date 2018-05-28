@@ -139,6 +139,7 @@ function addEmptyBetsToGames(newState) {
         _.each(phase, (game) => {
             if (game.bet === undefined) {
                 game.bet = Object.assign({}, betBase);
+                game.saved = false; // game doesnt exist on server, so its not saved
             }
         })
     })
