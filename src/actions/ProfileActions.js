@@ -38,7 +38,7 @@ export function updateProfileOnServer(newProfile) {
                 "name": newProfile.newusername,
                 "email": newProfile.newmail,
                 "password": newProfile.password,
-                "newPassword": newProfile.newpassword,
+                "newPassword": ((newProfile.newpassword.length !== 0) ? newProfile.newpassword : null),
                 "reminders": newProfile.reminders,
                 "dailyResults": newProfile.dailyResults
             })
