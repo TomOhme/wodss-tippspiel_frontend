@@ -17,7 +17,8 @@ import {
 } from './PlayerRankingActions';
 
 import {
-    getGroupRankingFromServer
+    getGroupRankingFromServer,
+    switchGroup
 } from './BetGroupActions';
 
 import {
