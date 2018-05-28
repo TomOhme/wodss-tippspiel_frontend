@@ -76,7 +76,7 @@ export function joinGroupOnServer(group, password, userId) {
 
         fetch(request).then(response => {
                 if (response.ok) {
-                    return response.text;
+                    return response.json;
                 } else {
                     throw new Error("Join group failed");
                 }
@@ -108,7 +108,7 @@ export function leaveGroupOnServer(group) {
 
         fetch(request).then(response => {
                 if (response.ok) {
-                    return response.json()
+                    return response
                 } else {
                     throw new Error("Leave group failed");
                 }
@@ -117,7 +117,7 @@ export function leaveGroupOnServer(group) {
                 var translate = getTranslate(getState().locale);
                 dispatch(showMessage(translate("leavegroupsuccess")));
                 dispatch(getGroupRankingFromServer()); // reload groups
-                dispatch(switchGroup(group));
+                dispatch(switchGroup(getState().betGroups.groups[0]));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
@@ -213,7 +213,6 @@ export function getGroupRankingFromServer() {
             })
             .then((groupRanking) => {
                 dispatch(getGroupRankingSuccess(groupRanking));
-                //dispatch(switchGroup(state.betGroups.groups[0]));
             })
             .catch((error) => {
                 dispatch(showError(error.message));
