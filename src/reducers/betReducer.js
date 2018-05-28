@@ -121,6 +121,7 @@ function addBetsToGames(userbets, newState) {
             _.each(phase, (game) => {
                 if (bet.game_id === game.game_id) {
                     bet.betExistsOnServer = true;
+                    game.saved = true;
                     bet.game_id = game.game_id;
                     game.bet = bet;
                 }
