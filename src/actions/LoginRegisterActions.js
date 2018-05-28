@@ -69,6 +69,7 @@ export function requestLogin(mail, password) {
                 dispatch(getUserbets());
                 dispatch(getPlayerRankingFromServer());
                 dispatch(getGroupRankingFromServer());
+                dispatch(switchGroup(getState().betGroups.groups[0]));
 
             })
             .catch((error) => {
