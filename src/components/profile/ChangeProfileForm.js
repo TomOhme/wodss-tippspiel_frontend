@@ -2,7 +2,7 @@ import React from 'react'
 
 import { connect } from 'react-redux';
 import { getTranslate } from 'react-localize-redux';
-import { updateProfileOnServer, deleteProfileOnServer } from '../../actions/ProfileActions';
+import { updateProfileOnServer } from '../../actions/ProfileActions';
 
 import {
     Button,
@@ -144,6 +144,7 @@ class ChangeProfileForm extends React.Component {
                     <Col md={7} className="text-right">
                         <Button
                             bsStyle="blue"
+                            disabled={this.state.password.length !== 0}
                             onClick={() => this.updateProfileOnServer(this.state)}>
                             {this.translate("update")}
                         </Button>
