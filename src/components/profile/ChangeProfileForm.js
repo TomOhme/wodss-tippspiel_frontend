@@ -16,18 +16,17 @@ class ChangeProfileForm extends React.Component {
         super(props);
 
         this.state = {
-            userId: props.user.id,
-            newmail: props.user.email,
-            newusername: props.user.name,
-            reminders: props.user.reminders,
-            dailyResults: props.user.dailyResults,
+            userId: this.props.user.id,
+            newmail: this.props.user.email,
+            newusername: this.props.user.name,
+            reminders: this.props.user.reminders,
+            dailyResults: this.props.user.dailyResults,
             password: "",
             newpassword: "",
         };
 
-        this.translate = props.translate;
-        this.updateProfileOnServer = props.updateProfileOnServer;
-        console.log(this.updateProfileOnServer);
+        this.translate = this.props.translate;
+        this.updateProfileOnServer = this.props.updateProfileOnServer;
     }
 
     handleChange = (e) => {
@@ -150,5 +149,16 @@ class ChangeProfileForm extends React.Component {
         )
     }
 };
+
+const mapStateToProps = state => ({
+    translate: getTranslate(state.locale),
+    user: state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+    updateProfileOnServer: (state) => dispatch(updateProfileOnServer(state))
+});
+
+ChangeProfileForm = connect(mapStateToProps, mapDispatchToProps)(ChangeProfileForm)
 
 export default ChangeProfileForm;

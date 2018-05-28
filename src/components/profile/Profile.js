@@ -43,7 +43,7 @@ let Profile = ({ user, translate, deleteProfileOnServer }) => (
                     </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
-                    <ChangeProfileForm translate={translate} user={user} updateProfileOnServer={updateProfileOnServer} />
+                    <ChangeProfileForm />
                 </Panel.Body>
             </Panel>
 
